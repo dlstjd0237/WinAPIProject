@@ -35,6 +35,12 @@
     <Filter Include="Engine\07. Module">
       <UniqueIdentifier>{ec499769-3097-4d06-8abb-b25ff4a1a933}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Object\Boss">
+      <UniqueIdentifier>{e758a8be-2381-4d15-8fbf-d42939b9e193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Boss\Pattern">
+      <UniqueIdentifier>{5dd4a61a-832b-4dfe-80a4-2415af278d9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -127,6 +133,18 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
+    <ClInclude Include="BossTestScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1Boss.h">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPattern.h">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -210,6 +228,18 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="BossTestScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1Boss.cpp">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPattern.cpp">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
