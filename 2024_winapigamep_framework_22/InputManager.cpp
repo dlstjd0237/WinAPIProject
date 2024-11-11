@@ -10,8 +10,8 @@ void InputManager::Init()
 void InputManager::Update()
 {
 
-	//GetActiveWindow(); // Ã¢À» ¿©·¯°³ ¶ç¿ï¶§ ¸Ç À§¿¡ÀÖ´Â À©µµ¿ì
-	HWND hWnd = GetFocus(); // Áö±Ý µü Æ÷Ä¿½ÌÇÑ°Å
+	//GetActiveWindow(); // Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¶§ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	HWND hWnd = GetFocus(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ñ°ï¿½
 	if (hWnd == nullptr)
 	{
 		for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)
@@ -23,20 +23,20 @@ void InputManager::Update()
 	 }
 	for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)
 	{
-		// Å°°¡ ´­·È´Ù.
+		// Å°ï¿½ï¿½ ï¿½ï¿½ï¿½È´ï¿½.
 		if (GetAsyncKeyState(m_arrVKKey[i]))
 		{
-			// ÀÌÀü¿¡ ´­·È¾î
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¾ï¿½
 			if (m_vecKey[i].IsPrevCheck)
 				m_vecKey[i].eState = KEY_STATE::PRESS;
-			else // ÀÌÀü¿¡ ¾È´­·È¾î. Áö±Ý µü!!! ´©¸§
+			else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½ï¿½È¾ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!!! ï¿½ï¿½ï¿½ï¿½
 				m_vecKey[i].eState = KEY_STATE::DOWN;
 			m_vecKey[i].IsPrevCheck = true;
 		}
-		// Å°°¡ ¾È´­·È´Ù.
+		// Å°ï¿½ï¿½ ï¿½È´ï¿½ï¿½È´ï¿½.
 		else
 		{
-			// ÀÌÀü¿¡ ´­·ÁÀÖ¾ú´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½.
 			if (m_vecKey[i].IsPrevCheck)
 				m_vecKey[i].eState = KEY_STATE::UP;
 			else
@@ -45,8 +45,8 @@ void InputManager::Update()
 		}
 	}
 	// Mouse
-	::GetCursorPos(&m_ptMouse); // ¸¶¿ì½º ÁÂÇ¥ ¹Þ±â
-	// ¿ì¸®°¡ °¡Áø À©µµ¿ì Ã¢ ±âÁØÀ¸·Î ÁÂÇ¥ º¯°æ
+	::GetCursorPos(&m_ptMouse); // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ç¥ ï¿½Þ±ï¿½
+	// ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
 	::ScreenToClient(GET_SINGLE(Core)->GetHwnd(), &m_ptMouse);
 
 

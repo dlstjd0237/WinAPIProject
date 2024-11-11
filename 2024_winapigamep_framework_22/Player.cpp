@@ -78,7 +78,7 @@ void Player::CreateProjectile()
 	vPos.y -= GetSize().y / 2.f;
 	pProj->SetPos(vPos);
 	pProj->SetSize({30.f,30.f});
-	// µµ -> ¶óµð¾È: PI / 180
+	// ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½: PI / 180
 	//pProj->SetAngle(PI / 4 * 7.f); // 1
 	//static float angle = 0.f;
 	//pProj->SetAngle(angle * PI / 180); // 2

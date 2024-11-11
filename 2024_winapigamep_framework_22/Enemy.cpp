@@ -14,6 +14,7 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+	
 }
 
 void Enemy::Render(HDC _hdc)

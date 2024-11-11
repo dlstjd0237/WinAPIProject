@@ -21,8 +21,8 @@ void CollisionManager::Update()
 
 void CollisionManager::CheckLayer(LAYER _left, LAYER _right)
 {
-	// ÀÛÀºÂÊÀ» ÇàÀ¸·Î ¾¹½Ã´Ù.
-	// ÀÛÀº °ªÀ» LAYERÀÇ ÇàÀ¸·Î, Å« °ªÀ» ¿­
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã´ï¿½.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ LAYERï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Å« ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	UINT Row = (UINT)_left;
 	UINT Col = (UINT)_right;
 	//Row = min(Row, Col);
@@ -31,14 +31,14 @@ void CollisionManager::CheckLayer(LAYER _left, LAYER _right)
 	//m_arrLayer[Row];
 	//Col;
 
-	//// ºñÆ® ¿¬»ê
-	// Ã¼Å©°¡ µÇ¾îÀÖ´Ù¸é
+	//// ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+	// Ã¼Å©ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö´Ù¸ï¿½
 	if (m_arrLayer[Row] & (1 << Col))
 	{
-		// Ã¼Å© Ç®±â
+		// Ã¼Å© Ç®ï¿½ï¿½
 		m_arrLayer[Row] &= ~(1 << Col);
 	}
-	// Ã¼Å©°¡ ¾ÈµÇ¾îÀÖ´Ù¸ér
+	// Ã¼Å©ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ï¿½Ö´Ù¸ï¿½r
 	else
 	{
 		m_arrLayer[Row] |= (1 << Col);
@@ -48,7 +48,7 @@ void CollisionManager::CheckLayer(LAYER _left, LAYER _right)
 
 void CollisionManager::CheckReset()
 {
-	// ¸Þ¸ð¸® ÃÊ±âÈ­
+	// ï¿½Þ¸ï¿½ ï¿½Ê±ï¿½È­
 	memset(m_arrLayer, 0, sizeof(UINT) * (UINT)LAYER::END);
 }
 
@@ -61,25 +61,25 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 	for (size_t i = 0; i < vecLeftLayer.size(); ++i)
 	{
 		Collider* pLeftCollider = vecLeftLayer[i]->GetComponent<Collider>();
-		// Ãæµ¹Ã¼ ¾ø´Â °æ¿ì
+		// ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (nullptr == pLeftCollider)
 			continue;
 		for (size_t j = 0; j < vecRightLayer.size(); j++)
 		{
 			Collider* pRightCollider = vecRightLayer[j]->GetComponent<Collider>();
-			// Ãæµ¹Ã¼°¡ ¾ø°Å³ª, ÀÚ±âÀÚ½Å°úÀÇ Ãæµ¹ÀÎ °æ¿ì
+			// ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Å³ï¿½, ï¿½Ú±ï¿½ï¿½Ú½Å°ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½
 			if (nullptr == pRightCollider || vecLeftLayer[i] == vecRightLayer[j])
 				continue;
 
-			COLLIDER_ID colliderID; // µÎ Ãæµ¹Ã¼·Î¸¸ ¸¸µé ¼ö ÀÖ´Â ID
+			COLLIDER_ID colliderID; // ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ID
  			colliderID.left_ID = pLeftCollider->GetID();
 			colliderID.right_ID = pRightCollider->GetID();
 
 			iter = m_mapCollisionInfo.find(colliderID.ID);
-			// ÀÌÀü ÇÁ·¹ÀÓ Ãæµ¹ÇÑ Àû ¾ø´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 			if (iter == m_mapCollisionInfo.end())
 			{
-				// Ãæµ¹ Á¤º¸°¡ ¹Ìµî·ÏµÈ »óÅÂÀÎ °æ¿ì µî·Ï(Ãæµ¹ÇÏÁö ¾Ê¾Ò´Ù·Î)
+				// ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Ù·ï¿½)
 				m_mapCollisionInfo.insert({ colliderID.ID, false });
 				//m_mapCollisionInfo[colliderID.ID] = false;
 				iter = m_mapCollisionInfo.find(colliderID.ID);
@@ -87,7 +87,7 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 
 			if (IsCollision(pLeftCollider, pRightCollider))
 			{
-				// ÀÌÀü¿¡µµ Ãæµ¹Áß
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½
 				if (iter->second)
 				{
 					if (vecLeftLayer[i]->GetIsDead() || vecRightLayer[j]->GetIsDead())
@@ -102,7 +102,7 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 						pRightCollider->StayCollision(pLeftCollider);
 					}
 				}
-				else // ÀÌÀü¿¡ Ãæµ¹ x
+				else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ x
 				{
 					if (!vecLeftLayer[i]->GetIsDead() && !vecRightLayer[j]->GetIsDead())
 					{
@@ -112,9 +112,9 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 					}
 				}
 			}
-			else // Ãæµ¹ ¾ÈÇÏ³×?
+			else // ï¿½æµ¹ ï¿½ï¿½ï¿½Ï³ï¿½?
 			{
-				if (iter->second) // ±Ùµ¥ ÀÌÀü¿¡ Ãæµ¹Áß
+				if (iter->second) // ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½
 				{
 					pLeftCollider->ExitCollision(pRightCollider);
 					pRightCollider->ExitCollision(pLeftCollider);
