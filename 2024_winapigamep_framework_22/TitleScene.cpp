@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Enemy.h"
+#include "UI_Health.h"
 #include "CollisionManager.h"
 #include "ResourceManager.h"
 
@@ -20,6 +21,10 @@ void TitleScene::Init()
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
 	pPlayer->SetSize({ 100.f,100.f });
 	AddObject(pPlayer, LAYER::PLAYER);
+		
+	Object* pUI_Health = new UI_Health;
+	AddObject(pUI_Health, LAYER::PLAYER);
+
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PROJECTILE, LAYER::ENEMY);
 	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::ENEMY);
 	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);

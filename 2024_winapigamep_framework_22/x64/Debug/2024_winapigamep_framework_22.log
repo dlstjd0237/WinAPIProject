@@ -1,20 +1,5 @@
-﻿  Animation.cpp
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(23,38): warning C4267: '=': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(70,57): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Collider.cpp
-  CollisionManager.cpp
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(135,16): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(135,16): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(136,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(136,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Enemy.cpp
-  EventManager.cpp
-  GameScene.cpp
-  Object.cpp
-  Player.cpp
-  Projectile.cpp
-  Scene.cpp
-  TitleScene.cpp
+﻿  TitleScene.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
   UI_Health.cpp
 C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
   2024_winapigamep_framework_22.vcxproj -> C:\Users\jangj\Documents\GitHub\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
