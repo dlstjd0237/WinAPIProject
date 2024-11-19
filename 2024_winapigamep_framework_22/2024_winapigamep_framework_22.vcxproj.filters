@@ -41,9 +41,6 @@
     <Filter Include="Engine\Realion033\UI">
       <UniqueIdentifier>{b6062f2a-493c-42a0-8823-55134e301f1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Realion033\UI\Manager">
-      <UniqueIdentifier>{b175c543-8aff-4f17-b168-9dc30b3733b5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -136,9 +133,7 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
-    <ClInclude Include="UIManager.h">
-      <Filter>Engine\Realion033\UI\Manager</Filter>
-    </ClInclude>
+    <ClInclude Include="UI_Health.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -223,8 +218,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\06. Component</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
-      <Filter>Engine\Realion033\UI\Manager</Filter>
-    </ClCompile>
+    <ClCompile Include="UI_Health.cpp" />
   </ItemGroup>
 </Project>

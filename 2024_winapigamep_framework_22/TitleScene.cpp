@@ -7,7 +7,6 @@
 #include "Enemy.h"
 #include "CollisionManager.h"
 #include "ResourceManager.h"
-#include "UIManager.h"
 
 void TitleScene::Init()
 {
