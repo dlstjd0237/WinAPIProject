@@ -133,7 +133,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
-    <ClInclude Include="UI_Health.h" />
+    <ClInclude Include="UI_Health.h">
+      <Filter>Engine\Realion033\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Energy.h">
+      <Filter>Engine\Realion033\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -218,6 +223,11 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\06. Component</Filter>
     </ClCompile>
-    <ClCompile Include="UI_Health.cpp" />
+    <ClCompile Include="UI_Health.cpp">
+      <Filter>Engine\Realion033\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Energy.cpp">
+      <Filter>Engine\Realion033\UI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

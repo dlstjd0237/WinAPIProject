@@ -3,8 +3,9 @@
 class TitleScene : public Scene
 {
 public:
-	// Scene��(��) ���� ��ӵ�
-	virtual void Init() override;
-	virtual void Update() override;
-};
+    virtual void Init() override;
+    virtual void Update() override;
 
+private:
+    void UIInit(); // UI 초기화 멤버 함수
+};
