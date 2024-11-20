@@ -35,6 +35,18 @@
     <Filter Include="Engine\07. Module">
       <UniqueIdentifier>{ec499769-3097-4d06-8abb-b25ff4a1a933}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\00.Work">
+      <UniqueIdentifier>{856d8182-4d7c-41e2-91a9-2db35b65d39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\Baek">
+      <UniqueIdentifier>{82f0dc49-d910-4887-b421-1b9969835c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\Baek\Scene">
+      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\Baek\03.Object">
+      <UniqueIdentifier>{f5a9e72f-b80a-416f-8b93-f4191e843ae4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -127,6 +139,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
+    <ClInclude Include="BaekScene.h">
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Engine\00.Work\Baek\03.Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -210,6 +228,12 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="BaekScene.cpp">
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
