@@ -7,8 +7,6 @@
 #include "Enemy.h"
 #include "CollisionManager.h"
 #include "ResourceManager.h"
-#include "UI_Health.h"
-
 void TitleScene::Init()
 {
     Object* pObj = new Enemy;
@@ -25,12 +23,6 @@ void TitleScene::Init()
     //GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::ENEMY);
     GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
     GET_SINGLE(ResourceManager)->Play(L"BGM");
-
-    UI_Health* pHealthUI = new UI_Health;
-    pHealthUI->SetPos({ SCREEN_WIDTH / 2.f, 120.f});
-    pHealthUI->SetSize({ 100.f,100.f });
-    pHealthUI->SetFillAmount(0.f);
-    AddObject(pHealthUI, LAYER::UI);
 }
 
 void TitleScene::Update()
