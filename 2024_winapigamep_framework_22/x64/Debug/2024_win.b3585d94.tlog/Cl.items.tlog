@@ -3,6 +3,7 @@ D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Animator.cpp;D:\Unity\WinAP
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\BaseWindow.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\BaseWindow.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Boss.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Boss.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\BossTestScene.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\BossTestScene.obj
+D:\Unity\WinAPIProject\2024_winapigamep_framework_22\CircleBossPattern.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\CircleBossPattern.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Collider.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Collider.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\CollisionManager.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Component.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Component.obj
@@ -14,6 +15,8 @@ D:\Unity\WinAPIProject\2024_winapigamep_framework_22\GDISelector.cpp;D:\Unity\Wi
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\InputManager.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\InputManager.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\main.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\main.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Object.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Object.obj
+D:\Unity\WinAPIProject\2024_winapigamep_framework_22\BossPattern.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\BossPattern.obj
+D:\Unity\WinAPIProject\2024_winapigamep_framework_22\OneShotPattern.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\OneShotPattern.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Player.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Player.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\Projectile.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\Projectile.obj
 D:\Unity\WinAPIProject\2024_winapigamep_framework_22\ResourceBase.cpp;D:\Unity\WinAPIProject\2024_winapigamep_framework_22\x64\Debug\ResourceBase.obj

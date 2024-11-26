@@ -41,6 +41,15 @@
     <Filter Include="Engine\03. Object\Boss\Pattern">
       <UniqueIdentifier>{5dd4a61a-832b-4dfe-80a4-2415af278d9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Object\Boss\Pattern\Default">
+      <UniqueIdentifier>{901257ef-1161-45e4-806a-75ca29cbd2b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Boss\Pattern\Stage1">
+      <UniqueIdentifier>{71225681-2374-4bcc-9ae2-922a419a37e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Boss\Pattern\Stage2">
+      <UniqueIdentifier>{c8e5d37d-b9fb-411c-a473-cf4726433375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -145,6 +154,12 @@
     <ClInclude Include="BossPattern.h">
       <Filter>Engine\03. Object\Boss\Pattern</Filter>
     </ClInclude>
+    <ClInclude Include="CircleBossPattern.h">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="OneShotPattern.h">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -239,6 +254,12 @@
       <Filter>Engine\03. Object\Boss</Filter>
     </ClCompile>
     <ClCompile Include="BossPattern.cpp">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleBossPattern.cpp">
+      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="OneShotPattern.cpp">
       <Filter>Engine\03. Object\Boss\Pattern</Filter>
     </ClCompile>
   </ItemGroup>
