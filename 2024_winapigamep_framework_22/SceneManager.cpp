@@ -3,7 +3,6 @@
 #include "Scene.h"
 #include "TitleScene.h"
 #include "GameScene.h"
-#include "Realion033Scene.h"
 
 void SceneManager::Init()
 {

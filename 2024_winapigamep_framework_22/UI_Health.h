@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h";
+#include "Texture.h"
 
 class UI_Health : public Object
 {
@@ -14,5 +15,7 @@ public:
 
 private:
 	float m_fFillAmount;
+	Texture* m_pBgTex;
+	Texture* m_pFillTex;
 };
 
