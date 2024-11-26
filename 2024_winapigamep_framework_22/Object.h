@@ -1,5 +1,6 @@
 #pragma once
 class Collider;
+class RigidBody;
 class Component;
 class Object
 {
@@ -14,8 +15,11 @@ public:
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetSize(Vec2 _vSize) { m_vSize = _vSize; }
+	void SetUseGravity(bool _value) { m_IsUseGravity = _value; }
+	void SetGravity(float _gravit) { m_gravity = _gravit; }
 	const Vec2& GetPos() const { return m_vPos; }
 	const Vec2& GetSize() const { return m_vSize; }
+	const float& GetGravity()const { return	 m_gravity; }
 public:
 	virtual void EnterCollision(Collider* _other);
 	virtual void StayCollision(Collider* _other);
@@ -23,10 +27,13 @@ public:
 	const bool& GetIsDead() const { return m_IsDie; }
 	void SetDead() { m_IsDie = true; }
 	void SetName(wstring _name) { m_name = _name; }
+	void UseGravity();
 	const wstring& GetName() const { return m_name; }
 
 private:
 	bool m_IsDie;
+	bool m_IsUseGravity = false;
+	float m_gravity = 9.8f;
 	wstring m_name;
 public:
 	template<typename T>
@@ -53,6 +60,7 @@ private:
 	//POINT m_ptSize;
 	Vec2 m_vPos;
 	Vec2 m_vSize;
+	float m_vGravity;
 	vector<Component*> m_vecComponents;
 };
 

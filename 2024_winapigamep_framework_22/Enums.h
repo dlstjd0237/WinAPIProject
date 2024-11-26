@@ -1,6 +1,8 @@
 #pragma once
+
 enum class LAYER
 {
+	GROUND,
 	DEFAULT,
 	BACKGROUND,
 	PLAYER,

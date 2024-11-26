@@ -35,11 +35,17 @@
     <Filter Include="Engine\07. Module">
       <UniqueIdentifier>{ec499769-3097-4d06-8abb-b25ff4a1a933}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\Boss">
-      <UniqueIdentifier>{e758a8be-2381-4d15-8fbf-d42939b9e193}</UniqueIdentifier>
+    <Filter Include="Engine\00.Work">
+      <UniqueIdentifier>{856d8182-4d7c-41e2-91a9-2db35b65d39d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\Boss\Pattern">
-      <UniqueIdentifier>{5dd4a61a-832b-4dfe-80a4-2415af278d9f}</UniqueIdentifier>
+    <Filter Include="Engine\00.Work\Baek">
+      <UniqueIdentifier>{82f0dc49-d910-4887-b421-1b9969835c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\Baek\Scene">
+      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\Baek\03.Object">
+      <UniqueIdentifier>{f5a9e72f-b80a-416f-8b93-f4191e843ae4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\03. Object\Boss\Pattern\Default">
       <UniqueIdentifier>{901257ef-1161-45e4-806a-75ca29cbd2b4}</UniqueIdentifier>
@@ -142,17 +148,11 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
-    <ClInclude Include="BossTestScene.h">
-      <Filter>Engine\04. Scene</Filter>
+    <ClInclude Include="BaekScene.h">
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Engine\03. Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage1Boss.h">
-      <Filter>Engine\03. Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="BossPattern.h">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    <ClInclude Include="Ground.h">
+      <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
     <ClInclude Include="CircleBossPattern.h">
       <Filter>Engine\03. Object\Boss\Pattern</Filter>
@@ -244,17 +244,11 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\06. Component</Filter>
     </ClCompile>
-    <ClCompile Include="BossTestScene.cpp">
-      <Filter>Engine\04. Scene</Filter>
+    <ClCompile Include="BaekScene.cpp">
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Boss.cpp">
-      <Filter>Engine\03. Object\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage1Boss.cpp">
-      <Filter>Engine\03. Object\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="BossPattern.cpp">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
     <ClCompile Include="CircleBossPattern.cpp">
       <Filter>Engine\03. Object\Boss\Pattern</Filter>
