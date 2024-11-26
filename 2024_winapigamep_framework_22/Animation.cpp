@@ -4,6 +4,8 @@
 #include "Object.h"
 #include "Texture.h"
 #include "TimeManager.h"
+#include "ResourceManager.h"
+
 Animation::Animation()
 	: m_pAnimator(nullptr)
 	, m_CurFrame(0)
@@ -46,8 +48,22 @@ void Animation::Render(HDC _hdc)
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 
+	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
+	
+	TransparentBlt(_hdc
+		, (int)(vPos.x - (m_vecAnimFrame[m_CurFrame].vSlice.x * scale) / 2.f) // X 좌표
+		, (int)(vPos.y - (m_vecAnimFrame[m_CurFrame].vSlice.y * scale) / 2.f) // Y 좌표
+		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale) // 폭
+		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale) // 높이
+		, m_pTex->GetTexDC()
+		, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
+		, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
+		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
+		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
+		, RGB(255, 0, 255)); // 투명 색상 (예시)
+
 	// 오프셋 적용
-	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
+	/*vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
 	TransparentBlt(_hdc
 		, (int)(vPos.x - m_vecAnimFrame[m_CurFrame].vSlice.x / 2.f)
 		, (int)(vPos.y - m_vecAnimFrame[m_CurFrame].vSlice.y / 2.f)
@@ -58,7 +74,7 @@ void Animation::Render(HDC _hdc)
 		, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
 		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
 		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
-		, RGB(255, 0, 255));
+		, RGB(255, 0, 255));*/
 }
 
 void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate)

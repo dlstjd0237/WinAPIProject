@@ -11,6 +11,7 @@ public:							\
 		return &m_pInst;		\
 	}							\
 
+#define MAXENERGY 5
 #define GET_SINGLE(type) type::GetInst()
 #define fDT GET_SINGLE(TimeManager)->GetDT()
 

@@ -16,23 +16,34 @@ Player::Player()
 	: m_pTex(nullptr),
 	m_speed(10)
 {
-	//m_pTex = new Texture;
-	//wstring path = GET_SINGLE(ResourceManager)->GetResPath();
-	//path += L"Texture\\planem.bmp";
-	//m_pTex->Load(path);
-	//m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\planem.bmp");
-	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Jiwoo", L"Texture\\jiwoo.bmp");
+
+	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Warrior.bmp");
+	
+	//==== AddComponent ====
 	this->AddComponent<RigidBody>();
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
-
+	//======================
+	
+	//==== Graviy Setting ====
 	SetUseGravity(true);
+	//========================
 
-	GetComponent<Animator>()->CreateAnimation(L"JiwooFront", m_pTex, Vec2(0.f, 150.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.1f);
-	GetComponent<Animator>()->PlayAnimation(L"JiwooFront", true);
+	//==== Animation Setting ====
+	GetComponent<Animator>()->CreateAnimation(L"PlayerMove", m_pTex, Vec2(0.f, 44.f),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+	GetComponent<Animator>()->CreateAnimation(L"PlayerIdle", m_pTex, Vec2(0.f, 0.f),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+	//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
+	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.1f);
+	GetComponent<Animator>()->PlayAnimation(L"PlayerIdle", true);
+	//============================
 
 
+	//==== Collider Setting =====
+	GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
+	GetComponent<Collider>()->SetOffSetPos({ -32, 19 });
+	//===========================
 }
 Player::~Player()
 {
@@ -47,10 +58,15 @@ void Player::Update()
 
 	if (GET_KEY(KEY_TYPE::A)) {
 		vPos.x -= 100.f * fDT * m_speed;
+		SetEnergy(m_energy += 0.001f);
+	}
+	if (GET_KEYDOWN(KEY_TYPE::A)) {
+
 	}
 
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
+		SetEnergy(m_energy += 0.001f);
 	}
 
 	if (m_isJumping) {
@@ -71,23 +87,10 @@ void Player::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vSize = GetSize();
-	//RECT_RENDER(_hdc, vPos.x, vPos.y
-	//	, vSize.x, vSize.y);
+
 	int width = m_pTex->GetWidth();
 	int height = m_pTex->GetHeight();
-	//::BitBlt(_hdc
-	//	, (int)(vPos.x - vSize.x / 2)
-	//	, (int)(vPos.y - vSize.y / 2)
-	//	, width, height,
-	//	m_pTex->GetTexDC()
-	//	,0,0,SRCCOPY
-	//);
-	/*::TransparentBlt(_hdc
-		, (int)(vPos.x - width / 2)
-		, (int)(vPos.y - height / 2)
-		, width, height,
-		m_pTex->GetTexDC()
-		, 0, 0,width, height, RGB(255,0,255));*/
+
 	ComponentRender(_hdc);
 	//::StretchBlt();
 	//::AlphaBlend();
@@ -96,6 +99,7 @@ void Player::Render(HDC _hdc)
 
 void Player::EnterCollision(Collider* _other)
 {
+
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Ground")
 	{
@@ -120,15 +124,9 @@ void Player::CreateProjectile()
 	vPos.y -= GetSize().y / 2.f;
 	pProj->SetPos(vPos);
 	pProj->SetSize({ 30.f,30.f });
-	//static float angle = 0.f;
-	//pProj->SetAngle(angle * PI / 180); // 2
-	//angle += 10.f;
+
 	pProj->SetDir({ 0.f, -1.f });
 	pProj->SetName(L"PlayerBullet");
-	//Vec2 a = { 10.f, 10.f };
-	//Vec2 b = { 0.f, 0.f };
-	//Vec2 c = a / b;
-
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pProj, LAYER::PROJECTILE);
 }
 
@@ -138,7 +136,8 @@ void Player::Jump()
 	{
 		SetUseGravity(true);
 		m_isJumping = true;
-		m_jumpVelocity = -500.f; // 위로 올라가는 초기 속도 (px/s)
+		m_jumpVelocity = -500.f * m_energy; // 위로 올라가는 초기 속도 (px/s)
+		SetEnergy(1);
 	}
 
 }

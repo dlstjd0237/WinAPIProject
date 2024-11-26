@@ -27,6 +27,7 @@ public:
 	void Stop(SOUND_CHANNEL _channel);
 	void Volume(SOUND_CHANNEL _channel, float _vol);
 	void Pause(SOUND_CHANNEL _channel, bool _ispause);
+
 private:
 	tSoundInfo* FindSound(const wstring& _key);
 private:
@@ -35,5 +36,18 @@ private:
 	map<wstring, tSoundInfo*> m_mapSounds;
 	FMOD::System* m_pSoundSystem; // 사운드 시스템
 	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // 오디오 채널
+public:
+	const float& GetAnimationScale(const wstring& animName) {
+		if (m_animationScales.contains(animName) == true)
+			return m_animationScales[animName];
+		return 1;
+	}
+	void AddAnimationScale(const wstring& key, float& value) {
+		m_animationScales[key] = value;
+		cout << value << endl;
+	}
+private:
+	map<wstring, float> m_animationScales;
+
 };
 

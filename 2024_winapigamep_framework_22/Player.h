@@ -9,19 +9,30 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
-public :
+public:
 	virtual void EnterCollision(Collider* _other);
 	virtual void StayCollision(Collider* _other);
 	virtual void ExitCollision(Collider* _other);
 private:
 	void CreateProjectile();
 	void Jump();
-	Texture* m_pTex;
-	float m_speed;
 
 private:
-	bool m_isJumping = false;
+	Texture* m_pTex;
+	float m_speed;
+	float m_energy = 1.0f;
 	float m_jumpVelocity = 0.f;
+	bool m_isJumping = false;
+	bool m_isIdle = false;
+	bool m_isMove = false;
+private:
+	float GetEnergy() { return m_energy; }
+	void SetEnergy(float value)
+	{
+		m_energy = min(value, MAXENERGY);
+	}
+	void AnimationChange(wstring animationName,bool Flip = false) {
 
+	}
 };
 

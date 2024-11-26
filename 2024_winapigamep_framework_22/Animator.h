@@ -15,7 +15,7 @@ public:
 	// 애니메이션 생성함수
 	void CreateAnimation(const wstring& _strName, Texture* _pTex,
 		Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
-		UINT _framecount, float _fDuration, bool _isRotate = false);
+		UINT _framecount, float _fDuration, bool _isRotate = false, float scale =1.f );
 	// 애니메이션 찾기함수
 	Animation* FindAnimation(const wstring& _strName);
 
@@ -26,11 +26,14 @@ public:
 	Animation* GetCurrentAnim() { return m_pCurrentAnimation; }
 	const bool& GetRepeat() const { return m_IsRepeat; }
 	const int& GetRepeatcnt() const { return m_repeatcnt; }
+
 	void SetRepeatcnt() { --m_repeatcnt; }
+
 private:
 	map<wstring, Animation*> m_mapAnimations;
 	Animation* m_pCurrentAnimation;
 	bool	m_IsRepeat;
 	int		m_repeatcnt;
+
 };
 
