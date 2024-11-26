@@ -10,7 +10,6 @@ void CircleBossPattern::Update()
 
 	if (_elapseTime >= _delay)
 	{
-		cout << _currentShotCount;
 		if (_currentShotCount == _shotCount)
 		{
 			isEnd = true;

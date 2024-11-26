@@ -11,7 +11,7 @@ public:
 private:
 	void Shot();
 private:
-	float _delay = 0.5f;
+	float _delay = 0.25f;
 	int _shotCount = 10;
 	int _currentShotCount;
 	float _elapseTime;
