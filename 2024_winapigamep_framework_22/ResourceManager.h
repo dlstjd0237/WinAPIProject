@@ -1,14 +1,14 @@
 #pragma once
 #include "fmod.hpp"
 #pragma comment(lib, "fmod_vc")
-enum class SOUND_CHANNEL //ï¿½ï¿½ï¿½å¸¶ï¿½ï¿½ Ã¤ï¿½ï¿½
+enum class SOUND_CHANNEL //»ç¿îµå¸¶´Ù Ã¤³Î
 {
 	BGM, EFFECT, END
 };
 struct tSoundInfo
 {
-	FMOD::Sound* pSound; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½
-	bool IsLoop;		// ï¿½ï¿½ï¿½å¸¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	FMOD::Sound* pSound; // ½ÇÁ¦ »ç¿îµå ¸Þ¸ð¸®
+	bool IsLoop;		// »ç¿îµå¸¶´Ù ·çÇÁÇÒÁö¸»Áö
 };
 class Texture;
 class ResourceManager
@@ -33,7 +33,7 @@ private:
 	wchar_t m_resourcePath[255] = {};
 	map<wstring, Texture*> m_mapTextures;
 	map<wstring, tSoundInfo*> m_mapSounds;
-	FMOD::System* m_pSoundSystem; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã½ï¿½ï¿½ï¿½
-	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½
+	FMOD::System* m_pSoundSystem; // »ç¿îµå ½Ã½ºÅÛ
+	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // ¿Àµð¿À Ã¤³Î
 };
 

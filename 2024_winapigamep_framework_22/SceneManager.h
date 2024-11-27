@@ -17,10 +17,10 @@ public:
 		return m_pCurrentScene;
 	}
 private:
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mapï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// ¾ÀµéÀ» mapÀ¸·Î °ü¸®
 	map<wstring, std::shared_ptr<Scene>> m_mapScenes;
 	//Scene* m_pCurrentScene;
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	// ÇöÀç ¾À
 	std::shared_ptr<Scene> m_pCurrentScene;
 };
 

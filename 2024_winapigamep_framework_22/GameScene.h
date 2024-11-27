@@ -4,7 +4,7 @@ class GameScene :
     public Scene
 {
 public:
-    // Sceneï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Óµï¿½
+    // SceneÀ»(¸¦) ÅëÇØ »ó¼ÓµÊ
     virtual void Init() override;
 };
 

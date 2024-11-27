@@ -3,7 +3,7 @@
 #include "Object.h"
 void EventManager::Update()
 {
-	// О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫с©О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ь╣О©╫ 
+	// юлюЭ га╥╧юс©║╪╜ ╣Н╥огь╣п 
 	for (Object* obj : m_vecDead)
 	{
 		if (obj != nullptr)

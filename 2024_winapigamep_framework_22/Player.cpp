@@ -119,13 +119,7 @@ void Player::CreateProjectile()
 	Vec2 vPos = GetPos();
 	vPos.y -= GetSize().y / 2.f;
 	pProj->SetPos(vPos);
-<<<<<<< HEAD
 	pProj->SetSize({ 30.f,30.f });
-=======
-	pProj->SetSize({30.f,30.f});
-	// �� -> ����: PI / 180
-	//pProj->SetAngle(PI / 4 * 7.f); // 1
->>>>>>> Realion033
 	//static float angle = 0.f;
 	//pProj->SetAngle(angle * PI / 180); // 2
 	//angle += 10.f;

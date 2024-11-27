@@ -8,8 +8,8 @@ void ResourceManager::Init()
 	wcscat_s(m_resourcePath, 255, L"\\Resource\\");
 	//::SetWindowText(GET_SINGLE(Core)->GetHwnd(), m_resourcePath);
 
- 	FMOD::System_Create(&m_pSoundSystem); // ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
-	// Ã¤ï¿½Î¼ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+ 	FMOD::System_Create(&m_pSoundSystem); // ½Ã½ºÅÛ »ı¼º ÇÔ¼ö
+	// Ã¤³Î¼ö, »ç¿îµå ¸ğµå
 	if (m_pSoundSystem != nullptr)
 		m_pSoundSystem->init((int)SOUND_CHANNEL::END, FMOD_INIT_NORMAL, nullptr);
 
@@ -21,12 +21,12 @@ Texture* ResourceManager::TextureLoad(const wstring& _key, const wstring& _path)
 	if (nullptr != pTex)
 		return pTex;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.
-	// 1. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// ¾ø¾î¿ä ÃÖÃÊÀÔ´Ï´Ù. ¸¸µé¾îÁÖ¼¼¿ä.
+	// 1. °æ·Î ¼³Á¤
 	wstring texpath = m_resourcePath;
 	texpath += _path;
 	
-	// 2. Texture ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+	// 2. Texture ¸¸µé¾î¾ßÁÒ?
 	pTex = new Texture;
 	pTex->Load(texpath);
 	pTex->SetKey(_key);
@@ -59,7 +59,7 @@ void ResourceManager::Release()
 	}
 	m_mapSounds.clear();
 
-	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½İ°ï¿½ ï¿½ï¿½È¯
+	// ´Ù ¾²°í ³­ ÈÄ ½Ã½ºÅÛ ´İ°í ¹İÈ¯
 	m_pSoundSystem->close();
 	m_pSoundSystem->release();
 }
@@ -75,15 +75,15 @@ void ResourceManager::LoadSound(const wstring& _key, const wstring& _path, bool 
 	std::string str;
 	str.assign(strFilePath.begin(), strFilePath.end());
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-	FMOD_MODE eMode = FMOD_LOOP_NORMAL; // ï¿½İºï¿½ ï¿½ï¿½ï¿½
+	// ·çÇÁÇÒÁö ¸»Áö °áÁ¤
+	FMOD_MODE eMode = FMOD_LOOP_NORMAL; // ¹İº¹ Ãâ·Â
 	if (!_isLoop)
-		eMode = FMOD_DEFAULT; // ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		eMode = FMOD_DEFAULT; // »ç¿îµå 1¹ø¸¸ Ãâ·Â
 
 	tSoundInfo* ptSound = new tSoundInfo;
 	ptSound->IsLoop = _isLoop;
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ systemï¿½ï¿½.
-							//ï¿½ï¿½ï¿½Ï°ï¿½ï¿½,  FMOD_MODE, NULL, &sound
+	// »ç¿îµå °´Ã¼¸¦ ¸¸µå´Â °ÍÀº systemÀÓ.
+							//ÆÄÀÏ°æ·Î,  FMOD_MODE, NULL, &sound
 	m_pSoundSystem->createSound(str.c_str(), eMode, nullptr, &ptSound->pSound);
 	m_mapSounds.insert({ _key, ptSound });
 }
@@ -93,11 +93,11 @@ void ResourceManager::Play(const wstring& _key)
 	tSoundInfo* ptSound = FindSound(_key);
 	if (!ptSound)
 		return;
-	m_pSoundSystem->update(); // playï¿½Ò¶ï¿½ updateï¿½ï¿½ ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+	m_pSoundSystem->update(); // playÇÒ¶§ update¸¦ ÁÖ±âÀûÀ¸·Î È£ÃâÇØ¾ß »ç¿îµå°¡ Á¤ÁöµÇÁö ¾ÊÀ½.
 	SOUND_CHANNEL eChannel = SOUND_CHANNEL::BGM;
 	if (!ptSound->IsLoop)
 		eChannel = SOUND_CHANNEL::EFFECT;
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½. &channelï¿½ï¿½ ï¿½î¶² Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
+	// »ç¿îµå Àç»ı ÇÔ¼ö. &channel·Î ¾î¶² Ã¤³ÎÀ» ÅëÇØ Àç»ıµÇ´ÂÁö Æ÷ÀÎÅÍ ³Ñ±è
 	m_pSoundSystem->playSound(ptSound->pSound, nullptr, false, &m_pChannel[(UINT)eChannel]);
 }
 
@@ -108,14 +108,14 @@ void ResourceManager::Stop(SOUND_CHANNEL _channel)
 
 void ResourceManager::Volume(SOUND_CHANNEL _channel, float _vol)
 {
-	// 0.0 ~ 1.0 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// 0.0 ~ 1.0 º¼·ı Á¶Àı
 	m_pChannel[(UINT)_channel]->setVolume(_vol);
 }
 
 void ResourceManager::Pause(SOUND_CHANNEL _channel, bool _ispause)
 {
-	// boolï¿½ï¿½ï¿½ï¿½ trueï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½, ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Createsoundï¿½Ò¶ï¿½ 
-// FMOD_MODEï¿½ï¿½ FMOD_LOOP_NORMAL ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½.
+	// bool°ªÀÌ true¸é ÀÏ½ÃÁ¤Áö. ´Ü, ÀÌ ÇÔ¼ö¸¦ ¾²·Á¸é CreatesoundÇÒ¶§ 
+// FMOD_MODE°¡ FMOD_LOOP_NORMAL ÀÌ¾î¾ß ÇÔ.
 	m_pChannel[(UINT)_channel]->setPaused(_ispause);
 }
 

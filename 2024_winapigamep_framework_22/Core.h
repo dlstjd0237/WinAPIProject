@@ -1,8 +1,8 @@
 #pragma once
 // GameManager
 //SAFE_DELETE()
-// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½)
-// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
+// µ¿Àû ½Ì±ÛÅæ(´ÙÀÌ³ª¹Í ½Ì±ÛÅæ)
+// Á¤Àû ½Ì±ÛÅæ
 #include "Define.h"
 //#include "Object.h"
 class Core
@@ -18,7 +18,7 @@ private:
 	void CreateGDI();
 public:
 	const HWND& GetHwnd() const { return m_hWnd; }
-	// ï¿½Ì¸ï¿½ ï¿½Ù²Ù±ï¿½
+	// ÀÌ¸§ ¹Ù²Ù±â
 	const HDC& GetMainDC() const { return m_hDC; }
 	const HBRUSH& GetBrush(BRUSH_TYPE _eType)
 	{
@@ -35,8 +35,8 @@ private:
 
 	HWND m_hWnd;
 	HDC  m_hDC; // Main DC
-	HDC  m_hBackDC; // ï¿½ï¿½ï¿½ï¿½ï¿½ DC
-	HBITMAP m_hBackBit; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ bitmap
+	HDC  m_hBackDC; // ¹é¹öÆÛ DC
+	HBITMAP m_hBackBit; // ¹é¹öÆÛÀÇ bitmap
 	//Object m_obj;
 	//private:
 //	Core() {}
@@ -61,7 +61,7 @@ private:
 //	static int a = 0;
 //
 //}
-// ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
+// ÅÛÇÃ¸´ ½Ì±ÛÅæ
 //class Core 
 //{
 // //private:

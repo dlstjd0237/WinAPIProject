@@ -1,11 +1,11 @@
 #pragma once
 //#include "Object.h"
-class Object; // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½æ¼±ï¿½ï¿½
+class Object; // Å¬·¡½º Àü¹æ¼±¾ð
 class Scene
 {
 public:
 	Scene();
-	virtual ~Scene(); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½
+	virtual ~Scene(); // °¡»ó ¼Ò¸êÀÚ
 public:
 	virtual void Init() abstract;
 	virtual void Update();

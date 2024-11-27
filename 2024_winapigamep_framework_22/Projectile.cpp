@@ -26,8 +26,8 @@ Projectile::~Projectile()
 void Projectile::Update()
 {
 	Vec2 vPos = GetPos();
-	// ï¿½ï°¢ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
-	// ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½×¸ï¿½
+	// »ï°¢ÇÔ¼öÀÇ ´ÜÀ§°¡ 2°¡Áö°¡ ÀÖ´Ù.
+	// ¶óµð¾È, µð±×¸®
 	//vPos.x += cosf(m_angle) * 500.f * fDT;
 	//vPos.y += sinf(m_angle) * 500.f * fDT;
 

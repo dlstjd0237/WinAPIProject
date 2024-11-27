@@ -56,7 +56,7 @@ public:
 	void Normalize()
 	{
 		float len = Length();
-		// 0ï¿½Ì¸ï¿½ ï¿½Èµï¿½.
+		// 0ÀÌ¸é ¾ÈµÅ.
 		if (len < FLT_EPSILON)
 			return;
 		x /= len;
@@ -68,7 +68,7 @@ public:
 	}
 	float Cross(Vec2 _other)
 	{
-		// zï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½
+		// zÃàÀÌ ³ª¿Â´Ù°í °¡Á¤
 		return x * _other.y - y * _other.x;
 	}
 public:

@@ -6,13 +6,13 @@ public:
     Collider();
     ~Collider();
 public:
-    // Componentï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Óµï¿½
+    // ComponentÀ»(¸¦) ÅëÇØ »ó¼ÓµÊ
     void LateUpdate() override;
     void Render(HDC _hdc) override;
 public:
-    void EnterCollision(Collider* _other); // ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½
-    void StayCollision(Collider* _other); // ï¿½æµ¹ï¿½ï¿½
-    void ExitCollision(Collider* _other); // ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½
+    void EnterCollision(Collider* _other); // Ãæµ¹ÁøÀÔ
+    void StayCollision(Collider* _other); // Ãæµ¹Áß
+    void ExitCollision(Collider* _other); // Ãæµ¹ÇØÁ¦
     const UINT& GetID() const { return m_ID; }
 public:
     void SetSize(Vec2 _vSize) { m_vSize = _vSize; }
@@ -28,13 +28,13 @@ public:
     }
 private:
     bool m_showDebug = false;
-    UINT m_ID; // ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½
+    UINT m_ID; // Ãæµ¹Ã¼ °íÀ¯ ID°ª
     static UINT m_sNextID;
 
-    Vec2 m_vSize; // ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ Å©ï¿½ï¿½
-    // Objectï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    Vec2 m_vSize; // ÄÝ¶óÀÌ´õ Å©±â
+    // Object·ÎºÎÅÍ »ó´ëÀûÀÎ À§Ä¡
     Vec2 m_vOffsetPos;
-    // LateUpdateï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½Ä¡
+    // LateUpdate¿¡¼­ ¸Å ÇÁ·¹ÀÓ¸¶´Ù ¿ÀºêÁ§Æ®·ÎºÎÅÍ °è»êµÇ´Â À§Ä¡
     Vec2 m_vLatePos;
 
 };

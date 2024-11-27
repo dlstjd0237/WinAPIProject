@@ -70,7 +70,7 @@ void Scene::Render(HDC _hdc)
 
 void Scene::Release()
 {
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½.
+	// ¿ÀºêÁ§Æ® »èÁ¦.
 	for (size_t i = 0; i < (UINT)LAYER::END; i++)
 	{
 		for (UINT j = 0; j < m_vecObj[i].size(); ++j)

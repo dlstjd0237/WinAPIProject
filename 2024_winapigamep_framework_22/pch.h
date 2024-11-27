@@ -1,6 +1,6 @@
 #pragma once
 
-// ï¿½ï¿½ï¿½ï¿½ include
+// °¢Á¾ include
 #include<Windows.h>
 #include<tchar.h>
 #include<memory>
@@ -21,23 +21,23 @@
 #include "Enums.h"
 #include "Vec2.h"
 
-// ï¿½ï¿½ï¿½ï¿½ lib
+// °¢Á¾ lib
 #pragma comment(lib, "winmm.lib")
-#pragma comment(lib, "msimg32.lib") // transparent ï¿½ï¿½ bltï¿½ï¿½ ï¿½ï¿½ï¿½
+#pragma comment(lib, "msimg32.lib") // transparent µî blt¿¡ »ç¿ë
 #pragma comment(lib, "fmod_vc.lib") 
 #pragma comment(lib, "fmodL_vc.lib")
 
-// ï¿½ï¿½ï¿½ï¿½ using
+// °¢Á¾ using
 using std::vector;
 using std::map;
 using std::wstring;
 
-// ï¿½ï¿½ï¿½ï¿½ define
+// °¢Á¾ define
 #define PI 3.14159265f
 #define SCREEN_WIDTH  1920	
 #define SCREEN_HEIGHT 1080
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½Ã¢
+// µð¹ö±ë¿ë ÄÜ¼ÖÃ¢
 #ifdef _DEBUG
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")

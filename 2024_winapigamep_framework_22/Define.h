@@ -1,5 +1,5 @@
 #pragma once
-// ï¿½ï¿½Å©ï¿½ï¿½
+// ¸ÅÅ©·Î
 
 #define DECLARE_SINGLE(type)	 \
 private:						\
@@ -20,7 +20,7 @@ public:							\
 #define GET_KEYDOWN(key) KEY_CHECK(key, KEY_STATE::DOWN)
 #define GET_KEY(key) KEY_CHECK(key, KEY_STATE::PRESS)
 #define GET_MOUSEPOS GET_SINGLE(InputManager)->GetMousePos()
-// Render ï¿½ï¿½Å©ï¿½ï¿½
+// Render ¸ÅÅ©·Î
 #define RECT_RENDER(hdc, posx, posy, sizex, sizey) Rectangle(hdc, (int)(posx-sizex/2), (int)(posy-sizey/2), (int)(posx+sizex/2), (int)(posy+sizey/2))
 #define ELLIPSE_RENDER(hdc, posx, posy, sizex, sizey) Ellipse(hdc, (int)(posx-sizex/2), (int)(posy-sizey/2), (int)(posx+sizex/2), (int)(posy+sizey/2))
 #define RECT_MAKE(posx, posy, sizex, sizey) {posx-sizex/2, posy-sizey/2, posx+sizex/2, posy+sizey/2}
