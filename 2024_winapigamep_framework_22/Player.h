@@ -23,6 +23,7 @@ private:
 	float m_energy = 1.0f;
 	float m_jumpVelocity = 0.f;
 	bool m_isJumping = false;
+	bool m_isMoveing = false;
 
 private:
 	float GetEnergy() { return m_energy; }

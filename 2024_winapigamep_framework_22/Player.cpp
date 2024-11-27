@@ -59,10 +59,11 @@ void Player::Update()
 	UseGravity();
 	Vec2 vPos = GetPos();
 
-
+	//==== Axis ====
 	if (GET_KEY(KEY_TYPE::A)) {
 		vPos.x -= 100.f * fDT * m_speed;
 		SetEnergy(m_energy += 0.001f);
+		m_isMoveing = true;
 	}
 	if (GET_KEYDOWN(KEY_TYPE::A)) {
 		AnimationChange(PLAYER_ANIM_TYPE::MOVE, true);
@@ -74,22 +75,33 @@ void Player::Update()
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
 		SetEnergy(m_energy += 0.001f);
+		m_isMoveing = true;
 	}
 	if (GET_KEYDOWN(KEY_TYPE::D)) {
-		AnimationChange(PLAYER_ANIM_TYPE::MOVE);
+		AnimationChange(PLAYER_ANIM_TYPE::MOVE, false);
 	}
 	if (GET_KEYUP(KEY_TYPE::D)) {
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE);
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE, false);
 	}
+	//==============
+
+
+	//==== Jump ====
 	if (m_isJumping) {
-		// 속도에 따른 위치 변화
-		m_jumpVelocity += GetGravity() * fDT; // 중력 가속도 적용
+		m_jumpVelocity += GetGravity() * fDT;
 		vPos.y += m_jumpVelocity * fDT;
+
+		AnimationChange(PLAYER_ANIM_TYPE::JUMP);
 	}
 
-	if (GET_KEYDOWN(KEY_TYPE::SPACE)) {
-
+	if (GET_KEYDOWN(KEY_TYPE::SPACE) && !m_isJumping) {
 		Jump();
+		AnimationChange(PLAYER_ANIM_TYPE::JUMP);
+	}
+	//==============
+
+	if (!m_isJumping && !m_isMoveing) {
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE);
 	}
 	SetPos(vPos);
 }
@@ -145,8 +157,8 @@ void Player::Jump()
 {
 	if (!m_isJumping) // 점프 중이 아닐 때만 가능
 	{
-		SetUseGravity(true);
 		m_isJumping = true;
+		SetUseGravity(true);
 		m_jumpVelocity = -500.f * m_energy; // 위로 올라가는 초기 속도 (px/s)
 		SetEnergy(1);
 	}
@@ -158,11 +170,11 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 	switch (animType)
 	{
 	case PLAYER_ANIM_TYPE::IDLE:
-		if(Flip)
-		GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
+		if (Flip)
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
 		else
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftIdle", true);
-		
+
 		break;
 	case PLAYER_ANIM_TYPE::MOVE:
 		if (Flip == true)

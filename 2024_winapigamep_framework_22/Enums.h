@@ -40,3 +40,10 @@ enum class PLAYER_ANIM_TYPE
 	JUMP,
 };
 
+enum class STATE
+{
+	IDLE,
+	MOVE,
+	JUMP
+};
+

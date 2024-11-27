@@ -45,15 +45,12 @@ void Animation::Update()
 
 void Animation::Render(HDC _hdc)
 {
-	std::cout << SCREEN_WIDTH << std::endl;
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 
-	//int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x*)
-
 	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
 	bool flip = GET_SINGLE(ResourceManager)->GetAnimationFlip(m_strName);
-
+	cout << flip << endl;
 	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
 	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
 
