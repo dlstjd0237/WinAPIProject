@@ -1,5 +1,1 @@
-﻿  Animation.cpp
-D:\Git_Fork\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(25,38): warning C4267: '=': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Git_Fork\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(88,57): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Git_Fork\WinAPIProject\2024_winapigamep_framework_22\ResourceManager.h(43,1): warning C4172: 지역 변수 또는 임시 의 주소를 반환하는 중
-  2024_winapigamep_framework_22.vcxproj -> D:\Git_Fork\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
+﻿  2024_winapigamep_framework_22.vcxproj -> C:\Users\jangj\Documents\GitHub\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
