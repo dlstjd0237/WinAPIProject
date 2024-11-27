@@ -4,10 +4,10 @@
 #include "InputManager.h"
 void TimeManager::Init()
 {
-	// Ä«¿îÆ®¸¦ ÃøÁ¤ÇØ¼­ °¡Á®¿Â´Ù.
+	// Ä«ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	::QueryPerformanceCounter(&m_llPrevCnt);
 	
-	// ÃÊ´ç Ä«¿îÆ® È½¼ö(1ÃÊ´ç 1000¸¸) ¹ÝÈ¯
+	// ï¿½Ê´ï¿½ Ä«ï¿½ï¿½Æ® È½ï¿½ï¿½(1ï¿½Ê´ï¿½ 1000ï¿½ï¿½) ï¿½ï¿½È¯
 	::QueryPerformanceFrequency(&m_llFrequency);
 }
 
@@ -16,16 +16,16 @@ void TimeManager::Update()
 	::QueryPerformanceCounter(&m_llCurCnt);
 	
 	//m_dT  = ;
-	// deltatime(º¯È­½Ã°£) : ÇÑ ÇÁ·¹ÀÓ¿¡ °É¸° ½Ã°£ 
+	// deltatime(ï¿½ï¿½È­ï¿½Ã°ï¿½) : ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½É¸ï¿½ ï¿½Ã°ï¿½ 
 	m_dT = (float)(m_llCurCnt.QuadPart - m_llPrevCnt.QuadPart)
 		/ (float)m_llFrequency.QuadPart;
 	m_llPrevCnt = m_llCurCnt;
 
-	// FPS(Frame Per Second): 1ÃÊ´ç ¸î ÇÁ·¹ÀÓ °¡³Ä.
+	// FPS(Frame Per Second): 1ï¿½Ê´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	//1.f / m_dT;
-	m_framecnt++; // ÇÁ·¹ÀÓ Ã¼Å© È½¼ö¸¦ ¸ð¾Æ
-	m_frametime += m_dT; // ½ÇÁ¦½Ã°£À» ¸ð¾Æ
-	if (m_frametime >= 1.f) // 1ÃÊ
+	m_framecnt++; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å© È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	m_frametime += m_dT; // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	if (m_frametime >= 1.f) // 1ï¿½ï¿½
 	{
 		m_fps = (UINT)(m_framecnt / m_frametime);
 		m_frametime = 0.f;

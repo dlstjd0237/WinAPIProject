@@ -1,2 +1,26 @@
+<<<<<<< HEAD
 ﻿  Boss.cpp
   2024_winapigamep_framework_22.vcxproj -> D:\Unity\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
+=======
+﻿  TitleScene.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+  UI_Health.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(32,13): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(32,13): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(33,13): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(33,13): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(34,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(34,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(35,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(35,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(40,13): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(40,13): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(41,13): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(41,13): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(42,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(42,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(43,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\UI_Health.cpp(43,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  2024_winapigamep_framework_22.vcxproj -> C:\Users\jangj\Documents\GitHub\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
+>>>>>>> Realion033

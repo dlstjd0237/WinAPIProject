@@ -33,7 +33,7 @@ LRESULT BaseWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     //    PAINTSTRUCT ps;
     //    HDC hdc = BeginPaint(hWnd, &ps);
     //    
-    //    // TODO: ¿©±â¿¡ hdc¸¦ »ç¿ëÇÏ´Â ±×¸®±â ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù...
+    //    // TODO: ï¿½ï¿½ï¿½â¿¡ hdcï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½ß°ï¿½ï¿½Õ´Ï´ï¿½...
     //    EndPaint(hWnd, &ps);
     //}
     //break;
@@ -76,19 +76,19 @@ void BaseWindow::createWindow()
     int Winposy = ResolutionY / 2 - SCREEN_HEIGHT / 2;
 
     m_hWnd = CreateWindowW(
-        L"2-2 Gamep", // À©µµ¿ì Å¬·¡½º ½Äº°ÀÚ
-        L"ÁØ¿ëÀÇ À©µµ¿ì",   // Á¦¸ñ
-        WS_OVERLAPPEDWINDOW, // À©µµ¿ì ¾î¶² ½ºÅ¸ÀÏ·Î ¸¸µé°ÍÀÎ°¡
-        Winposx,  // ¡Ú ¶ç¿ï À§Ä¡ÀÇ LEFT
-        Winposy,             // ¡Ú ¶ç¿ï À§Ä¡ÀÇ TOP
-        SCREEN_WIDTH,             // ¡Ú ÇØ»óµµX
-        SCREEN_HEIGHT,             // ¡Ú ÇØ»óµµY
-        nullptr,       // ºÎ¸ð À©µµ¿ì ¾îÂ¼±¸¶ó¼­ ¹«½Ã
-        nullptr,       // ¸Þ´º¾µ²¨³Ä
-        m_hInst,     // ³» ÇÁ·Î±×·¥ ÀÎ½ºÅÏ½º °ª 
-        nullptr);      // ÀÚ½Ä À©µµ¿ì °ü·ÃµÈ°Í ¹«½Ã
+        L"2-2 Gamep", // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½
+        L"ï¿½Ø¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",   // ï¿½ï¿½ï¿½ï¿½
+        WS_OVERLAPPEDWINDOW, // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½î¶² ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½
+        Winposx,  // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ LEFT
+        Winposy,             // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ TOP
+        SCREEN_WIDTH,             // ï¿½ï¿½ ï¿½Ø»ï¿½X
+        SCREEN_HEIGHT,             // ï¿½ï¿½ ï¿½Ø»ï¿½Y
+        nullptr,       // ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        nullptr,       // ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        m_hInst,     // ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ 
+        nullptr);      // ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÃµÈ°ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    // À©µµ¿ì »çÀÌÁî Á¶Á¤(Å¸ÀÌÆ², ¸Þ´º °è½ÑÇÏÁö ¾Êµµ·Ï)
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½Æ², ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½)
     RECT rt = { Winposx , Winposy,
                  Winposx + SCREEN_WIDTH,
                  Winposy + SCREEN_HEIGHT };
@@ -111,7 +111,7 @@ void BaseWindow::updateWindow()
 int BaseWindow::MessageLoop()
 {
     MSG msg;
-    memset(&msg, 0, sizeof(msg)); // 0 ÃÊ±âÈ­
+    memset(&msg, 0, sizeof(msg)); // 0 ï¿½Ê±ï¿½È­
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -123,7 +123,7 @@ int BaseWindow::MessageLoop()
         }
         else
         {
-            // ¸ÞÀÎ ÄÚµå
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
             GET_SINGLE(Core)->GameLoop();
         }
     }

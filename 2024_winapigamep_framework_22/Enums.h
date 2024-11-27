@@ -8,6 +8,7 @@ enum class LAYER
 	PLAYER,
 	PROJECTILE,
 	ENEMY,
+	UI,
 	// UI
 	END = 30
 };

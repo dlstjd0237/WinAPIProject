@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>D:\Unity\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe</FullPath>
+=======
+      <FullPath>C:\Users\jangj\Documents\GitHub\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe</FullPath>
+>>>>>>> Realion033
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

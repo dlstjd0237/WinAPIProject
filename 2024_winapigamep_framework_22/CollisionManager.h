@@ -20,7 +20,7 @@
 //	void CollisionLayerUpdate(LAYER _left, LAYER _right);
 //	bool IsCollision(Collider* _left, Collider* _right);
 //private:
-//	// ±×·ì °£ÀÇ Ãæµ¹Ã¼Å© ¹è¿­
+//	// ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼Å© ï¿½è¿­
 //	UINT m_arrLayer[(UINT)LAYER::END] = {};
 //	map<ULONGLONG, bool> m_mapCollisionInfo;
 //};
@@ -47,7 +47,7 @@ private:
 	void CollisionLayerUpdate(LAYER _left, LAYER _right);
 	bool IsCollision(Collider* _left, Collider* _right);
 private:
-	// ±×·ì °£ÀÇ Ãæµ¹Ã¼Å© ¹è¿­
+	// ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼Å© ï¿½è¿­
 	UINT m_arrLayer[(UINT)LAYER::END];
 	map<ULONGLONG, bool> m_mapCollisionInfo;
 };

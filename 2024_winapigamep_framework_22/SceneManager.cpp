@@ -3,22 +3,33 @@
 #include "Scene.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+<<<<<<< HEAD
 #include "BaekScene.h"
 #include "BossTestScene.h"
+=======
+>>>>>>> Realion033
 
 void SceneManager::Init()
 {
 	m_pCurrentScene = nullptr;
 
 	// �� ���
+<<<<<<< HEAD
 	
+=======
+>>>>>>> Realion033
 	RegisterScene(L"TitleScene",std::make_shared<TitleScene>());
 	RegisterScene(L"GameScene",std::make_shared<GameScene>());
 	RegisterScene(L"BossTestScene",std::make_shared<BossTestScene>());
 	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
 
+<<<<<<< HEAD
 	LoadScene(L"BossTestScene");
 	//LoadScene(L"TitleScene");
+=======
+	// �� �ε�
+	LoadScene(L"TitleScene");
+>>>>>>> Realion033
 }
 
 void SceneManager::Update()

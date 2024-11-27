@@ -12,14 +12,14 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render(HDC _hdc) override;
 public:
-	// ¾Ö´Ï¸ÞÀÌ¼Ç »ý¼ºÇÔ¼ö
+	// ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
 	void CreateAnimation(const wstring& _strName, Texture* _pTex,
 		Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
 		UINT _framecount, float _fDuration, bool _isRotate = false);
-	// ¾Ö´Ï¸ÞÀÌ¼Ç Ã£±âÇÔ¼ö
+	// ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ Ã£ï¿½ï¿½ï¿½Ô¼ï¿½
 	Animation* FindAnimation(const wstring& _strName);
 
-	// ¾Ö´Ï¸ÞÀÌ¼Ç ÇÃ·¹ÀÌ ÇÔ¼ö
+	// ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 	void PlayAnimation(const wstring& _strName, bool _IsRepeat, int _repeatcnt = 1);
 	void StopAnimation();
 public:
