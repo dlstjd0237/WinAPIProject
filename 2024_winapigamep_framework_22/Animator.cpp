@@ -38,6 +38,7 @@ void Animator::CreateAnimation(const wstring& _strName, Texture* _pTex, Vec2 _vL
 		return;
 	cout << _scale;
 	GET_SINGLE(ResourceManager)->AddAnimationScale(_strName, _scale);
+	GET_SINGLE(ResourceManager)->AddAnimationFlips(_strName, _isRotate);
 
 	pAnim = new Animation;
 	pAnim->SetName(_strName);

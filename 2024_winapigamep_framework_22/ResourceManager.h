@@ -42,12 +42,16 @@ public:
 			return m_animationScales[animName];
 		return 1;
 	}
-	void AddAnimationScale(const wstring& key, float& value) {
-		m_animationScales[key] = value;
-		cout << value << endl;
+	const bool& GetAnimationFlip(const wstring& animName) {
+		if (m_animationFilps.contains(animName) == true)
+			return m_animationFilps[animName];
+		return false;
 	}
+public:
+	void AddAnimationScale(const wstring& key, float& value) { m_animationScales[key] = value; }
+	void AddAnimationFlips(const wstring& key, bool& value) { m_animationFilps[key] = value; }
 private:
 	map<wstring, float> m_animationScales;
-
+	map<wstring, bool> m_animationFilps;
 };
 

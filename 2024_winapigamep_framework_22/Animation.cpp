@@ -45,18 +45,25 @@ void Animation::Update()
 
 void Animation::Render(HDC _hdc)
 {
+	std::cout << SCREEN_WIDTH << std::endl;
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 
 	//int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x*)
 
 	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
-	
+	bool flip = GET_SINGLE(ResourceManager)->GetAnimationFlip(m_strName);
+
+	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
+	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
+
+	int renderWidth = flip ? -width : width;
+
 	TransparentBlt(_hdc
-		, (int)(vPos.x - (m_vecAnimFrame[m_CurFrame].vSlice.x * scale) / 2.f) // X ÁÂÇ¥
-		, (int)(vPos.y - (m_vecAnimFrame[m_CurFrame].vSlice.y * scale) / 2.f) // Y ÁÂÇ¥
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale) // Æø
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale) // ³ôÀÌ
+		, (int)(vPos.x - width / 2.f) // X ÁÂÇ¥
+		, (int)(vPos.y - height / 2.f) // Y ÁÂÇ¥
+		, width // Æø
+		, height // ³ôÀÌ
 		, m_pTex->GetTexDC()
 		, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
 		, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)

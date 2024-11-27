@@ -37,7 +37,8 @@ Player::Player()
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightIdle", m_pTex, Vec2(0.f, 0.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 0.f),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+	//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
 	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.1f);
 	GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
 	//============================

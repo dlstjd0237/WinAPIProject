@@ -92,9 +92,15 @@ void BaseWindow::createWindow()
     RECT rt = { Winposx , Winposy,
                  Winposx + SCREEN_WIDTH,
                  Winposy + SCREEN_HEIGHT };
-    AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
-    MoveWindow(m_hWnd, Winposx, Winposy,
+    //// 원본
+    //AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
+    //MoveWindow(m_hWnd, Winposx, Winposy,
+    //    rt.right - rt.left, rt.bottom - rt.top, false);
+
+    //AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
+    MoveWindow(m_hWnd, 0,0 ,
         rt.right - rt.left, rt.bottom - rt.top, false);
+
 }
 
 void BaseWindow::showWindow(int _CmdShow)
