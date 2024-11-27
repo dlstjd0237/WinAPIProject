@@ -30,6 +30,6 @@ void TitleScene::Update()
 	Scene::Update();
 	if (GET_KEYDOWN(KEY_TYPE::ENTER))
 		GET_SINGLE(SceneManager)->LoadScene(L"BaekScene");
-	if (GET_KEYDOWN(KEY_TYPE::SHIFT))
+	if (GET_KEYDOWN(KEY_TYPE::LSHIFT))
 		GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
 }
