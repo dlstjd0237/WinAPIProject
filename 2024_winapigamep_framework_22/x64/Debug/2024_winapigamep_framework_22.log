@@ -1,2 +1,45 @@
-﻿  Boss.cpp
-  2024_winapigamep_framework_22.vcxproj -> D:\Unity\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
+﻿  Animation.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(23,38): warning C4267: '=': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\Animation.cpp(70,57): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Animator.cpp
+  BaekScene.cpp
+  BaseWindow.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\BaseWindow.cpp(89,1): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\BaseWindow.cpp(92,5): error C2146: 구문 오류: ')'이(가) 'RECT' 식별자 앞에 없습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\BaseWindow.cpp(78,14): error C2660: 'CreateWindowExW': 함수는 3개의 인수를 사용하지 않습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\BaseWindow.cpp(92,5): error C2146: 구문 오류: ';'이(가) 'RECT' 식별자 앞에 없습니다.
+  Boss.cpp
+  BossTestScene.cpp
+  CircleBossPattern.cpp
+  Collider.cpp
+  CollisionManager.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(135,16): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(135,16): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(136,17): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\CollisionManager.cpp(136,17): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Component.cpp
+  Core.cpp
+  Enemy.cpp
+  EventManager.cpp
+  GameScene.cpp
+  GDISelector.cpp
+  Ground.cpp
+  InputManager.cpp
+  main.cpp
+  Object.cpp
+  BossPattern.cpp
+  OneShotPattern.cpp
+  Player.cpp
+  Projectile.cpp
+  ResourceBase.cpp
+  ResourceManager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility(4672,18): warning C4244: '=': 'wchar_t'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  RigidBody.cpp
+  Scene.cpp
+  SceneManager.cpp
+  Stage1Boss.cpp
+  Texture.cpp
+  TimeManager.cpp
+  TitleScene.cpp
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\TitleScene.cpp(33,6): error C2838: 'SHIFT': 멤버 선언의 정규화된 이름이 잘못되었습니다.
+C:\Users\jangj\Documents\GitHub\WinAPIProject\2024_winapigamep_framework_22\TitleScene.cpp(33,6): error C2065: 'SHIFT': 선언되지 않은 식별자입니다.
