@@ -18,25 +18,28 @@ Player::Player()
 {
 
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Warrior.bmp");
-	
+
 	//==== AddComponent ====
 	this->AddComponent<RigidBody>();
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
 	//======================
-	
+
 	//==== Graviy Setting ====
 	SetUseGravity(true);
 	//========================
 
 	//==== Animation Setting ====
-	GetComponent<Animator>()->CreateAnimation(L"PlayerMove", m_pTex, Vec2(0.f, 44.f),
+	GetComponent<Animator>()->CreateAnimation(L"PlayerRightMove", m_pTex, Vec2(0.f, 44.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
-	GetComponent<Animator>()->CreateAnimation(L"PlayerIdle", m_pTex, Vec2(0.f, 0.f),
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftMove", m_pTex, Vec2(0.f, 44.f),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+	GetComponent<Animator>()->CreateAnimation(L"PlayerRightIdle", m_pTex, Vec2(0.f, 0.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
-	//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 0.f),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
 	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.1f);
-	GetComponent<Animator>()->PlayAnimation(L"PlayerIdle", true);
+	GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
 	//============================
 
 
@@ -61,14 +64,22 @@ void Player::Update()
 		SetEnergy(m_energy += 0.001f);
 	}
 	if (GET_KEYDOWN(KEY_TYPE::A)) {
-
+		AnimationChange(PLAYER_ANIM_TYPE::MOVE, true);
+	}
+	if (GET_KEYUP(KEY_TYPE::A)) {
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE, true);
 	}
 
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
 		SetEnergy(m_energy += 0.001f);
 	}
-
+	if (GET_KEYDOWN(KEY_TYPE::D)) {
+		AnimationChange(PLAYER_ANIM_TYPE::MOVE);
+	}
+	if (GET_KEYUP(KEY_TYPE::D)) {
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE);
+	}
 	if (m_isJumping) {
 		// 속도에 따른 위치 변화
 		m_jumpVelocity += GetGravity() * fDT; // 중력 가속도 적용
@@ -80,7 +91,6 @@ void Player::Update()
 		Jump();
 	}
 	SetPos(vPos);
-
 }
 
 void Player::Render(HDC _hdc)
@@ -140,4 +150,27 @@ void Player::Jump()
 		SetEnergy(1);
 	}
 
+}
+
+void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
+{
+	switch (animType)
+	{
+	case PLAYER_ANIM_TYPE::IDLE:
+		if(Flip)
+		GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftIdle", true);
+		
+		break;
+	case PLAYER_ANIM_TYPE::MOVE:
+		if (Flip == true)
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", true);
+		break;
+	case PLAYER_ANIM_TYPE::JUMP:
+		m_isJumping = true;
+		break;
+	}
 }

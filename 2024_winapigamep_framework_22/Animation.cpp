@@ -48,6 +48,8 @@ void Animation::Render(HDC _hdc)
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 
+	//int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x*)
+
 	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
 	
 	TransparentBlt(_hdc

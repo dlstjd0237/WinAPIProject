@@ -23,16 +23,14 @@ private:
 	float m_energy = 1.0f;
 	float m_jumpVelocity = 0.f;
 	bool m_isJumping = false;
-	bool m_isIdle = false;
-	bool m_isMove = false;
+
 private:
 	float GetEnergy() { return m_energy; }
 	void SetEnergy(float value)
 	{
 		m_energy = min(value, MAXENERGY);
 	}
-	void AnimationChange(wstring animationName,bool Flip = false) {
+	void AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip = false);
 
-	}
 };
 
