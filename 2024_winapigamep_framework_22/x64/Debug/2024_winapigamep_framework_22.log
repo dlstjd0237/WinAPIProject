@@ -1,1 +1,8 @@
-﻿  2024_winapigamep_framework_22.vcxproj -> C:\Users\jangj\Documents\GitHub\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe
+﻿  BossTestScene.cpp
+D:\Git_Fork\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'BossTestScene.cpp'을(를) 컴파일하는 중)
+  
+D:\Git_Fork\WinAPIProject\2024_winapigamep_framework_22\UI_Health.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+  (소스 파일 'BossTestScene.cpp'을(를) 컴파일하는 중)
+  
+  2024_winapigamep_framework_22.vcxproj -> D:\Git_Fork\WinAPIProject\Output\build_debug\2024_winapigamep_framework_22.exe

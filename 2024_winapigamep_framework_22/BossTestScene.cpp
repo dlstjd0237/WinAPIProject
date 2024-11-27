@@ -20,10 +20,16 @@ void BossTestScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 
 	Object* pObj = new Ground;
-	pObj->SetPos({ SCREEN_WIDTH / 2.f, 550.f });
-	pObj->SetSize({ 1920.f, 100.f });
+	pObj->SetPos({ SCREEN_WIDTH / 2.f, 900.f });
+	pObj->SetSize({ 1920.f, 50.f });
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);
+
+	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 1000.f });
+	pUIHealth->SetSize({ 620.f, 40.f });
+	pUIHealth->SetFillAmount(1.f);
+
+	AddObject(pUIHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 }

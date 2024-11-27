@@ -6,7 +6,7 @@ Ground::Ground()
 {
 	this->AddComponent<Collider>();
 
-	GetComponent<Collider>()->SetSize(Vec2(1000, 50));
+	GetComponent<Collider>()->SetSize(Vec2(1920, 50));
 }
 
 Ground::~Ground()
