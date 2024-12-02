@@ -2,11 +2,14 @@
 #include "Boss.h"
 #include "Stage1Boss.h"
 #include "TimeManager.h"
+#include "Collider.h"
+#include "Animator.h"
 
 // 상속 받은 생성자에서 PatternInit, PatternIdxInit 해줘야 함
 Boss::Boss()
 {
-
+	AddComponent<Collider>();
+	AddComponent<Animator>();
 }
 
 Boss::~Boss()

@@ -205,6 +205,7 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UI_Health.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="WarningPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -240,6 +241,7 @@
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UI_Health.cpp" />
+    <ClCompile Include="WarningPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc" />

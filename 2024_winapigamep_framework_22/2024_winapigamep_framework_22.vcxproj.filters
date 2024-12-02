@@ -56,6 +56,9 @@
     <Filter Include="Engine\00.Work\InHae\Boss\Pattern">
       <UniqueIdentifier>{fd8e1930-ac1d-49be-8a09-4fe8040f6041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\00.Work\InHae\UI">
+      <UniqueIdentifier>{3e371fd1-498c-4d6e-b520-f7013ca184d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -174,6 +177,9 @@
     <ClInclude Include="OneShotPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
     </ClInclude>
+    <ClInclude Include="WarningPanel.h">
+      <Filter>Engine\00.Work\InHae\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -283,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="OneShotPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="WarningPanel.cpp">
+      <Filter>Engine\00.Work\InHae\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

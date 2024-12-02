@@ -58,6 +58,7 @@ void Animation::Render(HDC _hdc)
 
 	int renderWidth = flip ? -width : width;
 
+	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
 	TransparentBlt(_hdc
 		, (int)(vPos.x - width / 2.f) // X ÁÂÇ¥
 		, (int)(vPos.y - height / 2.f) // Y ÁÂÇ¥
@@ -91,7 +92,6 @@ void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
 	m_IsRotate = _isRotate;
 	for (int i = 0; i < _framecount; ++i)
 	{
-		m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i,
-			_vSliceSize, _fDuration,{0.f,0.f} }));
+		m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i, _vSliceSize, _fDuration,{0.f,0.f} }));
 	}
 }

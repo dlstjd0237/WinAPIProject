@@ -6,18 +6,23 @@
 #include "Boss.h"
 #include "Player.h"
 #include "Ground.h"
+#include "WarningPanel.h"
 
 void BossTestScene::Init()
 {
 	Object* pPlayer = new Player;
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
-	pPlayer->SetSize({ 10.f, 10.f });
+	pPlayer->SetSize({ 5.f, 5.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 
-	Object* boss = new Stage1Boss();
+	Boss* boss = new Stage1Boss();
 	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
-	boss->SetSize({ 100.f,100.f });
+	boss->SetSize({ 50.f,50.f });
 	AddObject(boss, LAYER::ENEMY);
+
+	WarningPanel* warning = new WarningPanel(0.5f, { SCREEN_WIDTH / 2.f + 50.f, 150.f }, { 100.f,500.f });
+	AddObject(warning, LAYER::DEFAULT);
+	warning->isFade = true;
 
 	Object* pObj = new Ground;
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT /2.f + 300 });
