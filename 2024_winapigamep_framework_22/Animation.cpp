@@ -45,7 +45,6 @@ void Animation::Update()
 
 void Animation::Render(HDC _hdc)
 {
-	std::cout << SCREEN_WIDTH << std::endl;
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 

@@ -18,20 +18,45 @@ void Boss::Update()
 {
 	PatternUpdate();
 
+	if (isMoving)
+		BossMove();
+
 	if (_currentPattern != NULL)
 		return;
 
-	_elapseTime += GET_SINGLE(TimeManager)->GetDT();
-	//cout << _elapseTime << endl;
+	_patternElapseTime += fDT;
 
-	if (_elapseTime >= _patternDelay)
+	if (_patternElapseTime >= _patternDelay)
 	{
-		_elapseTime = 0;
+		_patternElapseTime = 0;
 
 		//Debug
 		//_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::OneShot);
 		// ·£´ý ÆÐÅÏ
 		_currentPattern = GetPattern(RandomPattenIdxGet(true));
+	}
+}
+
+void Boss::BossMoveInit(Vec2 targetPos, float moveTime)
+{
+	isMoving = true;
+	_moveTime = moveTime;
+	_targetPos = targetPos;
+	_moveDeltaTime = 0;
+	_startPos = GetPos();
+}
+
+void Boss::BossMove()
+{
+	_moveDeltaTime += fDT;
+	float elapseTime = _moveDeltaTime / _moveTime;
+	Vec2 pos = pos.VecLerp(_startPos, _targetPos, elapseTime);
+	SetPos(pos);
+
+	if (elapseTime >= 1)
+	{
+		SetPos(_targetPos);
+		isMoving = false;
 	}
 }
 

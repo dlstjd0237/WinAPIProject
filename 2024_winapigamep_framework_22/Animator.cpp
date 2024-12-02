@@ -36,7 +36,7 @@ void Animator::CreateAnimation(const wstring& _strName, Texture* _pTex, Vec2 _vL
 	Animation* pAnim = FindAnimation(_strName);
 	if (pAnim != nullptr)
 		return;
-	cout << _scale;
+	//cout << _scale;
 	GET_SINGLE(ResourceManager)->AddAnimationScale(_strName, _scale);
 	GET_SINGLE(ResourceManager)->AddAnimationFlips(_strName, _isRotate);
 

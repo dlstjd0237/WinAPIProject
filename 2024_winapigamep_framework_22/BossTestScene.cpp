@@ -10,17 +10,17 @@
 void BossTestScene::Init()
 {
 	Object* pPlayer = new Player;
-	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
-	pPlayer->SetSize({ 100.f,100.f });
+	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
+	pPlayer->SetSize({ 10.f, 10.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 
 	Object* boss = new Stage1Boss();
-	boss->SetPos({ SCREEN_WIDTH / 2.f ,150.f });
+	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
 	boss->SetSize({ 100.f,100.f });
 	AddObject(boss, LAYER::ENEMY);
 
 	Object* pObj = new Ground;
-	pObj->SetPos({ SCREEN_WIDTH / 2.f, 900.f });
+	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT /2.f + 300 });
 	pObj->SetSize({ 1920.f, 50.f });
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);
