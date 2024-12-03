@@ -6,7 +6,7 @@ UI_Health::UI_Health() : m_fFillAmount(1.f) // 초기 FillAmount는 1 (100%)
 {
     // 배경과 FillAmount 이미지를 로드
     m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarBg", L"Texture\\plane.bmp");
-    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", L"Texture\\Bullet.bmp");
+    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", L"Texture\\planem.bmp");
 }
 
 void UI_Health::SetFillAmount(float _amount)
@@ -47,7 +47,7 @@ void UI_Health::Render(HDC _hdc)
         (int)(vPos.y - bgHeight / 2),
         fillWidth, fillHeight,       // 너비는 FillAmount로 조정
         m_pFillTex->GetTexDC(),
-        0, 0, fillWidth, fillHeight, RGB(255, 0, 255));
+        0, 0, fillWidth, fillHeight, RGB(255, 255, 255));
 
     // 컴포넌트 렌더링
     ComponentRender(_hdc);
