@@ -17,6 +17,7 @@ Projectile::Projectile()
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Bullet", L"Texture\\Bullet.bmp");
 	this->AddComponent<Collider>();
 	GetComponent<Collider>()->SetSize({ 20.f,20.f });
+	SetName(L"Projecttile");
 }
 
 Projectile::~Projectile()
@@ -31,8 +32,8 @@ void Projectile::Update()
 	//vPos.x += cosf(m_angle) * 500.f * fDT;
 	//vPos.y += sinf(m_angle) * 500.f * fDT;
 
-	vPos.x += m_vDir.x * 500.f * fDT;
-	vPos.y += m_vDir.y * 500.f * fDT;
+	vPos.x += m_vDir.x * _speed * fDT;
+	vPos.y += m_vDir.y * _speed * fDT;
 	SetPos(vPos);
 	Vec2 vSize = GetSize();
 	if (vPos.y < -vSize.y)
@@ -61,7 +62,11 @@ void Projectile::Render(HDC _hdc)
 void Projectile::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	if (pOtherObj->GetName() == L"Enemy")
+	if (pOtherObj->GetName() == L"Player")
+	{
+		GET_SINGLE(EventManager)->DeleteObject(this);
+	}
+	if (pOtherObj->GetName() == L"Ground")
 	{
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}

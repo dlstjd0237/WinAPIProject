@@ -18,12 +18,17 @@ public:
 		m_vDir = _dir;
 		m_vDir.Normalize();
 	}
+	void SetSpeed(float speed)
+	{
+		_speed = speed;
+	}
 public:
 	virtual void EnterCollision(Collider* _other);
 	virtual void StayCollision(Collider* _other);
 	virtual void ExitCollision(Collider* _other);
 private:
 	//float m_dir;
+	float _speed;
 	float m_angle;
 	Vec2 m_vDir;
 	Texture* m_pTex;

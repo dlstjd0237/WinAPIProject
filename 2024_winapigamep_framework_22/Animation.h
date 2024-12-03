@@ -18,7 +18,7 @@ public:
 	void Render(HDC _hdc);
 public:
 	void Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize,
-		Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate);
+		Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate, Vec2 _offset);
 public:
 	const wstring& GetName() const { return m_strName; }
 	void SetName(wstring _name) { m_strName = _name; }

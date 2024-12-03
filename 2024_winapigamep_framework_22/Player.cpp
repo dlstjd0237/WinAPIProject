@@ -159,7 +159,7 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 	{
 	case PLAYER_ANIM_TYPE::IDLE:
 		if(Flip)
-		GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
 		else
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftIdle", true);
 		

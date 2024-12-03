@@ -6,8 +6,8 @@ enum class LAYER
 	GROUND,
 	DEFAULT,
 	PLAYER,
-	PROJECTILE,
 	ENEMY,
+	PROJECTILE,
 	UI,
 	END
 };
@@ -39,4 +39,3 @@ enum class PLAYER_ANIM_TYPE
 	MOVE,
 	JUMP,
 };
-

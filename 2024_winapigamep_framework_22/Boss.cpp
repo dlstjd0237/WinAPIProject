@@ -65,20 +65,20 @@ void Boss::BossMove()
 
 int Boss::RandomPattenIdxGet(bool noDuplication)
 {
-	int addValue = 0;
-	if (noDuplication)
-		addValue = 1;
+	if (noDuplication == false || _addValue == _patternIdxVec.size())
+		_addValue = 0;
 
 	srand(unsigned int(time(NULL)));
 	// 마지막 인덱스는 전에 쓴 스킬, 중복 방지가 있을 경우 마지막을 빼고 랜덤에서 뽑음
-	int patIdx = rand() % (_patternIdxVec.size() - addValue);
+	int patIdx = rand() % (_patternIdxVec.size() - _addValue);
 
 	// 마지막 인덱스와 현재 랜덤 인덱스를 교환
 	int temp = _patternIdxVec[patIdx];
-	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1];
-	_patternIdxVec[_patternIdxVec.size() - 1] = temp;
+	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1 - _addValue];
+	_patternIdxVec[_patternIdxVec.size() - 1 - _addValue] = temp;
 
-	return _patternIdxVec[patIdx];
+	_addValue++;
+	return temp;
 }
 
 void Boss::PatternUpdate()

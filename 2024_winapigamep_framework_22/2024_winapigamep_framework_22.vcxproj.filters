@@ -59,6 +59,9 @@
     <Filter Include="Engine\00.Work\InHae\UI">
       <UniqueIdentifier>{3e371fd1-498c-4d6e-b520-f7013ca184d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\00.Work\InHae\Boss\Pattern\BulletPattern">
+      <UniqueIdentifier>{5795acaf-14e7-4aa2-a61e-44bf7bea9fb9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -171,14 +174,17 @@
     <ClInclude Include="BossPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
     </ClInclude>
-    <ClInclude Include="CircleBossPattern.h">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="OneShotPattern.h">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
-    </ClInclude>
     <ClInclude Include="WarningPanel.h">
       <Filter>Engine\00.Work\InHae\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="OneShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="AllRangeCircleBossPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -284,14 +290,17 @@
     <ClCompile Include="BossPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
     </ClCompile>
-    <ClCompile Include="CircleBossPattern.cpp">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
-    </ClCompile>
-    <ClCompile Include="OneShotPattern.cpp">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
-    </ClCompile>
     <ClCompile Include="WarningPanel.cpp">
       <Filter>Engine\00.Work\InHae\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="AllRangeCircleBossPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="OneShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
