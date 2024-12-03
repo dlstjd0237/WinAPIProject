@@ -50,7 +50,6 @@ void Animation::Render(HDC _hdc)
 
 	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
 	bool flip = GET_SINGLE(ResourceManager)->GetAnimationFlip(m_strName);
-	cout << flip << endl;
 	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
 	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
 

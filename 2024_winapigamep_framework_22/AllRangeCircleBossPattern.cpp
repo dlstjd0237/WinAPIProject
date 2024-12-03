@@ -24,15 +24,17 @@ void AllRangeCircleBossPattern::Shot()
 {
 	for (int i = 0; i < _bulletCount; i++)
 	{
-		Projectile* pProj = new Projectile;
-		
-		pProj->SetPos(_boss->GetPos());
-
 		float angle = 360.f / _bulletCount * i;
 		float x = cosf(angle * PI / 180);
 		float y = sinf(angle * PI / 180);
+		
+		Vec2 dir = { x,y };
+		Vec2 pos = _boss->GetPos();
+		pos += dir * 80; 
 
-		pProj->SetDir({ x,y });
+		Projectile* pProj = new Projectile(pos);
+		pProj->SetDir(dir);
+
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pProj, LAYER::PROJECTILE);
 	}
 	_elapseTime = .0f;

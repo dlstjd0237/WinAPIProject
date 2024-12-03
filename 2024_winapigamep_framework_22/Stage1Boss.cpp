@@ -18,11 +18,11 @@ Stage1Boss::Stage1Boss()
 
 	GetComponent<Animator>()->CreateAnimation(L"IdleRight", _m_pTex, Vec2(0.f, 0.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
-	GetComponent<Animator>()->CreateAnimation(L"IdleLeft", _m_pTex, Vec2(0.f, 0.f),
+	GetComponent<Animator>()->CreateAnimation(L"IdleLeft", _m_pTex, Vec2(0.f, 128.f * 7),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"MoveRight", _m_pTex, Vec2(0.f, 128.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
-	GetComponent<Animator>()->CreateAnimation(L"MoveLeft", _m_pTex, Vec2(0.f, 128.f),
+	GetComponent<Animator>()->CreateAnimation(L"MoveLeft", _m_pTex, Vec2(0.f, 128.f * 8),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
 
 	GetComponent<Animator>()->PlayAnimation(L"IdleRight", true);
@@ -47,22 +47,22 @@ void Stage1Boss::PatternInit()
 	}
 }
 
-void Stage1Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isFlip)
+void Stage1Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 {
 	switch (anim)
 	{
 	case Boss_ANIM_TYPE::IDLE:
-		if (isFlip)
-			GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
-		else
+		if (isLeft)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftIdle", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
 
 		break;
 	case Boss_ANIM_TYPE::MOVE:
-		if (isFlip)
-			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
-		else
+		if (isLeft)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
 		break;
 	case Boss_ANIM_TYPE::ATTACK:
 		break;

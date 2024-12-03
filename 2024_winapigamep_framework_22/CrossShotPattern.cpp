@@ -67,9 +67,12 @@ void CrossShotPattern::Shot()
 
 	for (int i = 0; i < currentDirs.size(); i++)
 	{
-		Projectile* bullet = new Projectile;
-		bullet->SetPos(_boss->GetPos());
-		bullet->SetDir(currentDirs[i]);
+		Vec2 dir = currentDirs[i];
+		Vec2 pos = _boss->GetPos();
+		pos += dir * 80;
+
+		Projectile* bullet = new Projectile(pos);
+		bullet->SetDir(dir);
 
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bullet, LAYER::PROJECTILE);
 	}

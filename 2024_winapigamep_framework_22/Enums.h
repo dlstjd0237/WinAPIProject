@@ -6,8 +6,9 @@ enum class LAYER
 	GROUND,
 	DEFAULT,
 	PLAYER,
-	ENEMY,
 	PROJECTILE,
+	ENEMY,
+	Effect,
 	UI,
 	END
 };

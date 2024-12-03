@@ -47,6 +47,10 @@ public:
 			return m_animationFilps[animName];
 		return false;
 	}
+	const void SetAnimationScale(const wstring& animName, float scale) {
+		if (m_animationScales.contains(animName) == true)
+			m_animationScales[animName] = scale;
+	}
 public:
 	void AddAnimationScale(const wstring& key, float& value) { m_animationScales[key] = value; }
 	void AddAnimationFlips(const wstring& key, bool& value) { m_animationFilps[key] = value; }

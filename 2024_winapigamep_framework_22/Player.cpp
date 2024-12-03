@@ -190,9 +190,10 @@ void Player::ExitCollision(Collider* _other)
 
 void Player::CreateProjectile()
 {
-	Projectile* pProj = new Projectile;
 	Vec2 vPos = GetPos();
 	vPos.y -= GetSize().y / 2.f;
+
+	Projectile* pProj = new Projectile(vPos);
 	pProj->SetPos(vPos);
 	pProj->SetSize({ 30.f,30.f });
 

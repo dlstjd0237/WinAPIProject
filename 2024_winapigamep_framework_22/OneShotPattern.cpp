@@ -48,9 +48,7 @@ void OneShotPattern::Shot()
 
 	dir = playerPos - bossPos;
 
-	Projectile* bullet = new Projectile;
-
-	bullet->SetPos(_boss->GetPos());
+	Projectile* bullet = new Projectile(_boss->GetPos());
 	bullet->SetDir(dir);
 
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bullet, LAYER::PROJECTILE);
