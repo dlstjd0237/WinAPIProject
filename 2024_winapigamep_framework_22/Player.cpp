@@ -11,6 +11,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "RigidBody.h"
+#include "PlayerAttackEffect.h"
 
 Player::Player()
 	: m_pTex(nullptr),
@@ -30,18 +31,39 @@ Player::Player()
 	//========================
 
 	//==== Animation Setting ====
+	GetComponent<Animator>()->CreateAnimation(L"PlayerRightAttack", m_pTex, Vec2(0.f, 44.0f * 13),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, 4);
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftAttack", m_pTex, Vec2(0.f, 44.0f * 30),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, true, 4);
+	//============================
+	// 
+	//==== Jump Animtion ====
+	GetComponent<Animator>()->CreateAnimation(L"PlayerRightJump", m_pTex, Vec2(0.f, 44.0f * 7),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftJump", m_pTex, Vec2(0.f, 44.0f * 24),
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+	//=======================
+	//
+	//==== Move Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightMove", m_pTex, Vec2(0.f, 44.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
-	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftMove", m_pTex, Vec2(0.f, 44.f),
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftMove", m_pTex, Vec2(0.f, 44.f * 18.0f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+	//========================
+	//
+	//==== Idle Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightIdle", m_pTex, Vec2(0.f, 0.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
-	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 0.f),
+	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 44.f * 17),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
-	//GetComponent<Animator>()->CreateAnimation(L"JiwooBack", m_pTex, Vec2(0.f, 200.f),
-	//	Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.1f);
+	//=========================
+	//
+	//==== Animation play ====
 	GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
-	//============================
+	//========================
+	//
+	//==== Animation Setting End ====
+
 
 
 	//==== Collider Setting =====
@@ -49,15 +71,18 @@ Player::Player()
 	GetComponent<Collider>()->SetOffSetPos({ -32, 19 });
 	//===========================
 }
+
 Player::~Player()
 {
-	//if (nullptr != m_pTex)
-	//	delete m_pTex;
 }
+
 void Player::Update()
 {
 	UseGravity();
 	Vec2 vPos = GetPos();
+
+	float x = vPos.x;
+	float y = vPos.y;
 
 	//==== Axis ====
 	if (GET_KEY(KEY_TYPE::A)) {
@@ -65,59 +90,76 @@ void Player::Update()
 		SetEnergy(m_energy += 0.001f);
 		m_isMoveing = true;
 	}
-	if (GET_KEYDOWN(KEY_TYPE::A)) {
-		AnimationChange(PLAYER_ANIM_TYPE::MOVE, true);
-	}
-	if (GET_KEYUP(KEY_TYPE::A)) {
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE, true);
-	}
-
+	//==============
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
 		SetEnergy(m_energy += 0.001f);
 		m_isMoveing = true;
-	}
-	if (GET_KEYDOWN(KEY_TYPE::D)) {
-		AnimationChange(PLAYER_ANIM_TYPE::MOVE, false);
-	}
-	if (GET_KEYUP(KEY_TYPE::D)) {
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE, false);
 	}
 	//==============
 
 
 	//==== Jump ====
 	if (m_isJumping) {
-		m_jumpVelocity += GetGravity() * fDT;
-		vPos.y += m_jumpVelocity * fDT;
-
-		AnimationChange(PLAYER_ANIM_TYPE::JUMP);
+		m_jumpVelocity += GetGravity() * fDT; // 중력에 의한 속도 변화
+		vPos.y += m_jumpVelocity * fDT; // 점프 중인 경우 위치 계산
 	}
 
-	if (GET_KEYDOWN(KEY_TYPE::SPACE) && !m_isJumping) {
+	if (GET_KEYDOWN(KEY_TYPE::SPACE) && m_isJumping == false && m_isGround == true) {
 		Jump();
-		AnimationChange(PLAYER_ANIM_TYPE::JUMP);
 	}
 	//==============
 
-	if (!m_isJumping && !m_isMoveing) {
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE);
+	if (GET_KEYDOWN(KEY_TYPE::F) && m_isAttackTrigger == false)
+	{
+		m_isAttackTrigger = true;
 	}
+
 	SetPos(vPos);
+
+	if (m_actionMap[PLAYER_ANIM_TYPE::ATTACK] == false && m_isAttackTrigger == true)
+	{
+		AnimationChange(PLAYER_ANIM_TYPE::ATTACK, m_isFlip);
+		ActionMapChange(PLAYER_ANIM_TYPE::ATTACK);
+	}
+	else if (x == vPos.x && m_actionMap[PLAYER_ANIM_TYPE::IDLE] == false
+		&& m_isJumping == false && m_isAttackTrigger == false)
+	{
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE, m_isFlip);
+		ActionMapChange(PLAYER_ANIM_TYPE::IDLE);
+	}
+	else if (x != vPos.x && m_actionMap[PLAYER_ANIM_TYPE::MOVE] == false
+		&& m_isJumping == false && m_isAttackTrigger == false)
+	{
+		m_isFlip = x > vPos.x ? false : true;
+
+		AnimationChange(PLAYER_ANIM_TYPE::MOVE, m_isFlip);
+		ActionMapChange(PLAYER_ANIM_TYPE::MOVE);
+	}
+	else if (y != vPos.y && m_actionMap[PLAYER_ANIM_TYPE::JUMP] == false
+		&& m_isAttackTrigger == false)
+	{
+		AnimationChange(PLAYER_ANIM_TYPE::JUMP, m_isFlip);
+
+		ActionMapChange(PLAYER_ANIM_TYPE::JUMP);
+	}
+
+	if (m_isAttackTrigger)
+	{
+		m_attackTimer += fDT;
+		if (m_attackTimer >= m_attackDelay)
+		{
+			PerformAttack(); // 0.6초 후 실행
+		}
+	}
 }
+
+
+
 
 void Player::Render(HDC _hdc)
 {
-	Vec2 vPos = GetPos();
-	Vec2 vSize = GetSize();
-
-	int width = m_pTex->GetWidth();
-	int height = m_pTex->GetHeight();
-
 	ComponentRender(_hdc);
-	//::StretchBlt();
-	//::AlphaBlend();
-	//::PlgBlt();
 }
 
 void Player::EnterCollision(Collider* _other)
@@ -126,7 +168,10 @@ void Player::EnterCollision(Collider* _other)
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Ground")
 	{
-		SetUseGravity(false);
+		//SetUseGravity(false);
+		m_isJumping = false; // 점프 종료
+		SetUseGravity(false); // 다시 중력 활성화
+		m_isGround = true;
 		m_isJumping = false;
 		m_jumpVelocity = 0.f;
 	}
@@ -138,6 +183,9 @@ void Player::StayCollision(Collider* _other)
 
 void Player::ExitCollision(Collider* _other)
 {
+	Object* pOtherObj = _other->GetOwner();
+	if (pOtherObj->GetName() == L"Ground")
+		m_isGround = false;
 }
 
 void Player::CreateProjectile()
@@ -153,6 +201,21 @@ void Player::CreateProjectile()
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pProj, LAYER::PROJECTILE);
 }
 
+// 공격 이펙트 생성
+void Player::CreateAttackEffect()
+{
+	PlayerAttackEffect* pEffect = new PlayerAttackEffect;
+	Vec2 vPos = GetPos();
+	vPos.x -= 50;
+	pEffect->SetPos(vPos);
+	pEffect->SetSize({ 150.f, 150.f });
+
+	pEffect->SetName(L"PlayerAttackEffect");
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::PROJECTILE);
+
+}
+
+
 void Player::Jump()
 {
 	if (!m_isJumping) // 점프 중이 아닐 때만 가능
@@ -162,7 +225,13 @@ void Player::Jump()
 		m_jumpVelocity = -500.f * m_energy; // 위로 올라가는 초기 속도 (px/s)
 		SetEnergy(1);
 	}
+}
 
+void Player::PerformAttack()
+{
+	m_isAttackTrigger = false; // Attack 상태 종료
+	m_attackTimer = 0;
+	m_actionMap[PLAYER_ANIM_TYPE::ATTACK] = false;
 }
 
 void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
@@ -180,10 +249,39 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 		if (Flip == true)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
 		else
-			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", true);
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", false);
 		break;
 	case PLAYER_ANIM_TYPE::JUMP:
+		if (Flip == true)
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightJump", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftJump", false);
 		m_isJumping = true;
 		break;
+	case PLAYER_ANIM_TYPE::ATTACK:
+		if (Flip == true)
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightAttack", true);
+		else
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftAttack", false);
+
+
+		//이곳에서 이펙트 생성
+		CreateAttackEffect();
+		break;
 	}
+
+
+	if (Flip == true)
+	{
+		GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
+		GetComponent<Collider>()->SetOffSetPos({ -32, 19 });
+	}
+	else {
+		GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
+		GetComponent<Collider>()->SetOffSetPos({ 32, 19 });
+	}
+
+
 }
+
+

@@ -34,8 +34,8 @@ using std::wstring;
 
 // 각종 define
 #define PI 3.14159265f
-#define SCREEN_WIDTH  1920	
-#define SCREEN_HEIGHT 1080
+#define SCREEN_WIDTH  1600	
+#define SCREEN_HEIGHT 900
 
 // 디버깅용 콘솔창
 #ifdef _DEBUG
@@ -48,3 +48,14 @@ using std::wstring;
 #include<iostream>
 using std::cout;
 using std::endl;
+
+template <typename MapType>
+void Safe_Delete_Map(MapType& map)
+{
+	for (auto& pair : map)
+	{
+		delete pair.second; //메모리를 해제
+		pair.second = nullptr; // nullptr로 초기화
+	}
+	map.clear(); //다 삭제
+}

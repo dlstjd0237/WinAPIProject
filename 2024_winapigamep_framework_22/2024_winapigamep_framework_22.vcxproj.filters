@@ -41,20 +41,11 @@
     <Filter Include="Engine\00.Work\Baek">
       <UniqueIdentifier>{82f0dc49-d910-4887-b421-1b9969835c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\00.Work\Baek\Scene">
-      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\00.Work\Baek\03.Object">
       <UniqueIdentifier>{f5a9e72f-b80a-416f-8b93-f4191e843ae4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\Boss\Pattern\Default">
-      <UniqueIdentifier>{901257ef-1161-45e4-806a-75ca29cbd2b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Object\Boss\Pattern\Stage1">
-      <UniqueIdentifier>{71225681-2374-4bcc-9ae2-922a419a37e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Object\Boss\Pattern\Stage2">
-      <UniqueIdentifier>{c8e5d37d-b9fb-411c-a473-cf4726433375}</UniqueIdentifier>
+    <Filter Include="Engine\00.Work\Baek\99.Scene">
+      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -149,17 +140,20 @@
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
     <ClInclude Include="BaekScene.h">
-      <Filter>Engine\00.Work\Baek\Scene</Filter>
+      <Filter>Engine\00.Work\Baek\99.Scene</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
-    <ClInclude Include="CircleBossPattern.h">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="OneShotPattern.h">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
-    </ClInclude>
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossTestScene.h" />
+    <ClInclude Include="CircleBossPattern.h" />
+    <ClInclude Include="BossPattern.h" />
+    <ClInclude Include="OneShotPattern.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="Stage1Boss.h" />
+    <ClInclude Include="UI_Health.h" />
+    <ClInclude Include="PlayerAttackEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -245,16 +239,19 @@
       <Filter>Engine\06. Component</Filter>
     </ClCompile>
     <ClCompile Include="BaekScene.cpp">
-      <Filter>Engine\00.Work\Baek\Scene</Filter>
+      <Filter>Engine\00.Work\Baek\99.Scene</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
-    <ClCompile Include="CircleBossPattern.cpp">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
-    </ClCompile>
-    <ClCompile Include="OneShotPattern.cpp">
-      <Filter>Engine\03. Object\Boss\Pattern</Filter>
-    </ClCompile>
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossTestScene.cpp" />
+    <ClCompile Include="CircleBossPattern.cpp" />
+    <ClCompile Include="BossPattern.cpp" />
+    <ClCompile Include="OneShotPattern.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="Stage1Boss.cpp" />
+    <ClCompile Include="UI_Health.cpp" />
+    <ClCompile Include="PlayerAttackEffect.cpp" />
   </ItemGroup>
 </Project>

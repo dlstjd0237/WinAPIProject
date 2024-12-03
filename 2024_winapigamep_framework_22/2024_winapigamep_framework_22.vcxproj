@@ -189,6 +189,7 @@
     <ClInclude Include="OneShotPattern.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerAttackEffect.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceBase.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="BossPattern.cpp" />
     <ClCompile Include="OneShotPattern.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAttackEffect.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ResourceBase.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

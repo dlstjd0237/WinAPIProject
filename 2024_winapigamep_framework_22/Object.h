@@ -9,7 +9,7 @@ public:
 	virtual ~Object();
 public:
 	virtual void Update() abstract;
-	virtual void LateUpdate();
+	virtual void LateUpdate(); 
 	virtual void Render(HDC _hdc) abstract;
 	void ComponentRender(HDC _hdc);
 public:
