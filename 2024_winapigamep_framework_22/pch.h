@@ -1,6 +1,6 @@
 #pragma once
 
-// °¢Á¾ include
+// ï¿½ï¿½ï¿½ï¿½ include
 #include<Windows.h>
 #include<tchar.h>
 #include<memory>
@@ -21,23 +21,23 @@
 #include "Enums.h"
 #include "Vec2.h"
 
-// °¢Á¾ lib
+// ï¿½ï¿½ï¿½ï¿½ lib
 #pragma comment(lib, "winmm.lib")
-#pragma comment(lib, "msimg32.lib") // transparent µî blt¿¡ »ç¿ë
+#pragma comment(lib, "msimg32.lib") // transparent ï¿½ï¿½ bltï¿½ï¿½ ï¿½ï¿½ï¿½
 #pragma comment(lib, "fmod_vc.lib") 
 #pragma comment(lib, "fmodL_vc.lib")
 
-// °¢Á¾ using
+// ï¿½ï¿½ï¿½ï¿½ using
 using std::vector;
 using std::map;
 using std::wstring;
 
-// °¢Á¾ define
+// ï¿½ï¿½ï¿½ï¿½ define
 #define PI 3.14159265f
 #define SCREEN_WIDTH  1400	
 #define SCREEN_HEIGHT 720
 
-// µð¹ö±ë¿ë ÄÜ¼ÖÃ¢
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½Ã¢
 #ifdef _DEBUG
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
@@ -48,3 +48,14 @@ using std::wstring;
 #include<iostream>
 using std::cout;
 using std::endl;
+
+template <typename MapType>
+void Safe_Delete_Map(MapType& map)
+{
+	for (auto& pair : map)
+	{
+		delete pair.second; //ï¿½Þ¸ð¸®¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+		pair.second = nullptr; // nullptrï¿½ï¿½ ï¿½Ê±ï¿½È­
+	}
+	map.clear(); //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+}

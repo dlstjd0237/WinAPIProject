@@ -38,4 +38,14 @@ enum class PLAYER_ANIM_TYPE
 	IDLE,
 	MOVE,
 	JUMP,
+	ATTACK
 };
+
+enum class STATE
+{
+	IDLE,
+	MOVE,
+	JUMP,
+	ATTACK	
+};
+

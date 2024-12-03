@@ -71,21 +71,4 @@ void Object::UseGravity()
 
 	// 위치 설정
 	SetPos(newPos);
-
-
-
 }
-
-//void Object::Update()
-//{
-//	if (GET_KEY(KEY_TYPE::LEFT))
-//		m_vPos.x -= 100.f * fDT;
-//	if (GET_KEY(KEY_TYPE::RIGHT))
-//		m_vPos.x += 100.f * fDT;
-//}
-//
-//void Object::Render(HDC _hdc)
-//{
-//	RECT_RENDER(_hdc, m_vPos.x, m_vPos.y
-//		, m_vSize.x, m_vSize.y);
-//}
