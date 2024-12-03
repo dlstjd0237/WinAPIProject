@@ -82,8 +82,8 @@ void Player::Update()
 		AnimationChange(PLAYER_ANIM_TYPE::IDLE);
 	}
 	if (m_isJumping) {
-		// ¼Óµµ¿¡ µû¸¥ À§Ä¡ º¯È­
-		m_jumpVelocity += GetGravity() * fDT; // Áß·Â °¡¼Óµµ Àû¿ë
+		// ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½È­
+		m_jumpVelocity += GetGravity() * fDT; // ï¿½ß·ï¿½ ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
 		vPos.y += m_jumpVelocity * fDT;
 	}
 
@@ -143,11 +143,11 @@ void Player::CreateProjectile()
 
 void Player::Jump()
 {
-	if (!m_isJumping) // Á¡ÇÁ ÁßÀÌ ¾Æ´Ò ¶§¸¸ °¡´É
+	if (!m_isJumping) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
 		SetUseGravity(true);
 		m_isJumping = true;
-		m_jumpVelocity = -500.f * m_energy; // À§·Î ¿Ã¶ó°¡´Â ÃÊ±â ¼Óµµ (px/s)
+		m_jumpVelocity = -500.f * m_energy; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ó°¡´ï¿½ ï¿½Ê±ï¿½ ï¿½Óµï¿½ (px/s)
 		SetEnergy(1);
 	}
 
