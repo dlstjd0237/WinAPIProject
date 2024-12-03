@@ -1,12 +1,12 @@
 #pragma once
-#include "Object.h";
+#include "Object.h"
 #include "Texture.h"
-#include <string>
+#include <string>;
 
-class UI_Health : public Object
+class UI_Button : public Object
 {
 public:
-	UI_Health(const std::wstring& bgPath, const std::wstring& fillPath);
+	UI_Button(const std::wstring& bgPath);
 
 public:
 	// Object을(를) 통해 상속됨
@@ -15,7 +15,6 @@ public:
 	void SetFillAmount(float _amount);
 
 private:
-	float m_fFillAmount;
 	Texture* m_pBgTex;
-	Texture* m_pFillTex;
 };
+

@@ -2,11 +2,12 @@
 #include "UI_Health.h"
 #include "ResourceManager.h"
 
-UI_Health::UI_Health() : m_fFillAmount(1.f) // 초기 FillAmount는 1 (100%)
+UI_Health::UI_Health(const std::wstring& bgPath, const std::wstring& fillPath) 
+    : m_fFillAmount(1.f) // 초기 FillAmount는 1 (100%)
 {
     // 배경과 FillAmount 이미지를 로드
-    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarBg", L"Texture\\plane.bmp");
-    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", L"Texture\\planem.bmp");
+    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarBg", bgPath.c_str());
+    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", fillPath.c_str());
 }
 
 void UI_Health::SetFillAmount(float _amount)
