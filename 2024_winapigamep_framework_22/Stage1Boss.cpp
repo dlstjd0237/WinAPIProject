@@ -20,13 +20,27 @@ Stage1Boss::Stage1Boss()
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"IdleLeft", _m_pTex, Vec2(0.f, 128.f * 7),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
+
 	GetComponent<Animator>()->CreateAnimation(L"MoveRight", _m_pTex, Vec2(0.f, 128.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"MoveLeft", _m_pTex, Vec2(0.f, 128.f * 8),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
 
-	GetComponent<Animator>()->PlayAnimation(L"IdleRight", true);
+	GetComponent<Animator>()->CreateAnimation(L"AttackRight", _m_pTex, Vec2(0.f, 128.f * 2),
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, true, 3, { 0.f, -128.f / 2 });
+	GetComponent<Animator>()->CreateAnimation(L"AttackLeft", _m_pTex, Vec2(0.f, 128.f * 9),
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, true, 3, { 0.f, -128.f / 2 });
 
+	GetComponent<Animator>()->CreateAnimation(L"DamagedRight", _m_pTex, Vec2(0.f, 128.f * 5),
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, true, 3, { 0.f, -128.f / 2 });
+	GetComponent<Animator>()->CreateAnimation(L"DamagedLeft", _m_pTex, Vec2(0.f, 128.f * 12),
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, true, 3, { 0.f, -128.f / 2 });
+
+	SetSize(Vec2(160.f, 128.f));
+
+	BossMovePointInit();
+
+	GetComponent<Animator>()->PlayAnimation(L"IdleRight", true);
 	GetComponent<Collider>()->SetSize({ 160.f / 2, 128.f });
 }
 
@@ -44,28 +58,6 @@ void Stage1Boss::PatternInit()
 	for (auto iter = _bossPattern.begin(); iter != _bossPattern.end(); iter++)
 	{
 		iter->second->Init(this);
-	}
-}
-
-void Stage1Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
-{
-	switch (anim)
-	{
-	case Boss_ANIM_TYPE::IDLE:
-		if (isLeft)
-			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftIdle", true);
-		else
-			GetComponent<Animator>()->PlayAnimation(L"PlayerRightIdle", true);
-
-		break;
-	case Boss_ANIM_TYPE::MOVE:
-		if (isLeft)
-			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", true);
-		else
-			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
-		break;
-	case Boss_ANIM_TYPE::ATTACK:
-		break;
 	}
 }
 

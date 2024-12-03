@@ -7,7 +7,9 @@ Particle::Particle(ParticleType type, float duration, float scale, bool isLoop)
 {
 	AddComponent<Animator>();
 	ParticleInit(type);
+
 	_duration = duration;
+	_duration *= count;
 
 	GetComponent<Animator>()->CreateAnimation(L"Effect", _m_pTex, leftTop,
 		size, step, count, duration, false, scale, offset);
@@ -17,7 +19,7 @@ Particle::Particle(ParticleType type, float duration, float scale, bool isLoop)
 void Particle::Update()
 {
 	_deltaTime += fDT;
-	if (_duration + 0.1f <= _deltaTime)
+	if (_duration <= _deltaTime)
 	{
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
@@ -34,7 +36,7 @@ void Particle::ParticleInit(ParticleType type)
 	{
 	case ParticleType::BulletShot:
 		_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"BulletShot", L"Texture\\Effect\\BulletParticle.bmp");
-		leftTop = { 0.f , 64.f * 6 };
+		leftTop = { 0.f , 64.f * 13};
 		size = { 64.f ,64.f };
 		step = { 64.f , 0.f };
 		count = 4;

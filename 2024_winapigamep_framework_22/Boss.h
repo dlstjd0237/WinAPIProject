@@ -8,7 +8,18 @@ enum class Boss_ANIM_TYPE
     IDLE,
     MOVE,
     ATTACK,
+    DAMAGED,
 };
+
+enum class BossMovePoint
+{
+    Left,
+    LeftMiddle,
+    Middle,
+    RightMiddle,
+    Right,
+};
+
 
 class BossPattern;
 class Texture;
@@ -27,8 +38,9 @@ protected:
     int RandomPattenIdxGet(bool noDuplication);
     void PatternUpdate();
     void PatternIdxInit();
-    virtual void AnimationChange(Boss_ANIM_TYPE anim, bool isFlip) abstract;
-
+    void AnimationChange(Boss_ANIM_TYPE anim, bool isFlip);
+    void BossMovePointInit();
+    void RandomBossMove();
 private:
     void BossMove();
 
@@ -52,11 +64,14 @@ protected:
 
     Texture* _m_pTex;
     Boss_ANIM_TYPE _currentBossAnim = Boss_ANIM_TYPE::IDLE;
+    BossMovePoint _currentBossPoint;
+    vector<Vec2> _movePointVec;
 
 private:
     int _addValue = 0;
 
 public:
+    bool isFlip;
     bool isMoving;
 };
 

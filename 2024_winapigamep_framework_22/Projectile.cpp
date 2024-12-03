@@ -14,7 +14,8 @@ Projectile::Projectile(Vec2 pos)
 	, m_vDir(1.f, 1.f)
 {
 	SetPos(pos);
-	Particle* particle = new Particle(ParticleType::BulletShot, 0.05f, 0.75f, false);
+
+	Particle* particle = new Particle(ParticleType::BulletShot, 0.075f, 1.f, false);
 	particle->SetPos(pos);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 
