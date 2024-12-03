@@ -8,7 +8,7 @@ enum class KEY_TYPE
 	CTRL, LALT, LSHIFT, SPACE,
 	ENTER, TAB, ESC, LBUTTON, RBUTTON,
 	NUM_1, NUM_2, LAST
-	// LASTÀÇ¹Ì: ³¡ÀÌ¶ó´Â ¶æÀÌ¾ß
+	// LASTï¿½Ç¹ï¿½: ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
 };
 enum class KEY_STATE
 {					// HOLD

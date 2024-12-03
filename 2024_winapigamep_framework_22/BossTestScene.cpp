@@ -31,11 +31,15 @@ void BossTestScene::Init()
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);
 
-	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 1000.f });
+	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 200.f });
 	pUIHealth->SetSize({ 620.f, 40.f });
 	pUIHealth->SetFillAmount(1.f);
-
 	AddObject(pUIHealth, LAYER::UI);
+
+	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 800.f });
+	pUIButton->SetSize({ 620.f, 40.f });
+	pUIButton->SetFillAmount(1.f);
+	AddObject(pUIButton, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
