@@ -1,11 +1,12 @@
 #pragma once
 #include "Object.h";
 #include "Texture.h"
+#include <string>
 
 class UI_Health : public Object
 {
 public:
-	UI_Health();
+	UI_Health(const std::wstring& bgPath, const std::wstring& fillPath);
 
 public:
 	// Object을(를) 통해 상속됨
