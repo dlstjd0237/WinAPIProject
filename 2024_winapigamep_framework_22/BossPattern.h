@@ -18,5 +18,6 @@ protected:
 public:
 	bool canUse = true;
 	bool isEnd;
+	bool isArrived;
 };
 

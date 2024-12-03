@@ -72,9 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Output\build_debug\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Output\build_debug\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Output\build\</OutDir>
@@ -204,6 +206,7 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UI_Health.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="WarningPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -240,6 +243,7 @@
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UI_Health.cpp" />
+    <ClCompile Include="WarningPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc" />

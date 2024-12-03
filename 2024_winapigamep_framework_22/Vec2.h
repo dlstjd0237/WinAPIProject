@@ -1,5 +1,7 @@
 #pragma once
+#include<cmath>
 #include<assert.h>
+
 struct Vec2
 {
 public:
@@ -70,6 +72,13 @@ public:
 	{
 		// z축이 나온다고 가정
 		return x * _other.y - y * _other.x;
+	}
+	Vec2 VecLerp(Vec2 _startVec, Vec2 _endVec, float t)
+	{
+		float x = std::lerp(_startVec.x, _endVec.x, t);
+		float y = std::lerp(_startVec.y, _endVec.y, t);
+
+		return Vec2{ x, y };
 	}
 public:
 	float x = 0.f;

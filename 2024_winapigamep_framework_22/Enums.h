@@ -2,14 +2,14 @@
 
 enum class LAYER
 {
+	BACKGROUND,
 	GROUND,
 	DEFAULT,
-	BACKGROUND,
 	PLAYER,
 	PROJECTILE,
 	ENEMY,
 	UI,
-	END = 30
+	END
 };
 
 enum class PEN_TYPE

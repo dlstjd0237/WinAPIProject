@@ -41,11 +41,23 @@
     <Filter Include="Engine\00.Work\Baek">
       <UniqueIdentifier>{82f0dc49-d910-4887-b421-1b9969835c7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\00.Work\Baek\Scene">
+      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\00.Work\Baek\03.Object">
       <UniqueIdentifier>{f5a9e72f-b80a-416f-8b93-f4191e843ae4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\00.Work\Baek\99.Scene">
-      <UniqueIdentifier>{0b4abebc-1d77-4a07-b36a-86bc54bf0ebc}</UniqueIdentifier>
+    <Filter Include="Engine\00.Work\InHae">
+      <UniqueIdentifier>{fa471a6e-3d95-49c2-8281-2b05ccd30597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\InHae\Boss">
+      <UniqueIdentifier>{cd53046c-f930-44dc-8341-45df1e145d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\InHae\Boss\Pattern">
+      <UniqueIdentifier>{fd8e1930-ac1d-49be-8a09-4fe8040f6041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00.Work\InHae\UI">
+      <UniqueIdentifier>{3e371fd1-498c-4d6e-b520-f7013ca184d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -140,20 +152,34 @@
       <Filter>Engine\06. Component</Filter>
     </ClInclude>
     <ClInclude Include="BaekScene.h">
-      <Filter>Engine\00.Work\Baek\99.Scene</Filter>
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h" />
-    <ClInclude Include="BossTestScene.h" />
-    <ClInclude Include="CircleBossPattern.h" />
-    <ClInclude Include="BossPattern.h" />
-    <ClInclude Include="OneShotPattern.h" />
     <ClInclude Include="RigidBody.h" />
-    <ClInclude Include="Stage1Boss.h" />
     <ClInclude Include="UI_Health.h" />
-    <ClInclude Include="PlayerAttackEffect.h" />
+    <ClInclude Include="BossTestScene.h">
+      <Filter>Engine\00.Work\InHae</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Engine\00.Work\InHae\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1Boss.h">
+      <Filter>Engine\00.Work\InHae\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleBossPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="OneShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="WarningPanel.h">
+      <Filter>Engine\00.Work\InHae\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -239,19 +265,33 @@
       <Filter>Engine\06. Component</Filter>
     </ClCompile>
     <ClCompile Include="BaekScene.cpp">
-      <Filter>Engine\00.Work\Baek\99.Scene</Filter>
+      <Filter>Engine\00.Work\Baek\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
-    <ClCompile Include="Boss.cpp" />
-    <ClCompile Include="BossTestScene.cpp" />
-    <ClCompile Include="CircleBossPattern.cpp" />
-    <ClCompile Include="BossPattern.cpp" />
-    <ClCompile Include="OneShotPattern.cpp" />
     <ClCompile Include="RigidBody.cpp" />
-    <ClCompile Include="Stage1Boss.cpp" />
     <ClCompile Include="UI_Health.cpp" />
-    <ClCompile Include="PlayerAttackEffect.cpp" />
+    <ClCompile Include="BossTestScene.cpp">
+      <Filter>Engine\00.Work\InHae</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Engine\00.Work\InHae\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1Boss.cpp">
+      <Filter>Engine\00.Work\InHae\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleBossPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="OneShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="WarningPanel.cpp">
+      <Filter>Engine\00.Work\InHae\UI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

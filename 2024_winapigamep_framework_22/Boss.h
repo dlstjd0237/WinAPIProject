@@ -1,12 +1,10 @@
 #pragma once
-#include <any>
-#include <typeindex>
-#include <typeinfo>
-#include <unordered_map>
 #include "Object.h"
+#include "ResourceManager.h"
+#include "Animator.h"
 
 class BossPattern;
-
+class Texture;
 class Boss : public Object
 {
 public: 
@@ -14,28 +12,34 @@ public:
     virtual ~Boss();
 public:
     virtual void Update() override;
+    void BossMoveInit(Vec2 targetPos, float moveTime);
 protected:
     virtual void PatternInit() abstract;
     int RandomPattenIdxGet(bool noDuplication);
     void PatternUpdate();
-
+    void PatternIdxInit();
+private:
+    void BossMove();
 protected:
     template<typename T>
     void AddPattern(T patternEnum, BossPattern* pattern);
-
     template<typename T>
     BossPattern* GetPattern(T patternEnum);
-
-    void PatternIdxInit();
-
 protected:
     vector<int> _patternIdxVec;
-
     std::unordered_map<int, BossPattern*> _bossPattern;
     float _patternDelay;
-    float _elapseTime;
-
+    float _patternElapseTime;
     BossPattern* _currentPattern;
+    
+    float _moveTime;
+    Vec2 _startPos;
+    Vec2 _targetPos;
+    float _moveDeltaTime;
+
+    Texture* m_pTex;
+public:
+    bool isMoving;
 };
 
 template<typename T>
