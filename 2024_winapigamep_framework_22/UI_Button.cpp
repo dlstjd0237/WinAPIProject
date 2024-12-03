@@ -23,9 +23,12 @@ void UI_Button::Update()
         mousePos.y >= vPos.y - bgHeight / 2 &&
         mousePos.y <= vPos.y + bgHeight / 2);
 
-    if (isMouseOver) // 마우스 왼쪽 버튼이 눌렸는지 확인
+    if (isMouseOver && GET_SINGLE(InputManager)->GetKey(KEY_TYPE::LBUTTON) == KEY_STATE::DOWN) // 마우스 왼쪽 버튼이 눌렸는지 확인
     {
-        std::cout << "Clicked!!" << std::endl; // 클릭 이벤트 디버깅 로그
+        if (OnClick)
+        {
+            OnClick();
+        }
     }
 }
 
