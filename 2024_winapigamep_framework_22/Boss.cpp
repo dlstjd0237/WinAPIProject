@@ -34,7 +34,7 @@ void Boss::Update()
 		_patternElapseTime = 0;
 
 		// Debug
-		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::FollowShot);
+		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::SniperShot);
 		// ·£´ý ÆÐÅÏ
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}

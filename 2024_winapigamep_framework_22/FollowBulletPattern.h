@@ -19,7 +19,7 @@ private:
 	bool _isAllBulletShoot;
 	bool _isShootStart;
 	float _readyDelay = 0.25f;
-	float _readyRadius = 3.f;
+	float _readyRadius = 100.f;
 
 	int _defaultBulletCount = 3;
 	int _currentBulletCount;

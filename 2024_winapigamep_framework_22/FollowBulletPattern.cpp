@@ -30,6 +30,7 @@ void FollowBulletPattern::Enter()
 {
 	BossPattern::Enter();
 	_elapseTime = _shotDelay;
+	_bulletVec.clear();
 
 	if (_target == NULL)
 		_target = GET_SINGLE(SceneManager)->GetCurrentScene()->GetLayerObjects(LAYER::PLAYER)[0];
@@ -49,7 +50,7 @@ void FollowBulletPattern::Shot()
 		if (_currentBulletCount == 1)
 			_isShootStart = true;
 
-		_bulletVec[_currentBulletCount]->SetSpeed(300.f);
+		_bulletVec[_currentBulletCount]->SetSpeed(150.f);
 		_currentBulletCount++;
 	}
 }
@@ -90,6 +91,9 @@ void FollowBulletPattern::FollowTarget()
 {
 	for (int i = 0; i < _defaultBulletCount; i++)
 	{
+		if (_bulletVec[i]->GetIsDead())
+			continue;
+
 		Vec2 dir;
 		Vec2 pos = _bulletVec[i]->GetPos();
 		Vec2 playerPos = _target->GetPos();
@@ -106,6 +110,9 @@ void FollowBulletPattern::DestroyCheck()
 	{
 		for (int i = 0; i < _defaultBulletCount; i++)
 		{
+			if (_bulletVec[i]->GetIsDead())
+				continue;
+
 			_bulletVec[i]->DestroyAction();
 		}
 		isEnd = true;

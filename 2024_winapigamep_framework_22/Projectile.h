@@ -29,6 +29,7 @@ public:
 	virtual void ExitCollision(Collider* _other);
 private:
 	//float m_dir;
+	float _dt;
 	float _speed = 500.f;
 	float m_angle;
 	Vec2 m_vDir;

@@ -64,9 +64,6 @@ Player::Player()
 	//========================
 	//
 	//==== Animation Setting End ====
-
-
-
 }
 
 Player::~Player()
