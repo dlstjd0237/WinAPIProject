@@ -48,9 +48,9 @@ void Background::Render(HDC _hdc)
 	::TransparentBlt(_hdc
 		, (int)(vPos.x - scaledWidth / 2)
 		, (int)(vPos.y - scaledHeight / 2)
-		, scaledWidth, scaledHeight,  // Ãâ·Â Å©±â¸¦ µÎ ¹è·Î
+		, scaledWidth, scaledHeight,  // ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ ï¿½ï¿½ï¿½
 		m_pTex->GetTexDC()
-		, 0, 0, width, height,       // ¿øº» Å©±â´Â ±×´ë·Î
+		, 0, 0, width, height,       // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½
 		RGB(255, 0, 255));
 	ComponentRender(_hdc);
 }

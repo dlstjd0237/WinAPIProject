@@ -7,7 +7,7 @@
 class UI_Button : public Object
 {
 public:
-	UI_Button( std::wstring bgPath,  std::wstring text);
+	UI_Button( std::wstring bgPath,  std::wstring text, Vec2 _scale);
 	std::function<void()> OnClick;
 public:
 	// Object을(를) 통해 상속됨
@@ -15,6 +15,7 @@ public:
 	void Render(HDC _hdc) override;
 
 private:
+	Vec2 m_scale;
 	Texture* m_pBgTex;
 	std::wstring m_text;
 };

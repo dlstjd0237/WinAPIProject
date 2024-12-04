@@ -10,11 +10,11 @@ void EntryScene::Init()
 
 	Object* pPlayer = new Player;
 
-	Object* pObj = new Ground;
+	/*Object* pObj = new Ground;
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pObj->SetSize({ 1400.f, 720.f });
 	pObj->SetName(L"Ground");
-	AddObject(pObj, LAYER::GROUND);
+	AddObject(pObj, LAYER::GROUND);*/
 
 	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp",
 		{ 4.5f,4.5f }, pPlayer, 0.f);
@@ -33,8 +33,8 @@ void EntryScene::Init()
 
 	//UI Element======
 
-	Object* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START");
-	pStartButton->SetPos({ SCREEN_WIDTH / 3.f, 550.f });
+	Object* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START", { 0.3f, 0.3f });
+	pStartButton->SetPos({ SCREEN_WIDTH / 2.f, 550.f });
 	pStartButton->SetSize({ 620.f, 40.f });
 	AddObject(pStartButton, LAYER::UI);
 }

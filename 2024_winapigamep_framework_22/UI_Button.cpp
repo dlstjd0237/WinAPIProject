@@ -4,9 +4,10 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
-UI_Button::UI_Button( std::wstring bgPath,  std::wstring text) : 
+UI_Button::UI_Button(std::wstring bgPath, std::wstring text, Vec2 _scale) :
     m_text(text),
-    m_pBgTex(nullptr)
+    m_pBgTex(nullptr),
+    m_scale(_scale)
 {
     m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"ButtonBg", bgPath);
 }
@@ -41,6 +42,9 @@ void UI_Button::Render(HDC _hdc)
     int bgWidth = m_pBgTex->GetWidth();   // 배경 이미지 너비
     int bgHeight = m_pBgTex->GetHeight(); // 배경 이미지 높이
 
+    int bgUpscaleWidth = bgWidth * m_scale.x;
+    int bgUpscaleHeight = bgHeight * m_scale.y;
+
     //// 가장자리 빨간색 경계선 그리기
     //HPEN hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0)); // 빨간색 펜 생성
     //HGDIOBJ hOldPen = SelectObject(_hdc, hPen);
@@ -59,9 +63,9 @@ void UI_Button::Render(HDC _hdc)
     // 배경 이미지 렌더링
     ::TransparentBlt(
         _hdc,
-        (int)(vPos.x - bgWidth / 2),
-        (int)(vPos.y - bgHeight / 2),
-        bgWidth, bgHeight,
+        (int)(vPos.x - bgUpscaleWidth / 2),
+        (int)(vPos.y - bgUpscaleHeight / 2),
+        bgUpscaleWidth, bgUpscaleHeight,
         m_pBgTex->GetTexDC(),
         0, 0, bgWidth, bgHeight, RGB(255, 0, 255));
 
