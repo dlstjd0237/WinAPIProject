@@ -7,7 +7,7 @@ enum class Stage1BossPattern
 	AllRangeCircleShot,
 	OneShot,
 	CrossShot,
-
+	FollowShot,
 };
 
 class Stage1Boss : public Boss

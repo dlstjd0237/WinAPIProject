@@ -8,7 +8,6 @@ public:
 	~Projectile();
 	void Update() override;
 	void Render(HDC _hdc) override;
-private:
 	void DestroyAction();
 public:
 	void SetAngle(float _f)

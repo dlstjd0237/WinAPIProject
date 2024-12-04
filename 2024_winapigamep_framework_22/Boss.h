@@ -42,6 +42,7 @@ protected:
     void BossMovePointInit();
     void RandomBossMove();
 private:
+    void FlipCheck();
     void BossMove();
 
 protected:
@@ -71,7 +72,7 @@ private:
     int _addValue = 0;
 
 public:
-    bool isFlip;
+    bool isLeft;
     bool isMoving;
 };
 

@@ -55,15 +55,7 @@ void Core::CleanUp()
 
 void Core::GameLoop()
 {
-	//static int callcount = 0;
-	//++callcount;
-	//static int prev = GetTickCount64();
-	//int cur = GetTickCount64();
-	//if (cur - prev > 1000)
-	//{
-	//	prev = cur;
-	//	callcount = 0;
-	//}
+
 	MainUpdate();
 	MainRender();
 	GET_SINGLE(EventManager)->Update();
@@ -88,7 +80,7 @@ void Core::MainRender()
 	// 2. Render
 	GET_SINGLE(SceneManager)->Render(m_hBackDC);
 	// 3. display	
-	::BitBlt(m_hDC, 0,0, SCREEN_WIDTH,SCREEN_HEIGHT,
+	::BitBlt(m_hDC, 0, 0, SCREEN_WIDTH,SCREEN_HEIGHT,
 			m_hBackDC,0,0, SRCCOPY);
 
  //	::TransparentBlt();

@@ -6,6 +6,7 @@
 #include "AllRangeCircleBossPattern.h"
 #include "OneShotPattern.h"
 #include "CrossShotPattern.h"
+#include "FollowBulletPattern.h"
 
 Stage1Boss::Stage1Boss()
 {
@@ -54,6 +55,9 @@ void Stage1Boss::PatternInit()
 
 	CrossShotPattern* crossShotPat = new CrossShotPattern();
 	AddPattern<Stage1BossPattern>(Stage1BossPattern::CrossShot, crossShotPat);
+
+	FollowBulletPattern* followShotPat = new FollowBulletPattern();
+	AddPattern<Stage1BossPattern>(Stage1BossPattern::FollowShot, followShotPat);
 
 	for (auto iter = _bossPattern.begin(); iter != _bossPattern.end(); iter++)
 	{

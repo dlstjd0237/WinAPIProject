@@ -186,6 +186,13 @@
     <ClInclude Include="CrossShotPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerAttackEffect.h" />
+    <ClInclude Include="FollowBulletPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Engine\00.Work\InHae</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -301,6 +308,13 @@
     </ClCompile>
     <ClCompile Include="CrossShotPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackEffect.cpp" />
+    <ClCompile Include="FollowBulletPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Engine\00.Work\InHae</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
