@@ -7,6 +7,7 @@ enum class LAYER
 	DEFAULT,
 	PLAYER,
 	PROJECTILE,
+	ATTACKEFFECT,
 	ENEMY,
 	Effect,
 	UI,

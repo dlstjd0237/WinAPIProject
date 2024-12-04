@@ -77,6 +77,7 @@ void Player::Update()
 {
 	UseGravity();
 	Vec2 vPos = GetPos();
+	bool vFlip = m_isFlip;
 
 	float x = vPos.x;
 	float y = vPos.y;
@@ -84,13 +85,13 @@ void Player::Update()
 	//==== Axis ====
 	if (GET_KEY(KEY_TYPE::A)) {
 		vPos.x -= 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.001f);
+		SetEnergy(m_energy += 0.01f);
 		m_isMoveing = true;
 	}
 	//==============
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.001f);
+		SetEnergy(m_energy += 0.01f);
 		m_isMoveing = true;
 	}
 	//==============
@@ -113,6 +114,8 @@ void Player::Update()
 	}
 
 	SetPos(vPos);
+	if (x != vPos.x)
+		m_isFlip = x > vPos.x ? false : true;
 
 	if (m_actionMap[PLAYER_ANIM_TYPE::ATTACK] == false && m_isAttackTrigger == true)
 	{
@@ -122,14 +125,14 @@ void Player::Update()
 	else if (x == vPos.x && m_actionMap[PLAYER_ANIM_TYPE::IDLE] == false
 		&& m_isJumping == false && m_isAttackTrigger == false)
 	{
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE, m_isFlip);
+		m_isFlip = vFlip;
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE, vFlip);
 		ActionMapChange(PLAYER_ANIM_TYPE::IDLE);
 	}
-	else if (x != vPos.x && m_actionMap[PLAYER_ANIM_TYPE::MOVE] == false
-		&& m_isJumping == false && m_isAttackTrigger == false)
+	else if (vFlip != m_isFlip || (x != vPos.x && m_actionMap[PLAYER_ANIM_TYPE::MOVE] == false
+		&& m_isJumping == false && m_isAttackTrigger == false))
 	{
 		m_isFlip = x > vPos.x ? false : true;
-
 		AnimationChange(PLAYER_ANIM_TYPE::MOVE, m_isFlip);
 		ActionMapChange(PLAYER_ANIM_TYPE::MOVE);
 	}
@@ -192,7 +195,7 @@ void Player::CreateAttackEffect()
 	pEffect->SetSize({ 150.f, 150.f });
 
 	pEffect->SetName(L"PlayerAttackEffect");
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::PROJECTILE);
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::ATTACKEFFECT);
 
 }
 
@@ -203,7 +206,7 @@ void Player::Jump()
 	{
 		m_isJumping = true;
 		SetUseGravity(true);
-		m_jumpVelocity = -300.f * m_energy; // ���� �ö󰡴� �ʱ� �ӵ� (px/s)
+		m_jumpVelocity = -300 * m_energy; // ���� �ö󰡴� �ʱ� �ӵ� (px/s)
 	}
 }
 

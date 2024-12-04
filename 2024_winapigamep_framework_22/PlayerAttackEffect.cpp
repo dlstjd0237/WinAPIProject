@@ -39,15 +39,17 @@ void PlayerAttackEffect::Update()
 
 void PlayerAttackEffect::Render(HDC _hdc)
 {
-	ComponentRender(_hdc);
 
+	ComponentRender(_hdc);
 }
 
 void PlayerAttackEffect::EnterCollistion(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	if (pOtherObj->GetName() == L"Boss") {
+	cout << "오브젝트 공격";
 
+	if (pOtherObj->GetName() == L"Enemy") {
+		cout << "적 공격";
 	}
 }
 

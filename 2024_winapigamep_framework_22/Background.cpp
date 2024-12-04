@@ -4,15 +4,17 @@
 #include "Texture.h"
 
 
-Background::Background(wstring _texturName, wstring _texturePath, Vec2 _scale) :
+Background::Background(wstring _texturName, wstring _texturePath,
+	Vec2 _scale, Object* _player, float _offset) :
 	m_pTex(nullptr)
 	, m_scale(_scale)
 	, m_texturName(_texturName)
 	, m_texturPath(_texturePath)
+	, m_pOnwer(_player)
+	, m_offset(_offset)
 {
-
+	m_prevOwnerPos = _player->GetPos();
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(m_texturName, m_texturPath);
-
 }
 
 Background::~Background()
@@ -21,6 +23,17 @@ Background::~Background()
 
 void Background::Update()
 {
+	Vec2 currPlayerPos = m_pOnwer->GetPos();
+
+	Vec2 delta = currPlayerPos - m_prevOwnerPos;
+
+	Vec2 groundPos = GetPos();
+	
+	groundPos.x -= delta.x * m_offset;
+
+	SetPos(groundPos);
+
+	m_prevOwnerPos = currPlayerPos;
 }
 
 void Background::Render(HDC _hdc)

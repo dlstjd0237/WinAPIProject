@@ -207,6 +207,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="UI_Button.h" />
     <ClInclude Include="UI_Health.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WarningPanel.h" />
@@ -248,6 +249,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="UI_Health.cpp" />
     <ClCompile Include="WarningPanel.cpp" />
   </ItemGroup>
