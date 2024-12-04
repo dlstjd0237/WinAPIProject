@@ -31,31 +31,32 @@ Player::Player()
 	//========================
 
 	//==== Animation Setting ====
+	float scale = GetPlayerScale();
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightAttack", m_pTex, Vec2(0.f, 44.0f * 13),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftAttack", m_pTex, Vec2(0.f, 44.0f * 30),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, true, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, true, scale);
 	//============================
 	// 
 	//==== Jump Animtion ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightJump", m_pTex, Vec2(0.f, 44.0f * 7),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftJump", m_pTex, Vec2(0.f, 44.0f * 24),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
 	//=======================
 	//
 	//==== Move Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightMove", m_pTex, Vec2(0.f, 44.f),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftMove", m_pTex, Vec2(0.f, 44.f * 18.0f),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
 	//========================
 	//
 	//==== Idle Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightIdle", m_pTex, Vec2(0.f, 0.f),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 44.f * 17),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, 4);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
 	//=========================
 	//
 	//==== Animation play ====
@@ -66,10 +67,6 @@ Player::Player()
 
 
 
-	//==== Collider Setting =====
-	GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
-	GetComponent<Collider>()->SetOffSetPos({ -32, 19 });
-	//===========================
 }
 
 Player::~Player()
@@ -80,6 +77,7 @@ void Player::Update()
 {
 	UseGravity();
 	Vec2 vPos = GetPos();
+	bool vFlip = m_isFlip;
 
 	float x = vPos.x;
 	float y = vPos.y;
@@ -87,13 +85,13 @@ void Player::Update()
 	//==== Axis ====
 	if (GET_KEY(KEY_TYPE::A)) {
 		vPos.x -= 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.001f);
+		SetEnergy(m_energy += 0.01f);
 		m_isMoveing = true;
 	}
 	//==============
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.001f);
+		SetEnergy(m_energy += 0.01f);
 		m_isMoveing = true;
 	}
 	//==============
@@ -110,12 +108,14 @@ void Player::Update()
 	}
 	//==============
 
-	if (GET_KEYDOWN(KEY_TYPE::F) && m_isAttackTrigger == false)
+	if (GET_KEYDOWN(KEY_TYPE::LBUTTON) && m_isAttackTrigger == false)
 	{
 		m_isAttackTrigger = true;
 	}
 
 	SetPos(vPos);
+	if (x != vPos.x)
+		m_isFlip = x > vPos.x ? false : true;
 
 	if (m_actionMap[PLAYER_ANIM_TYPE::ATTACK] == false && m_isAttackTrigger == true)
 	{
@@ -125,14 +125,14 @@ void Player::Update()
 	else if (x == vPos.x && m_actionMap[PLAYER_ANIM_TYPE::IDLE] == false
 		&& m_isJumping == false && m_isAttackTrigger == false)
 	{
-		AnimationChange(PLAYER_ANIM_TYPE::IDLE, m_isFlip);
+		m_isFlip = vFlip;
+		AnimationChange(PLAYER_ANIM_TYPE::IDLE, vFlip);
 		ActionMapChange(PLAYER_ANIM_TYPE::IDLE);
 	}
-	else if (x != vPos.x && m_actionMap[PLAYER_ANIM_TYPE::MOVE] == false
-		&& m_isJumping == false && m_isAttackTrigger == false)
+	else if (vFlip != m_isFlip || (x != vPos.x && m_actionMap[PLAYER_ANIM_TYPE::MOVE] == false
+		&& m_isJumping == false && m_isAttackTrigger == false))
 	{
 		m_isFlip = x > vPos.x ? false : true;
-
 		AnimationChange(PLAYER_ANIM_TYPE::MOVE, m_isFlip);
 		ActionMapChange(PLAYER_ANIM_TYPE::MOVE);
 	}
@@ -188,31 +188,14 @@ void Player::ExitCollision(Collider* _other)
 		m_isGround = false;
 }
 
-void Player::CreateProjectile()
-{
-	Vec2 vPos = GetPos();
-	vPos.y -= GetSize().y / 2.f;
-
-	Projectile* pProj = new Projectile(vPos);
-	pProj->SetPos(vPos);
-	pProj->SetSize({ 30.f,30.f });
-
-	pProj->SetDir({ 0.f, -1.f });
-	pProj->SetName(L"PlayerBullet");
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pProj, LAYER::PROJECTILE);
-}
-
 // ���� ����Ʈ ����
 void Player::CreateAttackEffect()
 {
-	PlayerAttackEffect* pEffect = new PlayerAttackEffect;
-	Vec2 vPos = GetPos();
-	vPos.x -= 50;
-	pEffect->SetPos(vPos);
+	PlayerAttackEffect* pEffect = new PlayerAttackEffect(this, m_isFlip);
 	pEffect->SetSize({ 150.f, 150.f });
 
 	pEffect->SetName(L"PlayerAttackEffect");
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::PROJECTILE);
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::ATTACKEFFECT);
 
 }
 
@@ -223,13 +206,14 @@ void Player::Jump()
 	{
 		m_isJumping = true;
 		SetUseGravity(true);
-		m_jumpVelocity = -500.f * m_energy; // ���� �ö󰡴� �ʱ� �ӵ� (px/s)
-		SetEnergy(1);
+		m_jumpVelocity = -300 * m_energy; // ���� �ö󰡴� �ʱ� �ӵ� (px/s)
 	}
 }
 
 void Player::PerformAttack()
 {
+	SetEnergy(1);
+
 	m_isAttackTrigger = false; // Attack ���� ����
 	m_attackTimer = 0;
 	m_actionMap[PLAYER_ANIM_TYPE::ATTACK] = false;
@@ -250,18 +234,18 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 		if (Flip == true)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerRightMove", true);
 		else
-			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", false);
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftMove", true);
 		break;
 	case PLAYER_ANIM_TYPE::JUMP:
 		if (Flip == true)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerRightJump", true);
 		else
-			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftJump", false);
+			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftJump", true);
 		m_isJumping = true;
 		break;
 	case PLAYER_ANIM_TYPE::ATTACK:
 		if (Flip == true)
-			GetComponent<Animator>()->PlayAnimation(L"PlayerRightAttack", true);
+			GetComponent<Animator>()->PlayAnimation(L"PlayerRightAttack", false);
 		else
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftAttack", false);
 
@@ -274,12 +258,12 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 
 	if (Flip == true)
 	{
-		GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
-		GetComponent<Collider>()->SetOffSetPos({ -32, 19 });
+		GetComponent<Collider>()->SetSize(GetSize());
+		GetComponent<Collider>()->SetOffSetPos({ -16, 9 });
 	}
 	else {
-		GetComponent<Collider>()->SetSize({ 69.f * 2 - 15, 44.f * 3 });
-		GetComponent<Collider>()->SetOffSetPos({ 32, 19 });
+		GetComponent<Collider>()->SetSize(GetSize());
+		GetComponent<Collider>()->SetOffSetPos({ 16, 9 });
 	}
 
 

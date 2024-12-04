@@ -1,5 +1,7 @@
 #pragma once
 #include "Object.h"
+
+class Texture;
 class Ground :
 	public Object
 {
@@ -13,6 +15,8 @@ public:
 	virtual void EnterCollision(Collider* _other);
 	virtual void StayCollision(Collider* _other);
 	virtual void ExitCollision(Collider* _other);
+private:
+	Texture* m_pTex;
 
 };
 
