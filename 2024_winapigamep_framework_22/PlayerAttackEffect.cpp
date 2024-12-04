@@ -4,8 +4,12 @@
 #include "TimeManager.h"
 #include "EventManager.h"
 
-PlayerAttackEffect::PlayerAttackEffect()
+PlayerAttackEffect::PlayerAttackEffect(Object* obj, bool _flip)
 {
+	SetOwner(obj);
+	SetFlip(_flip);
+	SetOffSet({ 80,0 });
+
 	this->AddComponent<Collider>();
 	GetComponent<Collider>()->SetSize({ 150,150 });
 }
@@ -16,7 +20,15 @@ PlayerAttackEffect::~PlayerAttackEffect()
 
 void PlayerAttackEffect::Update()
 {
+	Vec2 pPos = GetOwner()->GetPos();
 
+	if (GetFlip() == true)
+		pPos += GetOffset();
+	else
+		pPos -= GetOffset();
+
+
+	this->SetPos({ pPos.x,pPos.y });
 	m_attackTimer += fDT;
 	if (m_attackTimer >= m_attackDelay)
 	{

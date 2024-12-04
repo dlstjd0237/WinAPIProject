@@ -180,6 +180,8 @@
     <ClInclude Include="WarningPanel.h">
       <Filter>Engine\00.Work\InHae\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="PlayerAttackEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -293,5 +295,10 @@
     <ClCompile Include="WarningPanel.cpp">
       <Filter>Engine\00.Work\InHae\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="PlayerAttackEffect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

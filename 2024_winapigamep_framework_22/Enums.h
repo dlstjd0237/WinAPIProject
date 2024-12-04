@@ -41,11 +41,11 @@ enum class PLAYER_ANIM_TYPE
 	ATTACK
 };
 
-enum class STATE
-{
-	IDLE,
-	MOVE,
-	JUMP,
-	ATTACK	
-};
+//enum class STATE
+//{
+//	IDLE,
+//	MOVE,
+//	JUMP,
+//	ATTACK	
+//};
 
