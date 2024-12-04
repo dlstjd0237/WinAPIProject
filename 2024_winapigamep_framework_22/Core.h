@@ -37,6 +37,7 @@ private:
 	HDC  m_hDC; // Main DC
 	HDC  m_hBackDC; // 백버퍼 DC
 	HBITMAP m_hBackBit; // 백버퍼의 bitmap
+	
 	//Object m_obj;
 	//private:
 //	Core() {}

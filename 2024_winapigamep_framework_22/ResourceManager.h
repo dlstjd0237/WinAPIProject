@@ -42,20 +42,15 @@ public:
 			return m_animationScales[animName];
 		return 1;
 	}
-	const bool& GetAnimationFlip(const wstring& animName) {
-		if (m_animationFilps.contains(animName) == true)
-			return m_animationFilps[animName];
-		return false;
-	}
+
 	const void SetAnimationScale(const wstring& animName, float scale) {
 		if (m_animationScales.contains(animName) == true)
 			m_animationScales[animName] = scale;
 	}
 public:
 	void AddAnimationScale(const wstring& key, float& value) { m_animationScales[key] = value; }
-	void AddAnimationFlips(const wstring& key, bool& value) { m_animationFilps[key] = value; }
 private:
 	map<wstring, float> m_animationScales;
-	map<wstring, bool> m_animationFilps;
+
 };
 

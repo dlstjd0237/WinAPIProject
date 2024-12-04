@@ -17,11 +17,11 @@ bool Core::Init(HWND _hwnd)
 	// 더블 버퍼링
 	// 1. 생성(세팅)
 	m_hBackBit = ::CreateCompatibleBitmap(m_hDC, SCREEN_WIDTH, SCREEN_HEIGHT);
-	m_hBackDC =::CreateCompatibleDC(m_hDC);
-
-	// 2. 연결
-	::SelectObject(m_hBackDC,m_hBackBit);
+	m_hBackDC = ::CreateCompatibleDC(m_hDC);
 	
+	// 2. 연결
+	::SelectObject(m_hBackDC, m_hBackBit);
+
 	CreateGDI();
 	// === Manager Init === 
 	GET_SINGLE(TimeManager)->Init();
@@ -55,21 +55,12 @@ void Core::CleanUp()
 
 void Core::GameLoop()
 {
-	//static int callcount = 0;
-	//++callcount;
-	//static int prev = GetTickCount64();
-	//int cur = GetTickCount64();
-	//if (cur - prev > 1000)
-	//{
-	//	prev = cur;
-	//	callcount = 0;
-	//}
+
 	MainUpdate();
 	MainRender();
+
 	GET_SINGLE(EventManager)->Update();
 }
-
-
 
 void Core::MainUpdate()
 {
@@ -78,7 +69,6 @@ void Core::MainUpdate()
 	GET_SINGLE(InputManager)->Update();
 	GET_SINGLE(SceneManager)->Update();
 	GET_SINGLE(CollisionManager)->Update();
-
 }
 
 void Core::MainRender()
@@ -88,14 +78,11 @@ void Core::MainRender()
 	// 2. Render
 	GET_SINGLE(SceneManager)->Render(m_hBackDC);
 	// 3. display	
-	::BitBlt(m_hDC, 0,0, SCREEN_WIDTH,SCREEN_HEIGHT,
-			m_hBackDC,0,0, SRCCOPY);
+	::BitBlt(m_hDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
+		m_hBackDC, 0, 0, SRCCOPY);
+}
 
- //	::TransparentBlt();
-	//::StretchBlt();
-	//::PlgBlt();
-	//::AlphaBlend();
- }
+
 void Core::CreateGDI()
 {
 	// HOLLOW

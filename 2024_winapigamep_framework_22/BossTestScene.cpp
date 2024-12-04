@@ -36,19 +36,14 @@ void BossTestScene::Init()
 
 	//==== Background Setting ====
 
-	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp",
-		{ 4.5f,4.5f }, pPlayer, 0.f);
-	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) - 20, (SCREEN_HEIGHT / 2.f) + 150 });
+	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",
+		 pPlayer, 0.f);
+	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) , (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
 
-	Object* pBackgroundObj2 = new Background(L"Mountains", L"Texture\\mountains.bmp",
-		{ 4.5f,4.5f }, pPlayer, 0.025f);
-	pBackgroundObj2->SetPos({ (SCREEN_WIDTH / 2.f) - 90, (SCREEN_HEIGHT / 2.f) + 50 });
-	AddObject(pBackgroundObj2, LAYER::BACKGROUND);
-
 	Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
-		{ 4.5f,4.5f }, pPlayer, 0.075f);
-	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) + 30 });
+		 pPlayer, 0.075f);
+	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj3, LAYER::BACKGROUND);
 
 	//============================
