@@ -3,6 +3,7 @@
 #include "Ground.h"
 #include "Player.h"
 #include "Background.h"
+#include "SceneManager.h"
 
 void EntryScene::Init()
 {

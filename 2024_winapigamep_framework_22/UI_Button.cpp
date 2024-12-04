@@ -21,14 +21,18 @@ void UI_Button::Update()
     int bgWidth = m_pBgTex->GetWidth();   // 배경 이미지 너비
     int bgHeight = m_pBgTex->GetHeight(); // 배경 이미지 높이
 
+    int bgUpscaleWidth = bgWidth * m_scale.x;
+    int bgUpscaleHeight = bgHeight * m_scale.y;
+
     // 버튼 영역 안에 있는지 확인
-    bool isMouseOver = (mousePos.x >= vPos.x - bgWidth / 2 &&
-        mousePos.x <= vPos.x + bgWidth / 2 &&
-        mousePos.y >= vPos.y - bgHeight / 2 &&
-        mousePos.y <= vPos.y + bgHeight / 2);
+    bool isMouseOver = (mousePos.x >= vPos.x - bgUpscaleWidth / 2 &&
+        mousePos.x <= vPos.x + bgUpscaleWidth / 2 &&
+        mousePos.y >= vPos.y - bgUpscaleHeight / 2 &&
+        mousePos.y <= vPos.y + bgUpscaleHeight / 2);
 
     if (isMouseOver && GET_SINGLE(InputManager)->GetKey(KEY_TYPE::LBUTTON) == KEY_STATE::DOWN) // 마우스 왼쪽 버튼이 눌렸는지 확인
     {
+        std::cout << "AAAA" << std::endl;
         if (OnClick)
         {
             OnClick();

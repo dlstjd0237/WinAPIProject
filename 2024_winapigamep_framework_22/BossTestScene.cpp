@@ -58,9 +58,13 @@ void BossTestScene::Init()
 	pUIHealth->SetSize({ 620.f, 40.f });
 	AddObject(pUIHealth, LAYER::UI);
 
-	Object* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f });
+	UI_Button* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f });
 	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 550.f });
 	pUIButton->SetSize({ 620.f, 40.f });
+	pUIButton->OnClick = []()
+		{
+			std::cout << "Asdfsadf" << std::endl;
+		};
 	AddObject(pUIButton, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
