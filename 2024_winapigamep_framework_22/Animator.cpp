@@ -31,7 +31,7 @@ void Animator::Render(HDC _hdc)
 		m_pCurrentAnimation->Render(_hdc);
 }
 
-void Animator::CreateAnimation(const wstring& _strName, Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, UINT _framecount, float _fDuration, bool _isRotate, float _scale)
+void Animator::CreateAnimation(const wstring& _strName, Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, UINT _framecount, float _fDuration, bool _isRotate, float _scale, Vec2 _offset)
 {
 	Animation* pAnim = FindAnimation(_strName);
 	if (pAnim != nullptr)
@@ -42,7 +42,7 @@ void Animator::CreateAnimation(const wstring& _strName, Texture* _pTex, Vec2 _vL
 	pAnim = new Animation;
 	pAnim->SetName(_strName);
 	pAnim->SetAnimator(this);
-	pAnim->Create(_pTex, _vLT, _vSliceSize, _vStep, _framecount, _fDuration, _isRotate);
+	pAnim->Create(_pTex, _vLT, _vSliceSize, _vStep, _framecount, _fDuration, _isRotate, _offset);
 	m_mapAnimations.insert({ _strName,pAnim });
 }
 

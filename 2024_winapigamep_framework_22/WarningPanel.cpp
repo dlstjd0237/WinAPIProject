@@ -35,7 +35,7 @@ void WarningPanel::Render(HDC _hdc)
 	BitBlt(alphaDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, _hdc, 0, 0, SRCCOPY);
 
 	GDISelector brush(_hdc, BRUSH_TYPE::RED);
-	GDISelector pen(_hdc, PEN_TYPE::RED);
+	GDISelector pen(_hdc, PEN_TYPE::HOLLOW);
 
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetSize();

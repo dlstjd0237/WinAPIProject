@@ -15,7 +15,7 @@ public:
 	// 애니메이션 생성함수
 	void CreateAnimation(const wstring& _strName, Texture* _pTex,
 		Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
-		UINT _framecount, float _fDuration, bool _isRotate = false, float scale =1.f );
+		UINT _framecount, float _fDuration, bool _isRotate = false, float scale =1.f , Vec2 _offset = {0, 0});
 	// 애니메이션 찾기함수
 	Animation* FindAnimation(const wstring& _strName);
 

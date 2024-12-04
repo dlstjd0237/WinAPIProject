@@ -7,7 +7,7 @@ class Boss;
 class BossPattern
 {
 public:
-	void Init(Boss* boss);
+	virtual void Init(Boss* boss);
 	virtual void Enter();
 	virtual void Update();
 	virtual void Exit();

@@ -98,8 +98,8 @@ void Player::Update()
 
 	//==== Jump ====
 	if (m_isJumping) {
-		m_jumpVelocity += GetGravity() * fDT; // Áß·Â¿¡ ÀÇÇÑ ¼Óµµ º¯È­
-		vPos.y += m_jumpVelocity * fDT; // Á¡ÇÁ ÁßÀÎ °æ¿ì À§Ä¡ °è»ê
+		m_jumpVelocity += GetGravity() * fDT; // ï¿½ß·Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½È­
+		vPos.y += m_jumpVelocity * fDT; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
 	}
 
 	if (GET_KEYDOWN(KEY_TYPE::SPACE) && m_isJumping == false && m_isGround == true) {
@@ -146,7 +146,7 @@ void Player::Update()
 		m_attackTimer += fDT;
 		if (m_attackTimer >= m_attackDelay)
 		{
-			PerformAttack(); // 0.6ÃÊ ÈÄ ½ÇÇà
+			PerformAttack(); // 0.6ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 }
@@ -166,8 +166,8 @@ void Player::EnterCollision(Collider* _other)
 	if (pOtherObj->GetName() == L"Ground")
 	{
 		//SetUseGravity(false);
-		m_isJumping = false; // Á¡ÇÁ Á¾·á
-		SetUseGravity(false); // ´Ù½Ã Áß·Â È°¼ºÈ­
+		m_isJumping = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		SetUseGravity(false); // ï¿½Ù½ï¿½ ï¿½ß·ï¿½ È°ï¿½ï¿½È­
 		m_isGround = true;
 		m_isJumping = false;
 		m_jumpVelocity = 0.f;
@@ -185,7 +185,7 @@ void Player::ExitCollision(Collider* _other)
 		m_isGround = false;
 }
 
-// °ø°Ý ÀÌÆåÆ® »ý¼º
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 void Player::CreateAttackEffect()
 {
 	PlayerAttackEffect* pEffect = new PlayerAttackEffect(this, m_isFlip);
@@ -199,11 +199,11 @@ void Player::CreateAttackEffect()
 
 void Player::Jump()
 {
-	if (!m_isJumping) // Á¡ÇÁ ÁßÀÌ ¾Æ´Ò ¶§¸¸ °¡´É
+	if (!m_isJumping) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
 		m_isJumping = true;
 		SetUseGravity(true);
-		m_jumpVelocity = -300.f * m_energy; // À§·Î ¿Ã¶ó°¡´Â ÃÊ±â ¼Óµµ (px/s)
+		m_jumpVelocity = -300.f * m_energy; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ó°¡´ï¿½ ï¿½Ê±ï¿½ ï¿½Óµï¿½ (px/s)
 	}
 }
 
@@ -211,7 +211,7 @@ void Player::PerformAttack()
 {
 	SetEnergy(1);
 
-	m_isAttackTrigger = false; // Attack »óÅÂ Á¾·á
+	m_isAttackTrigger = false; // Attack ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	m_attackTimer = 0;
 	m_actionMap[PLAYER_ANIM_TYPE::ATTACK] = false;
 }
@@ -247,7 +247,7 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 			GetComponent<Animator>()->PlayAnimation(L"PlayerLeftAttack", false);
 
 
-		//ÀÌ°÷¿¡¼­ ÀÌÆåÆ® »ý¼º
+		//ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 		CreateAttackEffect();
 		break;
 	}

@@ -1,6 +1,7 @@
 #pragma once
 class Collider;
 class RigidBody;
+class Animator;
 class Component;
 class Object
 {

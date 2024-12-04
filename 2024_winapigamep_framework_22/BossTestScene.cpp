@@ -15,11 +15,12 @@ void BossTestScene::Init()
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
+	pPlayer->SetName(L"Player");
 
 	Boss* boss = new Stage1Boss();
 	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
-	boss->SetSize({ 50.f,50.f });
 	AddObject(boss, LAYER::ENEMY);
+	boss->SetName(L"Enemy");
 
 	WarningPanel* warning = new WarningPanel(0.5f, { SCREEN_WIDTH / 2.f + 50.f, 150.f }, { 100.f,500.f });
 	AddObject(warning, LAYER::DEFAULT);
@@ -46,10 +47,16 @@ void BossTestScene::Init()
 	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 1000.f });
 	pUIHealth->SetSize({ 620.f, 40.f });
 	pUIHealth->SetFillAmount(1.f);
-
 	AddObject(pUIHealth, LAYER::UI);
 
+	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 800.f });
+	pUIButton->SetSize({ 620.f, 40.f });
+	pUIButton->SetFillAmount(1.f);
+	AddObject(pUIButton, LAYER::UI);
+
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
+	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
+	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
 }
 
 void BossTestScene::Update()

@@ -83,12 +83,12 @@ void Animation::Render(HDC _hdc)
 		, RGB(255, 0, 255));*/
 }
 
-void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate)
+void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate, Vec2 _offset)
 {
 	m_pTex = _pTex;
 	m_IsRotate = _isRotate;
 	for (int i = 0; i < _framecount; ++i)
 	{
-		m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i, _vSliceSize, _fDuration,{0.f,0.f} }));
+		m_vecAnimFrame.push_back(tAnimFrame({ _vLT + _vStep * i, _vSliceSize, _fDuration, _offset }));
 	}
 }

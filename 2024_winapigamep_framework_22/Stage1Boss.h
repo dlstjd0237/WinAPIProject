@@ -4,8 +4,10 @@
 
 enum class Stage1BossPattern
 {
-	CircleShot,
+	AllRangeCircleShot,
 	OneShot,
+	CrossShot,
+
 };
 
 class Stage1Boss : public Boss
@@ -17,4 +19,3 @@ public:
 protected:
 	void PatternInit() override;
 };
-

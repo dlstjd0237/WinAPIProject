@@ -4,19 +4,25 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "Collider.h"
+#include "Particle.h"
 #include "EventManager.h"
+#include "SceneManager.h"
+#include "Scene.h"
 
-Projectile::Projectile()
+Projectile::Projectile(Vec2 pos)
 	: m_angle(0.f)
 	, m_vDir(1.f, 1.f)
 {
-	//m_pTex = new Texture;
-	//wstring path = GET_SINGLE(ResourceManager)->GetResPath();
-	//path += L"Texture\\Bullet.bmp";
-	//m_pTex->Load(path);
+	SetPos(pos);
+
+	Particle* particle = new Particle(ParticleType::BulletShot, 0.075f, 1.f, false);
+	particle->SetPos(pos);
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
+
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Bullet", L"Texture\\Bullet.bmp");
 	this->AddComponent<Collider>();
 	GetComponent<Collider>()->SetSize({ 20.f,20.f });
+	SetName(L"Projectile");
 }
 
 Projectile::~Projectile()
@@ -27,8 +33,8 @@ void Projectile::Update()
 {
 	Vec2 vPos = GetPos();
 
-	vPos.x += m_vDir.x * 500.f * fDT;
-	vPos.y += m_vDir.y * 500.f * fDT;
+	vPos.x += m_vDir.x * _speed * fDT;
+	vPos.y += m_vDir.y * _speed * fDT;
 	SetPos(vPos);
 	Vec2 vSize = GetSize();
 	if (vPos.y < -vSize.y)
@@ -41,8 +47,7 @@ void Projectile::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vSize = GetSize();
-	//ELLIPSE_RENDER(_hdc, vPos.x, vPos.y
-	//	, vSize.x, vSize.y);
+
 	int width = m_pTex->GetWidth();
 	int height = m_pTex->GetHeight();
 	::TransparentBlt(_hdc
@@ -54,12 +59,24 @@ void Projectile::Render(HDC _hdc)
 	ComponentRender(_hdc);
 }
 
+void Projectile::DestroyAction()
+{
+	Particle* particle = new Particle(ParticleType::BulletDestroy, 0.05f, 1.f, false);
+	particle->SetPos(GetPos());
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
+	GET_SINGLE(EventManager)->DeleteObject(this);
+}
+
 void Projectile::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	if (pOtherObj->GetName() == L"Enemy")
+	if (pOtherObj->GetName() == L"Player")
 	{
-		GET_SINGLE(EventManager)->DeleteObject(this);
+		DestroyAction();
+	}
+	if (pOtherObj->GetName() == L"Ground")
+	{
+		DestroyAction();
 	}
 }
 
