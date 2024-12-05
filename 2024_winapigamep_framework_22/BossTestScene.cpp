@@ -37,13 +37,13 @@ void BossTestScene::Init()
 	//==== Background Setting ====
 
 	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",
-		 pPlayer, 0.f);
+		pPlayer, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) , (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
 
 	Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
-		 pPlayer, 0.075f);
-	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) });
+		pPlayer, 0.075f);
+	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) - 50 });
 	AddObject(pBackgroundObj3, LAYER::BACKGROUND);
 
 	//============================
@@ -61,6 +61,7 @@ void BossTestScene::Init()
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
+	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 }
 

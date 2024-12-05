@@ -3,6 +3,7 @@
 #include "Collider.h"
 #include "TimeManager.h"
 #include "EventManager.h"
+#include "CollisionManager.h"
 
 PlayerAttackEffect::PlayerAttackEffect(Object* obj, bool _flip)
 {
@@ -34,12 +35,10 @@ void PlayerAttackEffect::Update()
 	{
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
-
 }
 
 void PlayerAttackEffect::Render(HDC _hdc)
 {
-
 	ComponentRender(_hdc);
 }
 
@@ -50,6 +49,7 @@ void PlayerAttackEffect::EnterCollistion(Collider* _other)
 
 	if (pOtherObj->GetName() == L"Enemy") {
 		cout << "Àû °ø°Ý";
+		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
 }
 
