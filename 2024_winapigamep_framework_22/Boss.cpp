@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Animation.h"
 
 // 상속 받은 생성자에서 PatternInit, PatternIdxInit 해줘야 함
 Boss::Boss()
@@ -31,10 +32,10 @@ void Boss::Update()
 
 	if (_patternElapseTime >= _patternDelay)
 	{
+		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
-
 		// Debug
-		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::SniperShot);
+		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot);
 		// 랜덤 패턴
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
@@ -125,6 +126,9 @@ void Boss::PatternUpdate()
 {
 	if (_currentPattern != NULL)
 	{
+		if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
+			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
+
 		_currentPattern->Update();
 		if (_currentPattern->isEnd)
 		{
@@ -146,10 +150,11 @@ void Boss::PatternIdxInit()
 
 void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 {
+	_currentAnimType = anim;
 	wstring key;
-	bool isLoop;
+	bool isLoop = false;
 
-	switch (anim)
+	switch (_currentAnimType)
 	{
 	case Boss_ANIM_TYPE::IDLE:
 		key = L"Idle";
@@ -174,4 +179,5 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 
 	this->isLeft = isLeft;
 	GetComponent<Animator>()->PlayAnimation(key, isLoop);
+	_currentAnim = GetComponent<Animator>()->GetCurrentAnim();
 }

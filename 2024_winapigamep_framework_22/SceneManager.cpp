@@ -49,7 +49,6 @@ void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scen
 
 void SceneManager::LoadScene(const wstring& _sceneName)
 {
-	// ���� ������
 	if (m_pCurrentScene != nullptr)
 	{
 		m_pCurrentScene->Release();

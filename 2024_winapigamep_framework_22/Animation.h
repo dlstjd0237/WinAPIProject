@@ -36,5 +36,8 @@ private:
 	Texture* m_pTex; // 애니메이션 텍스처
 	vector<tAnimFrame> m_vecAnimFrame;
 	bool m_IsRotate;
+
+	HDC _rotateDC;
+	HBITMAP _rotateBitMap;
 };
 

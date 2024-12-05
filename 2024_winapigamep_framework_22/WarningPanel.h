@@ -3,7 +3,7 @@
 class WarningPanel : public Object
 {
 public:
-	WarningPanel(float fadeTime, Vec2 pos, Vec2 size);
+	WarningPanel(float fadeTime, Vec2 pos, Vec2 size, bool isCenter);
 	~WarningPanel();
 private:
 	void Update() override;

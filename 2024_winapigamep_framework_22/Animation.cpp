@@ -52,33 +52,83 @@ void Animation::Render(HDC _hdc)
 	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
 	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
 
+	if (!m_IsRotate)
+	{
+		vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
+		TransparentBlt(_hdc
+			, (int)(vPos.x - width / 2.f) // X ÁÂÇ¥
+			, (int)(vPos.y - height / 2.f) // Y ÁÂÇ¥
+			, width // Æø
+			, height // ³ôÀÌ
+			, m_pTex->GetTexDC()
+			, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
+			, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
+			, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
+			, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
+			, RGB(255, 0, 255)); // Åõ¸í »ö»ó (¿¹½Ã)
+	}
+	else
+	{
+		if (_rotateDC == NULL)
+		{
+			_rotateDC = CreateCompatibleDC(_hdc);
+			_rotateBitMap = CreateCompatibleBitmap(_hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
+			SelectObject(_rotateDC, _rotateBitMap);
+		}
+		
+		float _angle = pObj->GetAngle();
+		float halfWidth = width / 2.0f;
+		float halfHeight = height / 2.0f;
 
-	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
-	TransparentBlt(_hdc
-		, (int)(vPos.x - width / 2.f) // X ÁÂÇ¥
-		, (int)(vPos.y - height / 2.f) // Y ÁÂÇ¥
-		, width // Æø
-		, height // ³ôÀÌ
-		, m_pTex->GetTexDC()
-		, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
-		, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
-		, RGB(255, 0, 255)); // Åõ¸í »ö»ó (¿¹½Ã)
+		float cos = cosf(_angle);
+		float sin = sinf(_angle);
 
-	// ¿ÀÇÁ¼Â Àû¿ë
-	/*vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
-	TransparentBlt(_hdc
-		, (int)(vPos.x - m_vecAnimFrame[m_CurFrame].vSlice.x / 2.f)
-		, (int)(vPos.y - m_vecAnimFrame[m_CurFrame].vSlice.y / 2.f)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
-		, m_pTex->GetTexDC()
-		, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
-		, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
-		, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
-		, RGB(255, 0, 255));*/
+		POINT vertices[4];
+
+		// È¸Àü Áß½É ÁÂÇ¥
+		float centerX = vPos.x; // ¿ÞÂÊ ³¡ÀÇ X ÁÂÇ¥
+		float centerY = vPos.y;           // Y ÁÂÇ¥´Â ±×´ë·Î À¯Áö
+
+		// °¢ ²ÀÁþÁ¡ È¸Àü ÈÄ È­¸é ÁÂÇ¥ °è»ê
+		if (!pObj->isCenter)
+		{
+			centerX -= halfWidth;
+			vertices[0].x = (LONG)(centerX + (0 * cos - (-halfHeight) * sin));
+			vertices[0].y = (LONG)(centerY + (0 * sin + (-halfHeight) * cos));
+
+			vertices[1].x = (LONG)(centerX + (width * cos - (-halfHeight) * sin));
+			vertices[1].y = (LONG)(centerY + (width * sin + (-halfHeight) * cos));
+
+			vertices[2].x = (LONG)(centerX + (0 * cos - (halfHeight)*sin));
+			vertices[2].y = (LONG)(centerY + (0 * sin + (halfHeight)*cos));
+		}
+		else
+		{
+			vertices[0].x = (LONG)(centerX + (-halfWidth * cos - halfHeight * sin));
+			vertices[0].y = (LONG)(centerY + (-halfWidth * sin + halfHeight * cos));
+
+			vertices[1].x = (LONG)(centerX + (halfWidth * cos - halfHeight * sin));
+			vertices[1].y = (LONG)(centerY + (halfWidth * sin + halfHeight * cos));
+
+			vertices[2].x = (LONG)(centerX + (-halfWidth * cos + halfHeight * sin));
+			vertices[2].y = (LONG)(centerY + (-halfWidth * sin - halfHeight * cos));
+		}
+
+		BitBlt(_rotateDC, 0, 0, width, height, _hdc, 0, 0, SRCCOPY);
+		PlgBlt(_rotateDC, vertices, m_pTex->GetTexDC(), (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), width, height, NULL, 0, 0);
+		vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
+		TransparentBlt(_hdc
+			, (int)(vPos.x - width / 2.f) // X ÁÂÇ¥
+			, (int)(vPos.y - height / 2.f) // Y ÁÂÇ¥
+			, width // Æø
+			, height // ³ôÀÌ
+			, m_pTex->GetTexDC()
+			, (int)(m_vecAnimFrame[m_CurFrame].vLT.x)
+			, (int)(m_vecAnimFrame[m_CurFrame].vLT.y)
+			, (int)(m_vecAnimFrame[m_CurFrame].vSlice.x)
+			, (int)(m_vecAnimFrame[m_CurFrame].vSlice.y)
+			, RGB(255, 0, 255)); // Åõ¸í »ö»ó (¿¹½Ã)
+	}
 }
 
 void Animation::Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, int _framecount, float _fDuration, bool _isRotate, Vec2 _offset)
