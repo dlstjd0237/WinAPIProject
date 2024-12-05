@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "EventManager.h"
 #include "CollisionManager.h"
+#include "EntityManager.h"
 
 PlayerAttackEffect::PlayerAttackEffect(Object* obj, bool _flip)
 {
@@ -30,11 +31,11 @@ void PlayerAttackEffect::Update()
 
 
 	this->SetPos({ pPos.x,pPos.y });
-	//m_attackTimer += fDT;
-	//if (m_attackTimer >= m_attackDelay)
-	//{
-	//	GET_SINGLE(EventManager)->DeleteObject(this);
-	//}
+	m_attackTimer += fDT;
+	if (m_attackTimer >= m_attackDelay)
+	{
+		GET_SINGLE(EventManager)->DeleteObject(this);
+	}
 }
 
 void PlayerAttackEffect::Render(HDC _hdc)
@@ -45,10 +46,10 @@ void PlayerAttackEffect::Render(HDC _hdc)
 void PlayerAttackEffect::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	cout << "������Ʈ ����";
 
 	if (pOtherObj->GetName() == L"Enemy") {
-		cout << "�� ����";
+		//이곳에서 피격처리
+		//GET_SINGLE(EntityManager)->GetBoss()->
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
 }

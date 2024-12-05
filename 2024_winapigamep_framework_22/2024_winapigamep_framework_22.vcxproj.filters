@@ -195,6 +195,9 @@
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
     <ClInclude Include="EntryScene.h" />
+    <ClInclude Include="FollowBulletPattern.h" />
+    <ClInclude Include="SniperShotPattern.h" />
+    <ClInclude Include="EntityManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -320,8 +323,12 @@
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
     <ClCompile Include="EntryScene.cpp" />
+    <ClCompile Include="FollowBulletPattern.cpp" />
+    <ClCompile Include="SniperShotPattern.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>
