@@ -32,7 +32,6 @@ public:
 public:
     virtual void Update() override;
     void BossMoveInit(Vec2 targetPos, float moveTime);
-
 protected:
     virtual void PatternInit() abstract;
     int RandomPattenIdxGet(bool noDuplication);

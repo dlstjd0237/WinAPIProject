@@ -30,11 +30,11 @@ void PlayerAttackEffect::Update()
 
 
 	this->SetPos({ pPos.x,pPos.y });
-	m_attackTimer += fDT;
-	if (m_attackTimer >= m_attackDelay)
-	{
-		GET_SINGLE(EventManager)->DeleteObject(this);
-	}
+	//m_attackTimer += fDT;
+	//if (m_attackTimer >= m_attackDelay)
+	//{
+	//	GET_SINGLE(EventManager)->DeleteObject(this);
+	//}
 }
 
 void PlayerAttackEffect::Render(HDC _hdc)
@@ -42,7 +42,7 @@ void PlayerAttackEffect::Render(HDC _hdc)
 	ComponentRender(_hdc);
 }
 
-void PlayerAttackEffect::EnterCollistion(Collider* _other)
+void PlayerAttackEffect::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
 	cout << "������Ʈ ����";
@@ -53,10 +53,14 @@ void PlayerAttackEffect::EnterCollistion(Collider* _other)
 	}
 }
 
-void PlayerAttackEffect::StayCollistion(Collider* _other)
+void PlayerAttackEffect::StayCollision(Collider* _other)
 {
+	cout << "�� ����";
+
 }
 
-void PlayerAttackEffect::ExitCollistion(Collider* _other)
+void PlayerAttackEffect::ExitCollision(Collider* _other)
 {
+	cout << "�� ����";
+
 }

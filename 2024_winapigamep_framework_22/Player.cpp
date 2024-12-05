@@ -11,6 +11,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "PlayerAttackEffect.h"
+#include "EntityManager.h"
 
 Player::Player()
 	: m_pTex(nullptr),
@@ -18,6 +19,7 @@ Player::Player()
 {
 
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Warrior.bmp");
+	GET_SINGLE(EntityManager)->SetPlayer(this);
 
 	//==== AddComponent ====
 	this->AddComponent<Collider>();
@@ -62,10 +64,13 @@ Player::Player()
 	//========================
 	//
 	//==== Animation Setting End ====
+
+
 }
 
 Player::~Player()
 {
+	GET_SINGLE(EntityManager)->SetPlayer(nullptr);
 }
 
 void Player::Update()
@@ -78,13 +83,13 @@ void Player::Update()
 	float y = vPos.y;
 
 	//==== Axis ====
-	if (GET_KEY(KEY_TYPE::A)) {
+	if (GET_KEY(KEY_TYPE::A) && m_isLeftWallDetected == false) {
 		vPos.x -= 100.f * fDT * m_speed;
 		SetEnergy(m_energy + 0.005f);
 		m_isMoveing = true;
 	}
 	//==============
-	if (GET_KEY(KEY_TYPE::D)) {
+	if (GET_KEY(KEY_TYPE::D) && m_isRightWallDetected == false) {
 		vPos.x += 100.f * fDT * m_speed;
 		SetEnergy(m_energy + 0.005f);
 		m_isMoveing = true;
@@ -163,12 +168,19 @@ void Player::EnterCollision(Collider* _other)
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Ground")
 	{
-		//SetUseGravity(false);
 		m_isJumping = false; // ���� ����
 		SetUseGravity(false); // �ٽ� �߷� Ȱ��ȭ
 		m_isGround = true;
 		m_isJumping = false;
 		m_jumpVelocity = 0.f;
+	}
+
+	if (pOtherObj->GetName() == L"LeftWall") {
+		m_isLeftWallDetected = true;
+	}
+
+	if (pOtherObj->GetName() == L"RightWall") {
+		m_isRightWallDetected = true;
 	}
 }
 
@@ -181,6 +193,15 @@ void Player::ExitCollision(Collider* _other)
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Ground")
 		m_isGround = false;
+
+
+	if (pOtherObj->GetName() == L"LeftWall") {
+		m_isLeftWallDetected = false;
+	}
+
+	if (pOtherObj->GetName() == L"RightWall") {
+		m_isRightWallDetected = false;
+	}
 }
 
 // ���� ����Ʈ ����

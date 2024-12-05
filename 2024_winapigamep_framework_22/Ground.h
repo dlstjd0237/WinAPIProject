@@ -6,7 +6,7 @@ class Ground :
 	public Object
 {
 public:
-	Ground();
+	Ground(bool _useTextur, Vec2 _colliderSize, Vec2 _colliderOffSet);
 	~Ground();
 public:
 	void Update() override;
@@ -17,6 +17,6 @@ public:
 	virtual void ExitCollision(Collider* _other);
 private:
 	Texture* m_pTex;
-
+	bool m_useTexur = false;
 };
 

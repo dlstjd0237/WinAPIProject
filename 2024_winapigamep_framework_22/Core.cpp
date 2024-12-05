@@ -6,6 +6,8 @@
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "EventManager.h"
+#include "EntityManager.h"
+
 bool Core::Init(HWND _hwnd)
 {
 	// ���� �ʱ�ȭ
@@ -18,7 +20,7 @@ bool Core::Init(HWND _hwnd)
 	// 1. ����(����)
 	m_hBackBit = ::CreateCompatibleBitmap(m_hDC, SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_hBackDC = ::CreateCompatibleDC(m_hDC);
-	
+
 	// 2. ����
 	::SelectObject(m_hBackDC, m_hBackBit);
 
@@ -28,6 +30,7 @@ bool Core::Init(HWND _hwnd)
 	GET_SINGLE(InputManager)->Init();
 	GET_SINGLE(ResourceManager)->Init();
 	GET_SINGLE(SceneManager)->Init();
+	GET_SINGLE(EntityManager)->Init();
 
 	//m_obj.SetPos(Vec2(SCREEN_WIDTH / 2
 	//				,SCREEN_HEIGHT/ 2));
