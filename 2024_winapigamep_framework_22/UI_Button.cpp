@@ -4,12 +4,19 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
-UI_Button::UI_Button(std::wstring bgPath, std::wstring text, Vec2 _scale) :
+UI_Button::UI_Button(std::wstring bgPath, std::wstring text, Vec2 _scale, std::wstring _name) :
+    m_texturName(_name),
+    m_texturPath(bgPath),
     m_text(text),
     m_pBgTex(nullptr),
     m_scale(_scale)
 {
-    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"ButtonBg", bgPath);
+    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(m_texturName, m_texturPath);
+}
+
+UI_Button::~UI_Button()
+{
+    
 }
 
 void UI_Button::Update()
@@ -32,7 +39,6 @@ void UI_Button::Update()
 
     if (isMouseOver && GET_SINGLE(InputManager)->GetKey(KEY_TYPE::LBUTTON) == KEY_STATE::DOWN) // 마우스 왼쪽 버튼이 눌렸는지 확인
     {
-        std::cout << "AAAA" << std::endl;
         if (OnClick)
         {
             OnClick();

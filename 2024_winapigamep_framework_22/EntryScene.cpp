@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Background.h"
 #include "SceneManager.h"
+#include "UI_Button.h"
 
 void EntryScene::Init()
 {
@@ -34,12 +35,18 @@ void EntryScene::Init()
 
 	//UI Element======
 
-	Object* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START", { 0.3f, 0.3f });
+	UI_Button* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START", { 0.3f, 0.3f }, 
+		L"pStartButton");
 	pStartButton->SetPos({ SCREEN_WIDTH / 2.f, 550.f });
 	pStartButton->SetSize({ 620.f, 40.f });
+	pStartButton->OnClick = []()
+		{
+			GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
+		};
 	AddObject(pStartButton, LAYER::UI);
 }
 
 void EntryScene::Update()
 {
+	Scene::Update();
 }
