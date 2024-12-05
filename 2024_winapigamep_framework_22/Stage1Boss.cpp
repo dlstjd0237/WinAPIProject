@@ -11,7 +11,7 @@
 
 Stage1Boss::Stage1Boss()
 {
-	_patternDelay = 3.f;
+	_patternDelay = 5.f;
 
 	PatternInit();
 	PatternIdxInit();

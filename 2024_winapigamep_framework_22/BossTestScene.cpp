@@ -24,8 +24,9 @@ void BossTestScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
-	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f }, {1000, 50});
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
 	//AddObject(war, LAYER::DEFAULT);
+	//war->SetRotate({ -1,-1 });
 
 
 	//==== Ground Setting ====

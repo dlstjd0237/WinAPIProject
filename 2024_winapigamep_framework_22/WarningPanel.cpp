@@ -40,14 +40,13 @@ void WarningPanel::Render(HDC _hdc)
 
 void WarningPanel::RotateBlt(HDC _hdc)
 {
-
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetSize();
 	float halfWidth = vScale.x / 2.0f;
 	float halfHeight = vScale.y / 2.0f;
 
-	DCInit(_hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
-	BitBlt(alphaDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, _hdc, 0, 0, SRCCOPY);
+	DCInit(_hdc, SCREEN_WIDTH , SCREEN_HEIGHT);
+	BitBlt(alphaDC, 0, 0, SCREEN_WIDTH , SCREEN_HEIGHT , _hdc, 0, 0, SRCCOPY);
 
 	GDISelector brush(alphaDC, BRUSH_TYPE::RED);
 	GDISelector pen(alphaDC, PEN_TYPE::HOLLOW);
@@ -76,7 +75,7 @@ void WarningPanel::RotateBlt(HDC _hdc)
 	vertices[2].x = (LONG)(leftX + (0 * cos - (halfHeight)*sin));
 	vertices[2].y = (LONG)(centerY + (0 * sin + (halfHeight)*cos));
 
-	BitBlt(rotateDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, alphaDC, 0, 0, SRCCOPY);
+	BitBlt(rotateDC, 0, 0, SCREEN_WIDTH , SCREEN_HEIGHT, alphaDC, 0, 0, SRCCOPY);
 	PlgBlt(_hdc, vertices, rotateDC, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y, NULL, 0, 0);
 }
 
