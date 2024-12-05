@@ -183,6 +183,7 @@
     <ClInclude Include="CrossTargetShotPattern.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EntryScene.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="EventManager.h" />
@@ -236,6 +237,7 @@
     <ClCompile Include="CrossShotPattern.cpp" />
     <ClCompile Include="CrossTargetShotPattern.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EntryScene.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FallingShotPattern.cpp" />
