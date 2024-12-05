@@ -10,6 +10,10 @@ UI_Health::UI_Health(const std::wstring& bgPath, const std::wstring& fillPath)
     m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", fillPath.c_str());
 }
 
+UI_Health::~UI_Health()
+{
+}
+
 void UI_Health::SetFillAmount(float _amount)
 {
     // 비율 제한 (0 ~ 1)

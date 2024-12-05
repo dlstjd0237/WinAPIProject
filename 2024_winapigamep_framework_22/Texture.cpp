@@ -17,14 +17,14 @@ Texture::~Texture()
 
 void Texture::Load(const wstring& _path)
 {
-	// 1: ÀÎ½ºÅÏ½º ÇÚµé(nullptr: µ¶¸³Çü ¸®¼Ò½º)
-	// 2: °æ·Î
+	// 1: ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½Úµï¿½(nullptr: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½)
+	// 2: ï¿½ï¿½ï¿½
 	// 3. BITMAP / ICON / CURSOR / .. 
-	// 4,5 : ÀÌ¹ÌÁö(¸®¼Ò½º) Å©±â
-	// 6: Ãß°¡ ÇÃ·¡±×
+	// 4,5 : ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ò½ï¿½) Å©ï¿½ï¿½
+	// 6: ï¿½ß°ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
 	m_hBit = (HBITMAP)::LoadImage(nullptr, _path.c_str(), IMAGE_BITMAP,
 		0,0, LR_CREATEDIBSECTION | LR_LOADFROMFILE);
-	assert(m_hBit); // nullptrÀÌ¸é assert°¡ °É¸³´Ï´Ù.
+	assert(m_hBit); // nullptrï¿½Ì¸ï¿½ assertï¿½ï¿½ ï¿½É¸ï¿½ï¿½Ï´ï¿½.
 	m_hDC = ::CreateCompatibleDC(GET_SINGLE(Core)->GetMainDC());
 	::SelectObject(m_hDC, m_hBit);
 	::GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);

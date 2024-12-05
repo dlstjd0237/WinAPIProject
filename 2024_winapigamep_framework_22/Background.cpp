@@ -49,7 +49,7 @@ void Background::Render(HDC _hdc)
 		BitBlt(_hdc
 			, (int)(vPos.x - width / 2)
 			, (int)(vPos.y - height / 2)
-			, width, height  // ½ºÄÉÀÏ ¸¸Å­
+			, width, height  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­
 			, m_pTex->GetTexDC()
 			, 0, 0, SRCCOPY);
 	}
@@ -57,9 +57,9 @@ void Background::Render(HDC _hdc)
 		::TransparentBlt(_hdc
 			, (int)(vPos.x - width / 2)
 			, (int)(vPos.y - height / 2)
-			, width, height,  // ½ºÄÉÀÏ ¸¸Å­ 
+			, width, height,  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ 
 			m_pTex->GetTexDC()
-			, 0, 0, width, height,       // ¿øº» Å©±â´Â ±×´ë·Î
+			, 0, 0, width, height,       // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½
 			RGB(255, 0, 255));
 	}
 }
