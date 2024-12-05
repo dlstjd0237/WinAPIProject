@@ -194,6 +194,7 @@
     <ClInclude Include="PlayerAttackEffect.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
+    <ClInclude Include="EntryScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -318,6 +319,7 @@
     <ClCompile Include="PlayerAttackEffect.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
+    <ClCompile Include="EntryScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
