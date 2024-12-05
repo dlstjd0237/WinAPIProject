@@ -17,10 +17,12 @@ public:
 	{
 		m_vecObj[(UINT)_type].push_back(_obj);
 	}
+
 	const vector<Object*>& GetLayerObjects(LAYER _type)
 	{
 		return m_vecObj[(UINT)_type];
 	}
+	
 private:
 	//Object m_obj;
 	//Object* m_pObj;

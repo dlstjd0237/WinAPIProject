@@ -5,9 +5,9 @@
 
 
 Background::Background(wstring _texturName, wstring _texturePath,
-	Vec2 _scale, Object* _player, float _offset) :
+	Object* _player, float _offset) :
 	m_pTex(nullptr)
-	, m_scale(_scale)
+
 	, m_texturName(_texturName)
 	, m_texturPath(_texturePath)
 	, m_pOnwer(_player)
@@ -24,11 +24,13 @@ Background::~Background()
 void Background::Update()
 {
 	Vec2 currPlayerPos = m_pOnwer->GetPos();
+	if (m_prevOwnerPos.x == currPlayerPos.x || m_offset == 0)
+		return;
 
 	Vec2 delta = currPlayerPos - m_prevOwnerPos;
 
 	Vec2 groundPos = GetPos();
-	
+
 	groundPos.x -= delta.x * m_offset;
 
 	SetPos(groundPos);
@@ -42,15 +44,22 @@ void Background::Render(HDC _hdc)
 
 	int width = m_pTex->GetWidth();
 	int height = m_pTex->GetHeight();
-	int scaledWidth = width * m_scale.x;
-	int scaledHeight = height * m_scale.y;
 
-	::TransparentBlt(_hdc
-		, (int)(vPos.x - scaledWidth / 2)
-		, (int)(vPos.y - scaledHeight / 2)
-		, scaledWidth, scaledHeight,  // Ãâ·Â Å©±â¸¦ µÎ ¹è·Î
-		m_pTex->GetTexDC()
-		, 0, 0, width, height,       // ¿øº» Å©±â´Â ±×´ë·Î
-		RGB(255, 0, 255));
-	ComponentRender(_hdc);
+	if (m_offset == 0) {
+		BitBlt(_hdc
+			, (int)(vPos.x - width / 2)
+			, (int)(vPos.y - height / 2)
+			, width, height  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­
+			, m_pTex->GetTexDC()
+			, 0, 0, SRCCOPY);
+	}
+	else {
+		::TransparentBlt(_hdc
+			, (int)(vPos.x - width / 2)
+			, (int)(vPos.y - height / 2)
+			, width, height,  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ 
+			m_pTex->GetTexDC()
+			, 0, 0, width, height,       // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½
+			RGB(255, 0, 255));
+	}
 }

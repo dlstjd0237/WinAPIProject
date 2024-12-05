@@ -186,6 +186,7 @@
     <ClInclude Include="CrossShotPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="Background.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
@@ -193,15 +194,7 @@
     <ClInclude Include="PlayerAttackEffect.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
-    <ClInclude Include="SniperShotPattern.h">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Engine\00.Work\InHae</Filter>
-    </ClInclude>
-    <ClInclude Include="FollowBulletPattern.h">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
-    </ClInclude>
+    <ClInclude Include="EntryScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -318,6 +311,7 @@
     <ClCompile Include="CrossShotPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="Background.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
@@ -325,15 +319,7 @@
     <ClCompile Include="PlayerAttackEffect.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
-    <ClCompile Include="SniperShotPattern.cpp">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Engine\00.Work\InHae</Filter>
-    </ClCompile>
-    <ClCompile Include="FollowBulletPattern.cpp">
-      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
-    </ClCompile>
+    <ClCompile Include="EntryScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

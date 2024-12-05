@@ -10,7 +10,6 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
-#include "RigidBody.h"
 #include "PlayerAttackEffect.h"
 
 Player::Player()
@@ -21,7 +20,6 @@ Player::Player()
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Warrior.bmp");
 
 	//==== AddComponent ====
-	this->AddComponent<RigidBody>();
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
 	//======================
@@ -82,13 +80,13 @@ void Player::Update()
 	//==== Axis ====
 	if (GET_KEY(KEY_TYPE::A)) {
 		vPos.x -= 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.01f);
+		SetEnergy(m_energy + 0.005f);
 		m_isMoveing = true;
 	}
 	//==============
 	if (GET_KEY(KEY_TYPE::D)) {
 		vPos.x += 100.f * fDT * m_speed;
-		SetEnergy(m_energy += 0.01f);
+		SetEnergy(m_energy + 0.005f);
 		m_isMoveing = true;
 	}
 	//==============

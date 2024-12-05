@@ -181,6 +181,7 @@
     <ClInclude Include="CrossShotPattern.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EntryScene.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FollowBulletPattern.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="CrossShotPattern.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EntryScene.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FollowBulletPattern.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -266,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

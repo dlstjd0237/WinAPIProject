@@ -49,11 +49,9 @@ void Animation::Render(HDC _hdc)
 	Vec2 vPos = pObj->GetPos();
 
 	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
-	bool flip = GET_SINGLE(ResourceManager)->GetAnimationFlip(m_strName);
 	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
 	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
 
-	int renderWidth = flip ? -width : width;
 
 	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
 	TransparentBlt(_hdc

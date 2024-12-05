@@ -36,20 +36,15 @@ void BossTestScene::Init()
 
 	//==== Background Setting ====
 
-	//Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp",
-	//	{ 4.5f,4.5f }, pPlayer, 0.f);
-	//pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) - 20, (SCREEN_HEIGHT / 2.f) + 150 });
-	//AddObject(pBackgroundObj1, LAYER::BACKGROUND);
+	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",
+		pPlayer, 0.f);
+	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) , (SCREEN_HEIGHT / 2.f) });
+	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
 
-	//Object* pBackgroundObj2 = new Background(L"Mountains", L"Texture\\mountains.bmp",
-	//	{ 4.5f,4.5f }, pPlayer, 0.025f);
-	//pBackgroundObj2->SetPos({ (SCREEN_WIDTH / 2.f) - 90, (SCREEN_HEIGHT / 2.f) + 50 });
-	//AddObject(pBackgroundObj2, LAYER::BACKGROUND);
-
-	//Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
-	//	{ 4.5f,4.5f }, pPlayer, 0.075f);
-	//pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) + 30 });
-	//AddObject(pBackgroundObj3, LAYER::BACKGROUND);
+	Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
+		pPlayer, 0.075f);
+	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) - 50 });
+	AddObject(pBackgroundObj3, LAYER::BACKGROUND);
 
 	//============================
 
@@ -58,14 +53,19 @@ void BossTestScene::Init()
 	pUIHealth->SetSize({ 620.f, 40.f });
 	AddObject(pUIHealth, LAYER::UI);
 
-	Object* pUIButton = new UI_Button(L"Texture\\planem.bmp");
+	UI_Button* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f });
 	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 550.f });
 	pUIButton->SetSize({ 620.f, 40.f });
+	pUIButton->OnClick = []()
+		{
+			std::cout << "Asdfsadf" << std::endl;
+		};
 	AddObject(pUIButton, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
+	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 }
 

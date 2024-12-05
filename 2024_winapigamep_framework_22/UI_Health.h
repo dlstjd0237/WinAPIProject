@@ -7,6 +7,7 @@ class UI_Health : public Object
 {
 public:
 	UI_Health(const std::wstring& bgPath, const std::wstring& fillPath);
+	~UI_Health();
 
 public:
 	// Object을(를) 통해 상속됨
