@@ -8,7 +8,6 @@ public:
 	~Projectile();
 	void Update() override;
 	void Render(HDC _hdc) override;
-private:
 	void DestroyAction();
 public:
 	void SetAngle(float _f)
@@ -30,6 +29,7 @@ public:
 	virtual void ExitCollision(Collider* _other);
 private:
 	//float m_dir;
+	float _dt;
 	float _speed = 500.f;
 	float m_angle;
 	Vec2 m_vDir;

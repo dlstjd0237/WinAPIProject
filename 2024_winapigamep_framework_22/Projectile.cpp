@@ -37,9 +37,10 @@ void Projectile::Update()
 	vPos.y += m_vDir.y * _speed * fDT;
 	SetPos(vPos);
 	Vec2 vSize = GetSize();
-	if (vPos.y < -vSize.y)
+
+	if (vPos.y < 0 || vPos.y > SCREEN_HEIGHT || vPos.x < 0 || vPos.x > SCREEN_WIDTH)
 	{
-		GET_SINGLE(EventManager)->DeleteObject(this);
+		DestroyAction();
 	}
 }
 

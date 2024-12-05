@@ -8,18 +8,18 @@
 #include "EventManager.h"
 bool Core::Init(HWND _hwnd)
 {
-	// º¯¼ö ÃÊ±âÈ­
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 	m_hWnd = _hwnd;
 	m_hDC = ::GetDC(m_hWnd);
 	m_hBackDC = 0;
 	m_hBackBit = 0;
 
-	// ´õºí ¹öÆÛ¸µ
-	// 1. »ý¼º(¼¼ÆÃ)
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¸ï¿½
+	// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 	m_hBackBit = ::CreateCompatibleBitmap(m_hDC, SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_hBackDC = ::CreateCompatibleDC(m_hDC);
 	
-	// 2. ¿¬°á
+	// 2. ï¿½ï¿½ï¿½ï¿½
 	::SelectObject(m_hBackDC, m_hBackBit);
 
 	CreateGDI();
@@ -36,9 +36,9 @@ bool Core::Init(HWND _hwnd)
 }
 void Core::CleanUp()
 {
-	// »ý¼ºÇÑ¼ø¼­ ¹Ý´ë·Î »èÁ¦
-	::DeleteDC(m_hBackDC);	//createdcÇÑ°Å
-	::DeleteObject(m_hBackBit); // createbitmap ÇÑ°Å
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¼ï¿½ï¿½ï¿½ ï¿½Ý´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	::DeleteDC(m_hBackDC);	//createdcï¿½Ñ°ï¿½
+	::DeleteObject(m_hBackBit); // createbitmap ï¿½Ñ°ï¿½
 	::ReleaseDC(m_hWnd, m_hDC);
 	for (int i = 0; i < (UINT)PEN_TYPE::END; ++i)
 	{
@@ -46,7 +46,7 @@ void Core::CleanUp()
 	}
 	for (int i = 1; i < (UINT)BRUSH_TYPE::END; ++i)
 	{
-		// Hollow Á¦¿ÜÇÏ°í
+		// Hollow ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
 		DeleteObject(m_colorBrushs[i]);
 	}
 

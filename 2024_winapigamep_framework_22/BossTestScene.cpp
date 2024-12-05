@@ -24,9 +24,8 @@ void BossTestScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
-	WarningPanel* warning = new WarningPanel(0.5f, { SCREEN_WIDTH / 2.f + 50.f, 150.f }, { 100.f,500.f });
-	AddObject(warning, LAYER::DEFAULT);
-	warning->isFade = true;
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f }, {1000, 50});
+	//AddObject(war, LAYER::DEFAULT);
 
 	Object* pObj = new Ground;
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });

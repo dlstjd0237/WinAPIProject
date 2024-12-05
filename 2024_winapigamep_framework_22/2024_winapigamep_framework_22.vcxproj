@@ -183,6 +183,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="FollowBulletPattern.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GDISelector.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SniperShotPattern.h" />
     <ClInclude Include="Stage1Boss.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
@@ -228,6 +230,7 @@
     <ClCompile Include="CrossShotPattern.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="FollowBulletPattern.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -245,6 +248,7 @@
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SniperShotPattern.cpp" />
     <ClCompile Include="Stage1Boss.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />

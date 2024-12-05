@@ -24,7 +24,7 @@ void Boss::Update()
 	if (isMoving)
 		BossMove();
 
-	if (_currentPattern != NULL)
+	if (_currentPattern != NULL || isMoving)
 		return;
 
 	_patternElapseTime += fDT;
@@ -33,10 +33,10 @@ void Boss::Update()
 	{
 		_patternElapseTime = 0;
 
-		//Debug
-		//_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::OneShot);
+		// Debug
+		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::SniperShot);
 		// ·£´ý ÆÐÅÏ
-		_currentPattern = GetPattern(RandomPattenIdxGet(true));
+		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
 }
 
@@ -47,7 +47,21 @@ void Boss::BossMoveInit(Vec2 targetPos, float moveTime)
 	_targetPos = targetPos;
 	_moveDeltaTime = 0;
 	_startPos = GetPos();
-	AnimationChange(Boss_ANIM_TYPE::MOVE, isFlip);
+	AnimationChange(Boss_ANIM_TYPE::MOVE, isLeft);
+}
+
+void Boss::FlipCheck()
+{
+	if (SCREEN_WIDTH / 2 <= GetPos().x)
+	{
+		if(!isLeft)
+			AnimationChange(Boss_ANIM_TYPE::MOVE, !isLeft);
+	}
+	else
+	{
+		if (isLeft)
+			AnimationChange(Boss_ANIM_TYPE::MOVE, !isLeft);
+	}
 }
 
 void Boss::BossMove()
@@ -56,11 +70,12 @@ void Boss::BossMove()
 	float elapseTime = _moveDeltaTime / _moveTime;
 	Vec2 pos = pos.VecLerp(_startPos, _targetPos, elapseTime);
 	SetPos(pos);
+	FlipCheck();
 
 	if (elapseTime >= 1)
 	{
 		SetPos(_targetPos);
-		AnimationChange(Boss_ANIM_TYPE::IDLE, isFlip);
+		AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
 		isMoving = false;
 	}
 }
@@ -129,7 +144,7 @@ void Boss::PatternIdxInit()
 	}
 }
 
-void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isFlip)
+void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 {
 	wstring key;
 	bool isLoop;
@@ -152,10 +167,11 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isFlip)
 		break;
 	}
 
-	if (isFlip)
+	if (isLeft)
 		key += L"Left";
 	else
 		key += L"Right";
 
+	this->isLeft = isLeft;
 	GetComponent<Animator>()->PlayAnimation(key, isLoop);
 }
