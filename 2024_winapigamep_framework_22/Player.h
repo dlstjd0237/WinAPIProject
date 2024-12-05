@@ -38,11 +38,15 @@ private:
 
 	bool m_isAttackTrigger = false;
 
+	bool m_isLeftWallDetected = false;
+	bool m_isRightWallDetected = false;
+
 	map<PLAYER_ANIM_TYPE, bool> m_actionMap;
-private:
+public:
 	const float GetEnergy() const { return m_energy; }
-	const float	 GetPlayerScale() const { return m_playerScale; }
-	const	float GetHealth() const { return m_health; }
+	const float	GetPlayerScale() const { return m_playerScale; }
+	const float GetHealth() const { return m_health; }
+	const bool GetWallDetected()const { return m_isLeftWallDetected == true || m_isRightWallDetected; }
 
 	void SetEnergy(float value) { m_energy = min(value, MAXENERGY); }
 	void SetPlayerScale(float _scale) { m_playerScale = _scale; }

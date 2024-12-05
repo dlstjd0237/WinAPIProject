@@ -18,24 +18,20 @@ void EntryScene::Init()
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);*/
 
-	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp",
+	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",
 		pPlayer, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) - 20, (SCREEN_HEIGHT / 2.f) + 150 });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
 
-	Object* pBackgroundObj2 = new Background(L"Mountains", L"Texture\\mountains.bmp",
-		pPlayer, 0.025f);
-	pBackgroundObj2->SetPos({ (SCREEN_WIDTH / 2.f) - 90, (SCREEN_HEIGHT / 2.f) + 50 });
-	AddObject(pBackgroundObj2, LAYER::BACKGROUND);
 
 	Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
-		pPlayer, 0.075f);
+		pPlayer, 0.05f);
 	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) + 30 });
 	AddObject(pBackgroundObj3, LAYER::BACKGROUND);
 
 	//UI Element======
 
-	UI_Button* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START", { 0.3f, 0.3f }, 
+	UI_Button* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"START", { 0.3f, 0.3f },
 		L"pStartButton");
 	pStartButton->SetPos({ SCREEN_WIDTH / 2.f, 550.f });
 	pStartButton->SetSize({ 620.f, 40.f });
