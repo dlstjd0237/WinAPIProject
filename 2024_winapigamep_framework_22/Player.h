@@ -42,7 +42,7 @@ private:
 	bool m_isRightWallDetected = false;
 
 	map<PLAYER_ANIM_TYPE, bool> m_actionMap;
-private:
+public:
 	const float GetEnergy() const { return m_energy; }
 	const float	GetPlayerScale() const { return m_playerScale; }
 	const float GetHealth() const { return m_health; }
