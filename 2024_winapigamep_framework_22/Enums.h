@@ -3,6 +3,7 @@
 enum class LAYER
 {
 	BACKGROUND,
+	WarningPanel,
 	GROUND,
 	DEFAULT,
 	PLAYER,
