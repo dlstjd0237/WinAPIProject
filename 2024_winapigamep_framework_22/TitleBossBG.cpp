@@ -6,7 +6,7 @@
 
 TitleBossBG::TitleBossBG()
 {
-	_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"BossBG", L"Texture\\Boss1.bmp");
+	_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"bbbbbb", L"Texture\\Boss1.bmp");
 
 	GetComponent<Animator>()->CreateAnimation(L"IdleRight", _m_pTex, Vec2(0.f, 0.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });

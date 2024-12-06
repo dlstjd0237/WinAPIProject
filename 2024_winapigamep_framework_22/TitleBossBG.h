@@ -9,4 +9,3 @@ public:
 	void Render(HDC _hdc) override;
 	void PatternInit() override;
 };
-

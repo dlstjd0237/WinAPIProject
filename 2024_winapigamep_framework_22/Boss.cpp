@@ -6,7 +6,7 @@
 #include "Animator.h"
 #include "Animation.h"
 
-// »ó¼Ó ¹ÞÀº »ý¼ºÀÚ¿¡¼­ PatternInit, PatternIdxInit ÇØÁà¾ß ÇÔ
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ PatternInit, PatternIdxInit ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 Boss::Boss()
 {
 	AddComponent<Collider>();
@@ -36,7 +36,7 @@ void Boss::Update()
 		_patternElapseTime = 0;
 		// Debug
 		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot);
-		// ·£´ý ÆÐÅÏ
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
 }
@@ -86,7 +86,7 @@ void Boss::BossMovePointInit()
 	Vec2 size = GetSize();
 	float width = SCREEN_WIDTH / 4;
 
-	// ¿ÞÂÊ »ó´Ü
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	_movePointVec.push_back({ size.x, size.y });
 	for (int i = 1; i <= 3; i++)
 	{
@@ -110,10 +110,10 @@ int Boss::RandomPattenIdxGet(bool noDuplication)
 		_addValue = 0;
 
 	srand(unsigned int(time(NULL)));
-	// ¸¶Áö¸· ÀÎµ¦½º´Â Àü¿¡ ¾´ ½ºÅ³, Áßº¹ ¹æÁö°¡ ÀÖÀ» °æ¿ì ¸¶Áö¸·À» »©°í ·£´ý¿¡¼­ »ÌÀ½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å³, ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int patIdx = rand() % (_patternIdxVec.size() - _addValue);
 
-	// ¸¶Áö¸· ÀÎµ¦½º¿Í ÇöÀç ·£´ý ÀÎµ¦½º¸¦ ±³È¯
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	int temp = _patternIdxVec[patIdx];
 	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1 - _addValue];
 	_patternIdxVec[_patternIdxVec.size() - 1 - _addValue] = temp;
