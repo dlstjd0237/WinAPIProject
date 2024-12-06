@@ -214,6 +214,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="TitleBossBG.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="UI_Health.h" />
@@ -264,6 +265,7 @@
     <ClCompile Include="Stage1Boss.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="TitleBossBG.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="UI_Health.cpp" />

@@ -19,8 +19,8 @@ void SceneManager::Init()
 	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 
-	//LoadScene(L"EntryScene");
-	LoadScene(L"BossTestScene");
+	LoadScene(L"EntryScene");
+	//LoadScene(L"BossTestScene");
 	//LoadScene(L"TitleScene");
 }
 
