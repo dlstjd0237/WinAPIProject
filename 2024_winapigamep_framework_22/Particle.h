@@ -10,10 +10,10 @@ enum class ParticleType
 };
 
 
-class ParticleSystem : public Object
+class Particle : public Object
 {
 public:
-	ParticleSystem(ParticleType type, float duration, float scale, bool isLoop);
+	Particle(ParticleType type, float duration, float scale, bool isLoop);
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
