@@ -69,10 +69,6 @@ void BossTestScene::Init()
 
 	//============================
 
-	pPlayerHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
-	pPlayerHealth->SetSize({ 620.f, 40.f });
-	AddObject(pPlayerHealth, LAYER::UI);
-
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);

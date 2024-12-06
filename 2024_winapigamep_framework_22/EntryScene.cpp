@@ -11,7 +11,7 @@ void EntryScene::Init()
 {
     // BG Element=========
     Object* pPlayer = new Player;
-    
+
     //보스안해~
 
     Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp", pPlayer, 0.f);
@@ -44,18 +44,18 @@ void EntryScene::Init()
         L"pStartButton", { 1.f, 1.f }, true);
     pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
     pStartButton->OnClick = []()
-    {
+        {
             GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
-    };
+        };
     AddObject(pStartButton, LAYER::UI);
 
     UI_Button* pExitButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nEXIT", { 0.3f, 0.3f },
         L"pExitButton", { 1.f, 1.f }, true);
     pExitButton->SetPos({ SCREEN_WIDTH / 9.f, 630.f });
     pExitButton->OnClick = []()
-    {
+        {
             PostQuitMessage(0);
-    };
+        };
     AddObject(pExitButton, LAYER::UI);
 }
 
