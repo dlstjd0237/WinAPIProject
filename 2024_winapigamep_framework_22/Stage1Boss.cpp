@@ -23,11 +23,9 @@ Stage1Boss::Stage1Boss()
 	_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Boss1", L"Texture\\Boss1.bmp");
 
 	GetComponent<Animator>()->CreateAnimation(L"IdleRight", _m_pTex, Vec2(0.f, 0.f),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"IdleLeft", _m_pTex, Vec2(0.f, 128.f * 7),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
-
-	SetAngle({1,1});
 
 	GetComponent<Animator>()->CreateAnimation(L"MoveRight", _m_pTex, Vec2(0.f, 128.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
@@ -43,11 +41,6 @@ Stage1Boss::Stage1Boss()
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"DamagedLeft", _m_pTex, Vec2(0.f, 128.f * 12),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, false, 3, { 0.f, -128.f / 2 });
-
-	GetComponent<Animator>()->CreateAnimation(L"DeadRight", _m_pTex, Vec2(0.f, 128.f * 6),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 9, 0.25f, false, 3, { 0.f, -128.f / 2 });
-	GetComponent<Animator>()->CreateAnimation(L"DeadLeft", _m_pTex, Vec2(0.f, 128.f * 13),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 9, 0.25f, false, 3, { 0.f, -128.f / 2 });
 
 	SetSize(Vec2(160.f, 128.f));
 

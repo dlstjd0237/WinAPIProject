@@ -4,18 +4,16 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "Collider.h"
-#include "ParticleSystem.h"
+#include "Particle.h"
 #include "EventManager.h"
 #include "SceneManager.h"
 #include "Scene.h"
-#include "EntityManager.h"
-#include "Player.h"
 
 Projectile::Projectile(Vec2 pos)
 {
 	SetPos(pos);
 
-	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletShot, 0.075f, 1.f, false);
+	Particle* particle = new Particle(ParticleType::BulletShot, 0.075f, 1.f, false);
 	particle->SetPos(pos);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 
@@ -55,7 +53,7 @@ void Projectile::Render(HDC _hdc)
 
 void Projectile::DestroyAction()
 {
-	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletDestroy, 0.05f, 1.f, false);
+	Particle* particle = new Particle(ParticleType::BulletDestroy, 0.05f, 1.f, false);
 	particle->SetPos(GetPos());
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 	GET_SINGLE(EventManager)->DeleteObject(this);
@@ -66,7 +64,6 @@ void Projectile::EnterCollision(Collider* _other)
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Player")
 	{
-		GET_SINGLE(EntityManager)->GetPlayer()->OnDamaged(1.f);
 		DestroyAction();
 	}
 	if (pOtherObj->GetName() == L"Ground")

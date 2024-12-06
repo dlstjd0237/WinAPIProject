@@ -24,6 +24,11 @@ void BossTestScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
+	//AddObject(war, LAYER::DEFAULT);
+	//war->SetRotate({ -1,-1 });
+
+
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
@@ -71,6 +76,7 @@ void BossTestScene::Init()
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
+	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 }
 
