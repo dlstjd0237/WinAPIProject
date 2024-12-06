@@ -72,3 +72,8 @@ void Object::UseGravity()
 	// 위치 설정
 	SetPos(newPos);
 }
+
+void Object::DeadProcess()
+{
+
+}
