@@ -7,8 +7,7 @@ class Background :
 {
 
 public:
-	Background(wstring _texturName, wstring _texturePath,
-		Object* _player, float _offset);
+	Background(wstring _texturName, wstring _texturePath, Object* _player, float _offset);
 	~Background();
 
 public:

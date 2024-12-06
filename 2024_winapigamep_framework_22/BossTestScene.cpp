@@ -24,14 +24,36 @@ void BossTestScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
-	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f }, {1000, 50});
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
 	//AddObject(war, LAYER::DEFAULT);
+	//war->SetRotate({ -1,-1 });
 
-	Object* pObj = new Ground;
+
+	//==== Ground Setting ====
+	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pObj->SetSize({ 1400.f, 720.f });
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);
+	//========================
+
+
+	//==== Wall Setting ====
+	Object* pLeftWallObj = new Ground(false, { 50.f, 900.f }, { 0, 0 });
+	pLeftWallObj->SetPos({ -25.f, SCREEN_HEIGHT / 2.f });
+	pLeftWallObj->SetSize({ 50.f, 900.f });
+	pLeftWallObj->SetName(L"LeftWall");
+	AddObject(pLeftWallObj, LAYER::GROUND);
+
+	Object* pRightWallObj = new Ground(false, { 50.f, 900.f }, { 0, 0 });
+	pRightWallObj->SetPos({ 1425.f, SCREEN_HEIGHT / 2.f });
+	pRightWallObj->SetSize({ 50.f, 900.f });
+	pRightWallObj->SetName(L"RightWall");
+	AddObject(pRightWallObj, LAYER::GROUND);
+	//======================
+
+
+
 
 	//==== Background Setting ====
 
@@ -47,19 +69,19 @@ void BossTestScene::Init()
 
 	//============================
 
-	Object* pUIHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
+	/*Object* pUIHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
 	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
 	pUIHealth->SetSize({ 620.f, 40.f });
 	AddObject(pUIHealth, LAYER::UI);
 
-	UI_Button* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f }, L"pUIButton");
+	UI_Button* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f }, L"Button");
 	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 550.f });
 	pUIButton->SetSize({ 620.f, 40.f });
 	pUIButton->OnClick = []()
 		{
 			std::cout << "Asdfsadf" << std::endl;
 		};
-	AddObject(pUIButton, LAYER::UI);
+	AddObject(pUIButton, LAYER::UI);*/
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);

@@ -32,15 +32,16 @@ public:
 public:
     virtual void Update() override;
     void BossMoveInit(Vec2 targetPos, float moveTime);
-
+    void AnimationChange(Boss_ANIM_TYPE anim, bool isFlip);
+    void OnDamaged();
 protected:
     virtual void PatternInit() abstract;
     int RandomPattenIdxGet(bool noDuplication);
     void PatternUpdate();
     void PatternIdxInit();
-    void AnimationChange(Boss_ANIM_TYPE anim, bool isFlip);
     void BossMovePointInit();
     void RandomBossMove();
+
 private:
     void FlipCheck();
     void BossMove();
@@ -64,7 +65,8 @@ protected:
     float _moveDeltaTime;
 
     Texture* _m_pTex;
-    Boss_ANIM_TYPE _currentBossAnim = Boss_ANIM_TYPE::IDLE;
+    Boss_ANIM_TYPE _currentAnimType = Boss_ANIM_TYPE::IDLE;
+    Animation* _currentAnim;
     BossMovePoint _currentBossPoint;
     vector<Vec2> _movePointVec;
 

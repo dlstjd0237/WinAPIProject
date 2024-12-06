@@ -8,10 +8,14 @@
 #include "CrossShotPattern.h"
 #include "FollowBulletPattern.h"
 #include "SniperShotPattern.h"
+#include "BottomShotPattern.h"
+#include "FollowBottomShotPattern.h"
+#include "FallingShotPattern.h"
+#include "CrossTargetShotPattern.h"
 
 Stage1Boss::Stage1Boss()
 {
-	_patternDelay = 3.f;
+	_patternDelay = 5.f;
 
 	PatternInit();
 	PatternIdxInit();
@@ -21,22 +25,22 @@ Stage1Boss::Stage1Boss()
 	GetComponent<Animator>()->CreateAnimation(L"IdleRight", _m_pTex, Vec2(0.f, 0.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"IdleLeft", _m_pTex, Vec2(0.f, 128.f * 7),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 
 	GetComponent<Animator>()->CreateAnimation(L"MoveRight", _m_pTex, Vec2(0.f, 128.f),
 		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"MoveLeft", _m_pTex, Vec2(0.f, 128.f * 8),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 8, 0.1f, false, 3, { 0.f, -128.f / 2 });
 
 	GetComponent<Animator>()->CreateAnimation(L"AttackRight", _m_pTex, Vec2(0.f, 128.f * 2),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"AttackLeft", _m_pTex, Vec2(0.f, 128.f * 9),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 13, 0.1f, false, 3, { 0.f, -128.f / 2 });
 
 	GetComponent<Animator>()->CreateAnimation(L"DamagedRight", _m_pTex, Vec2(0.f, 128.f * 5),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, false, 3, { 0.f, -128.f / 2 });
 	GetComponent<Animator>()->CreateAnimation(L"DamagedLeft", _m_pTex, Vec2(0.f, 128.f * 12),
-		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, true, 3, { 0.f, -128.f / 2 });
+		Vec2(160.f, 128.f), Vec2(160.f, 0.f), 5, 0.1f, false, 3, { 0.f, -128.f / 2 });
 
 	SetSize(Vec2(160.f, 128.f));
 
@@ -62,6 +66,18 @@ void Stage1Boss::PatternInit()
 
 	SniperShotPattern* sniperShotPat = new SniperShotPattern();
 	AddPattern<Stage1BossPattern>(Stage1BossPattern::SniperShot, sniperShotPat);
+
+	BottomShotPattern* bottomShotPat = new BottomShotPattern();
+	AddPattern<Stage1BossPattern>(Stage1BossPattern::BottomShot, bottomShotPat);
+
+	FollowBottomShotPattern* followBottomPat = new FollowBottomShotPattern();
+	AddPattern<Stage1BossPattern>(Stage1BossPattern::FollowBottomShot, followBottomPat);
+
+	FallingShotPattern* fallingShotPat = new FallingShotPattern();
+	AddPattern<Stage1BossPattern>(Stage1BossPattern::FallingShot, fallingShotPat);
+
+	CrossTargetShotPattern* crossTargetShotPat = new CrossTargetShotPattern();
+	AddPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot, crossTargetShotPat);
 
 	for (auto iter = _bossPattern.begin(); iter != _bossPattern.end(); iter++)
 	{

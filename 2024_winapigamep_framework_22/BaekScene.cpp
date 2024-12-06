@@ -10,13 +10,6 @@
 #include "ResourceManager.h"
 void BaekScene::Init()
 {
-
-	Object* pObj = new Ground;
-	pObj->SetPos({ SCREEN_WIDTH / 2.f,900.f });
-	pObj->SetSize({ 1920.f,100.f });
-	pObj->SetName(L"Ground");
-	AddObject(pObj, LAYER::GROUND);
-
 	Object* pPlayer = new Player;
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
 	pPlayer->SetSize({ 69.f*2,44.f*2 });

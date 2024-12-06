@@ -35,11 +35,10 @@ void SniperShotPattern::Sniping()
 	if (_warningPanel == NULL)
 	{
 		Vec2 pos = _boss->GetPos();
-		_warningPanel = new WarningPanel(0.1f, pos, {SCREEN_WIDTH, 50});
-		pos.x += _warningPanel->GetSize().x / 2;
+		_warningPanel = new WarningPanel(0.1f, pos, {SCREEN_WIDTH, 50}, false);
+		pos.x = pos.x + SCREEN_WIDTH / 2;
 		_warningPanel->SetPos(pos);
-
-		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(_warningPanel, LAYER::DEFAULT);
+		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(_warningPanel, LAYER::WarningPanel);
 	}
 
 	Vec2 bossPos = _boss->GetPos();

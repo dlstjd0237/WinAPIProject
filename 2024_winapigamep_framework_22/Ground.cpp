@@ -4,14 +4,17 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 
-Ground::Ground()
+Ground::Ground(bool _useTextur, Vec2 _colliderSize, Vec2 _colliderOffSet)
 	:m_pTex(nullptr)
+	, m_useTexur(_useTextur)
 {
-	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Ground", L"Texture\\ground.bmp");
+	if (_useTextur)
+		m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Ground", L"Texture\\ground.bmp");
+
 	this->AddComponent<Collider>();
 
-	GetComponent<Collider>()->SetSize(Vec2(1920, 50));
-	GetComponent<Collider>()->SetOffSetPos(Vec2(0, 280));
+	GetComponent<Collider>()->SetSize(_colliderSize);
+	GetComponent<Collider>()->SetOffSetPos(_colliderOffSet);
 
 }
 
@@ -25,11 +28,14 @@ void Ground::Update()
 
 void Ground::Render(HDC _hdc)
 {
+	if (m_useTexur == false) {
+		ComponentRender(_hdc);
+		return;
+	}
 	Vec2 vPos = GetPos();
 
 	int width = m_pTex->GetWidth();
 	int height = m_pTex->GetHeight();
-
 
 	::TransparentBlt(_hdc
 		, (int)(vPos.x - width / 2)

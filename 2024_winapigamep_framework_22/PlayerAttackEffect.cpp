@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "EventManager.h"
 #include "CollisionManager.h"
+#include "EntityManager.h"
 
 PlayerAttackEffect::PlayerAttackEffect(Object* obj, bool _flip)
 {
@@ -42,21 +43,25 @@ void PlayerAttackEffect::Render(HDC _hdc)
 	ComponentRender(_hdc);
 }
 
-void PlayerAttackEffect::EnterCollistion(Collider* _other)
+void PlayerAttackEffect::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	cout << "������Ʈ ����";
 
 	if (pOtherObj->GetName() == L"Enemy") {
-		cout << "�� ����";
+		//이곳에서 피격처리
+		//GET_SINGLE(EntityManager)->GetBoss()->
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
 }
 
-void PlayerAttackEffect::StayCollistion(Collider* _other)
+void PlayerAttackEffect::StayCollision(Collider* _other)
 {
+	cout << "�� ����";
+
 }
 
-void PlayerAttackEffect::ExitCollistion(Collider* _other)
+void PlayerAttackEffect::ExitCollision(Collider* _other)
 {
+	cout << "�� ����";
+
 }

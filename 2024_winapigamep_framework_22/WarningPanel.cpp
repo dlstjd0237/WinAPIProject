@@ -6,11 +6,12 @@
 #include "SceneManager.h"
 #include "Scene.h"
 
-WarningPanel::WarningPanel(float fadeTime, Vec2 pos, Vec2 size)
+WarningPanel::WarningPanel(float fadeTime, Vec2 pos, Vec2 size, bool isCenter)
 {
 	_deltaTime = 0;
 	_fadeTime = fadeTime;
 	_fadeValue = 128;
+	this->isCenter = isCenter;
 	SetPos(pos);
 	SetSize(size);
 }
@@ -40,14 +41,15 @@ void WarningPanel::Render(HDC _hdc)
 
 void WarningPanel::RotateBlt(HDC _hdc)
 {
-
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetSize();
 	float halfWidth = vScale.x / 2.0f;
 	float halfHeight = vScale.y / 2.0f;
+	float dcWidth = SCREEN_WIDTH + vScale.x;
+	float dcHeight = SCREEN_HEIGHT + vScale.y;
 
-	DCInit(_hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
-	BitBlt(alphaDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, _hdc, 0, 0, SRCCOPY);
+	DCInit(_hdc, dcWidth, dcHeight);
+	BitBlt(alphaDC, 0, 0, dcWidth, dcHeight, _hdc, 0, 0, SRCCOPY);
 
 	GDISelector brush(alphaDC, BRUSH_TYPE::RED);
 	GDISelector pen(alphaDC, PEN_TYPE::HOLLOW);
@@ -63,20 +65,37 @@ void WarningPanel::RotateBlt(HDC _hdc)
 	POINT vertices[4];
 
 	// È¸Àü Áß½É ÁÂÇ¥
-	float leftX = vPos.x - halfWidth; // ¿ÞÂÊ ³¡ÀÇ X ÁÂÇ¥
+	float centerX = vPos.x; // ¿ÞÂÊ ³¡ÀÇ X ÁÂÇ¥
 	float centerY = vPos.y;           // Y ÁÂÇ¥´Â ±×´ë·Î À¯Áö
 
 	// °¢ ²ÀÁþÁ¡ È¸Àü ÈÄ È­¸é ÁÂÇ¥ °è»ê
-	vertices[0].x = (LONG)(leftX + (0 * cos - (-halfHeight) * sin));
-	vertices[0].y = (LONG)(centerY + (0 * sin + (-halfHeight) * cos));
+	if (!isCenter)
+	{
+		centerX -= halfWidth;
+		vertices[0].x = (LONG)(centerX + (0 * cos - (-halfHeight) * sin));
+		vertices[0].y = (LONG)(centerY + (0 * sin + (-halfHeight) * cos));
 
-	vertices[1].x = (LONG)(leftX + (vScale.x * cos - (-halfHeight) * sin));
-	vertices[1].y = (LONG)(centerY + (vScale.x * sin + (-halfHeight) * cos));
+		vertices[1].x = (LONG)(centerX + (vScale.x * cos - (-halfHeight) * sin));
+		vertices[1].y = (LONG)(centerY + (vScale.x * sin + (-halfHeight) * cos));
 
-	vertices[2].x = (LONG)(leftX + (0 * cos - (halfHeight)*sin));
-	vertices[2].y = (LONG)(centerY + (0 * sin + (halfHeight)*cos));
+		vertices[2].x = (LONG)(centerX + (0 * cos - (halfHeight)*sin));
+		vertices[2].y = (LONG)(centerY + (0 * sin + (halfHeight)*cos));
+	}
+	else
+	{
+		vertices[0].x = (LONG)(centerX + (-halfWidth * cos - halfHeight * sin));
+		vertices[0].y = (LONG)(centerY + (-halfWidth * sin + halfHeight * cos));
 
-	BitBlt(rotateDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, alphaDC, 0, 0, SRCCOPY);
+		vertices[1].x = (LONG)(centerX + (halfWidth * cos - halfHeight * sin));
+		vertices[1].y = (LONG)(centerY + (halfWidth * sin + halfHeight * cos));
+
+		vertices[2].x = (LONG)(centerX + (-halfWidth * cos + halfHeight * sin));
+		vertices[2].y = (LONG)(centerY + (-halfWidth * sin - halfHeight * cos));
+	}
+
+	AlphaBlend(alphaDC, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y
+		, alphaDC, 0, 0, vScale.x, vScale.y, bf);
+	BitBlt(rotateDC, 0, 0, dcWidth, dcHeight, alphaDC, 0, 0, SRCCOPY);
 	PlgBlt(_hdc, vertices, rotateDC, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y, NULL, 0, 0);
 }
 

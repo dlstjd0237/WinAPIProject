@@ -32,7 +32,8 @@ private:
 	float _dt;
 	float _speed = 500.f;
 	float m_angle;
+	float _animScale = 2.f;
 	Vec2 m_vDir;
-	Texture* m_pTex;
+	Texture* _m_pTex;
 };
 
