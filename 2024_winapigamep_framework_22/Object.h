@@ -32,6 +32,7 @@ public:
 	void SetName(wstring _name) { m_name = _name; }
 	void UseGravity();
 	const wstring& GetName() const { return m_name; }
+	virtual void DeadProcess();
 
 private:
 	bool m_IsDie;
@@ -67,6 +68,6 @@ private:
 	float m_vGravity;
 	vector<Component*> m_vecComponents;
 public:
-	bool isCenter;
+	bool isCenter = true;
 };
 
