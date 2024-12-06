@@ -16,10 +16,12 @@ public:
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetSize(Vec2 _vSize) { m_vSize = _vSize; }
+	void SetAngle(Vec2 dir) { _angle = atan2(dir.y, dir.x); }
 	void SetUseGravity(bool _value) { m_IsUseGravity = _value; }
 	void SetGravity(float _gravit) { m_gravity = _gravit; }
 	const Vec2& GetPos() const { return m_vPos; }
 	const Vec2& GetSize() const { return m_vSize; }
+	const float& GetAngle() const { return _angle; }
 	const float& GetGravity()const { return	 m_gravity; }
 public:
 	virtual void EnterCollision(Collider* _other);
@@ -59,9 +61,12 @@ public:
 private:
 	//POINT m_ptPos;
 	//POINT m_ptSize;
+	float _angle;
 	Vec2 m_vPos;
 	Vec2 m_vSize;
 	float m_vGravity;
 	vector<Component*> m_vecComponents;
+public:
+	bool isCenter;
 };
 

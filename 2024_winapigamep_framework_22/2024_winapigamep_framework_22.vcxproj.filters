@@ -186,7 +186,6 @@
     <ClInclude Include="CrossShotPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="Background.h">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
@@ -195,9 +194,27 @@
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClInclude>
     <ClInclude Include="EntryScene.h" />
-    <ClInclude Include="FollowBulletPattern.h" />
-    <ClInclude Include="SniperShotPattern.h" />
-    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="FollowBulletPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowBottomShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="SniperShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossTargetShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="BottomShotPattern.h">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Engine\00.Work\InHae</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -314,7 +331,6 @@
     <ClCompile Include="CrossShotPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="Background.cpp">
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
@@ -323,9 +339,27 @@
       <Filter>Engine\00.Work\Baek\03.Object</Filter>
     </ClCompile>
     <ClCompile Include="EntryScene.cpp" />
-    <ClCompile Include="FollowBulletPattern.cpp" />
-    <ClCompile Include="SniperShotPattern.cpp" />
-    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="FallingShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowBottomShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowBulletPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossTargetShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="BottomShotPattern.cpp">
+      <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Engine\00.Work\InHae</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

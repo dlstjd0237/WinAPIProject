@@ -35,28 +35,28 @@ Player::Player()
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightAttack", m_pTex, Vec2(0.f, 44.0f * 13),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftAttack", m_pTex, Vec2(0.f, 44.0f * 30),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, true, scale);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, scale);
 	//============================
 	// 
 	//==== Jump Animtion ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightJump", m_pTex, Vec2(0.f, 44.0f * 7),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftJump", m_pTex, Vec2(0.f, 44.0f * 24),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	//=======================
 	//
 	//==== Move Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightMove", m_pTex, Vec2(0.f, 44.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftMove", m_pTex, Vec2(0.f, 44.f * 18.0f),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	//========================
 	//
 	//==== Idle Animation ====
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightIdle", m_pTex, Vec2(0.f, 0.f),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftIdle", m_pTex, Vec2(0.f, 44.f * 17),
-		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, true, scale);
+		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 6, 0.1f, false, scale);
 	//=========================
 	//
 	//==== Animation play ====

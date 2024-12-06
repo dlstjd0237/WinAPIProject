@@ -40,11 +40,6 @@ void AllRangeCircleBossPattern::Shot()
 	_elapseTime = .0f;
 }
 
-void AllRangeCircleBossPattern::SetPattern()
-{
-
-}
-
 void AllRangeCircleBossPattern::Exit()
 {
 	BossPattern::Exit();

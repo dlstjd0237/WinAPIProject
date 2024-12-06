@@ -21,8 +21,8 @@ void SceneManager::Init()
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 
-	//LoadScene(L"EntryScene");
-	LoadScene(L"DeadScene");
+	//LoadScene(L"DeadScene");
+	LoadScene(L"EntryScene");
 	//LoadScene(L"BossTestScene");
 	//LoadScene(L"TitleScene");
 }
@@ -52,7 +52,6 @@ void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scen
 
 void SceneManager::LoadScene(const wstring& _sceneName)
 {
-	// ���� ������
 	if (m_pCurrentScene != nullptr)
 	{
 		m_pCurrentScene->Release();

@@ -10,8 +10,6 @@
 #include "Scene.h"
 
 Projectile::Projectile(Vec2 pos)
-	: m_angle(0.f)
-	, m_vDir(1.f, 1.f)
 {
 	SetPos(pos);
 
@@ -19,10 +17,16 @@ Projectile::Projectile(Vec2 pos)
 	particle->SetPos(pos);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 
-	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Bullet", L"Texture\\Bullet.bmp");
-	this->AddComponent<Collider>();
-	GetComponent<Collider>()->SetSize({ 20.f,20.f });
 	SetName(L"Projectile");
+
+	AddComponent<Collider>();
+	GetComponent<Collider>()->SetSize({ 30.f, 30.f});
+
+	_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Bullet", L"Texture\\Projectile.bmp");
+	AddComponent<Animator>();
+	GetComponent<Animator>()->CreateAnimation(L"Play", _m_pTex, Vec2(24.f * 16, 24.f * 12),
+		Vec2(24.f, 24.f), Vec2(24.f, 0.f), 8, 0.1f, false, _animScale);
+	GetComponent<Animator>()->PlayAnimation(L"Play", true);
 }
 
 Projectile::~Projectile()
@@ -32,11 +36,9 @@ Projectile::~Projectile()
 void Projectile::Update()
 {
 	Vec2 vPos = GetPos();
-
 	vPos.x += m_vDir.x * _speed * fDT;
 	vPos.y += m_vDir.y * _speed * fDT;
 	SetPos(vPos);
-	Vec2 vSize = GetSize();
 
 	if (vPos.y < 0 || vPos.y > SCREEN_HEIGHT || vPos.x < 0 || vPos.x > SCREEN_WIDTH)
 	{
@@ -46,17 +48,6 @@ void Projectile::Update()
 
 void Projectile::Render(HDC _hdc)
 {
-	Vec2 vPos = GetPos();
-	Vec2 vSize = GetSize();
-
-	int width = m_pTex->GetWidth();
-	int height = m_pTex->GetHeight();
-	::TransparentBlt(_hdc
-		, (int)(vPos.x - width / 2)
-		, (int)(vPos.y - height / 2)
-		, width, height,
-		m_pTex->GetTexDC()
-		, 0, 0, width, height, RGB(255, 0, 255));
 	ComponentRender(_hdc);
 }
 

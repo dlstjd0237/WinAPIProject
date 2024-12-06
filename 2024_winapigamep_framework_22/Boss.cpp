@@ -4,8 +4,9 @@
 #include "TimeManager.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Animation.h"
 
-// »ó¼Ó ¹ÞÀº »ý¼ºÀÚ¿¡¼­ PatternInit, PatternIdxInit ÇØÁà¾ß ÇÔ
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ PatternInit, PatternIdxInit ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 Boss::Boss()
 {
 	AddComponent<Collider>();
@@ -31,11 +32,11 @@ void Boss::Update()
 
 	if (_patternElapseTime >= _patternDelay)
 	{
+		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
-
 		// Debug
-		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::SniperShot);
-		// ·£´ý ÆÐÅÏ
+		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot);
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
 }
@@ -85,7 +86,7 @@ void Boss::BossMovePointInit()
 	Vec2 size = GetSize();
 	float width = SCREEN_WIDTH / 4;
 
-	// ¿ÞÂÊ »ó´Ü
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	_movePointVec.push_back({ size.x, size.y });
 	for (int i = 1; i <= 3; i++)
 	{
@@ -109,10 +110,10 @@ int Boss::RandomPattenIdxGet(bool noDuplication)
 		_addValue = 0;
 
 	srand(unsigned int(time(NULL)));
-	// ¸¶Áö¸· ÀÎµ¦½º´Â Àü¿¡ ¾´ ½ºÅ³, Áßº¹ ¹æÁö°¡ ÀÖÀ» °æ¿ì ¸¶Áö¸·À» »©°í ·£´ý¿¡¼­ »ÌÀ½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å³, ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int patIdx = rand() % (_patternIdxVec.size() - _addValue);
 
-	// ¸¶Áö¸· ÀÎµ¦½º¿Í ÇöÀç ·£´ý ÀÎµ¦½º¸¦ ±³È¯
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	int temp = _patternIdxVec[patIdx];
 	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1 - _addValue];
 	_patternIdxVec[_patternIdxVec.size() - 1 - _addValue] = temp;
@@ -125,6 +126,9 @@ void Boss::PatternUpdate()
 {
 	if (_currentPattern != NULL)
 	{
+		if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
+			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
+
 		_currentPattern->Update();
 		if (_currentPattern->isEnd)
 		{
@@ -146,10 +150,11 @@ void Boss::PatternIdxInit()
 
 void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 {
+	_currentAnimType = anim;
 	wstring key;
-	bool isLoop;
+	bool isLoop = false;
 
-	switch (anim)
+	switch (_currentAnimType)
 	{
 	case Boss_ANIM_TYPE::IDLE:
 		key = L"Idle";
@@ -174,4 +179,5 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 
 	this->isLeft = isLeft;
 	GetComponent<Animator>()->PlayAnimation(key, isLoop);
+	_currentAnim = GetComponent<Animator>()->GetCurrentAnim();
 }
