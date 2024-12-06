@@ -20,6 +20,7 @@ Ground::Ground(bool _useTextur, Vec2 _colliderSize, Vec2 _colliderOffSet)
 
 Ground::~Ground()
 {
+	delete m_pTex;
 }
 
 void Ground::Update()

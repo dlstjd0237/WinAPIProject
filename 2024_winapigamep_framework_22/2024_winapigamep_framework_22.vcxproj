@@ -169,6 +169,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BackgroundAnimation.h" />
     <ClInclude Include="BaekScene.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Boss.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="CrossShotPattern.h" />
+    <ClInclude Include="DeadScene.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EntityManager.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BackgroundAnimation.cpp" />
     <ClCompile Include="BaekScene.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Boss.cpp" />
@@ -230,6 +233,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="CrossShotPattern.cpp" />
+    <ClCompile Include="DeadScene.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EntryScene.cpp" />

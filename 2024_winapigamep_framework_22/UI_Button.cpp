@@ -84,5 +84,6 @@ void UI_Button::Render(HDC _hdc)
     SetTextColor(_hdc, RGB(0, 0, 0));
     RECT rect = { (int)(vPos.x - bgWidth / 2), (int)(vPos.y - bgHeight / 2), 
         (int)(vPos.x + bgWidth / 2), (int)(vPos.y + bgHeight / 2) };
+
     DrawText(_hdc, m_text.c_str(), -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 }

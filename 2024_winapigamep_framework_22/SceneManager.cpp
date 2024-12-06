@@ -6,6 +6,7 @@
 #include "BaekScene.h"
 #include "BossTestScene.h"
 #include "EntryScene.h"
+#include "DeadScene.h"
 
 void SceneManager::Init()
 {
@@ -18,9 +19,11 @@ void SceneManager::Init()
 	RegisterScene(L"BossTestScene",std::make_shared<BossTestScene>());
 	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
+	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 
 	//LoadScene(L"EntryScene");
-	LoadScene(L"BossTestScene");
+	LoadScene(L"DeadScene");
+	//LoadScene(L"BossTestScene");
 	//LoadScene(L"TitleScene");
 }
 
