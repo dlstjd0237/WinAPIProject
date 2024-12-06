@@ -64,12 +64,9 @@ void BossTestScene::Init()
 
 	//============================
 
-	Object* pUIHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
-	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
-	pUIHealth->SetSize({ 620.f, 40.f });
-	AddObject(pUIHealth, LAYER::UI);
-
-	AddObject(pUIButton, LAYER::UI);
+	pPlayerHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
+	pPlayerHealth->SetSize({ 620.f, 40.f });
+	AddObject(pPlayerHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
