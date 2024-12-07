@@ -4,6 +4,11 @@
 #include "TimeManager.h"
 #include "Collider.h"
 #include "RandomLaserPattern.h"
+#include "LeftFullLaserPattern.h"
+#include "RightFullLaserPattern.h"
+#include "CenterFullLaserPattern.h"
+#include "ZigzagLaserPattern.h"
+#include "ZigzagRandomLaserPattern.h"
 
 Stage2Boss::Stage2Boss()
 {
@@ -62,6 +67,21 @@ void Stage2Boss::PatternInit()
 {
 	RandomLaserPattern* randomLaser = new RandomLaserPattern();
 	AddPattern<Stage2BossPattern>(Stage2BossPattern::RandomLaser, randomLaser);
+
+	LeftFullLaserPattern* leftFullLaser = new LeftFullLaserPattern();
+	AddPattern<Stage2BossPattern>(Stage2BossPattern::LeftFullLaser, leftFullLaser);
+
+	RightFullLaserPattern* rightFullLaser = new RightFullLaserPattern();
+	AddPattern<Stage2BossPattern>(Stage2BossPattern::RightFullLaser, rightFullLaser);
+
+	CenterFullLaserPattern* centerFullLaser = new CenterFullLaserPattern();
+	AddPattern<Stage2BossPattern>(Stage2BossPattern::CenterFullLaser, centerFullLaser);
+
+	ZigzagLaserPattern* zigzagLaser = new ZigzagLaserPattern();
+	AddPattern<Stage2BossPattern>(Stage2BossPattern::ZigzagLaser, zigzagLaser);
+
+	ZigzagRandomLaserPattern* zigzagRandomLaser = new ZigzagRandomLaserPattern();
+	AddPattern<Stage2BossPattern>(Stage2BossPattern::ZigzagRandomLaser, zigzagRandomLaser);
 
 	for (auto iter = _bossPattern.begin(); iter != _bossPattern.end(); iter++)
 	{

@@ -23,6 +23,7 @@ Laser::Laser(float waitTime, float fireTime, Vec2 readyScale, float laserWidth)
 
 	_animScale = readyScale;
 	_laserScale = { laserWidth, 12.f };
+	_colliderScale = { _laserScale.x * 64.f / 2, _laserScale.y * 64.f };
 
 	GetComponent<Animator>()->CreateAnimation(L"Ready", _m_pTex, Vec2(0.f, sliceHeight * 27),
 		Vec2(sliceWidth, sliceHeight), Vec2(sliceWidth, 0.f), 9, 0.05f, false, _animScale);
@@ -42,7 +43,7 @@ void Laser::Update()
 		Ready();
 	if (_isFiring)
 		Fire();
-	if (_isEnd)
+	if (isEnd)
 		EndCheck();
 }
 
@@ -82,7 +83,7 @@ void Laser::Fire()
 	if (_currentType == LaserStateType::Fire && AnimationEndCheck())
 	{
 		GetComponent<Animator>()->PlayAnimation(L"Firing", true);
-		GetComponent<Collider>()->SetSize({ _laserScale.x * 64.f / 2, _laserScale.y * 64.f });
+		GetComponent<Collider>()->SetSize(_colliderScale);
 		_currentType = LaserStateType::Firing;
 	}
 
@@ -90,7 +91,7 @@ void Laser::Fire()
 	if (_deltaTime >= _fireTime)
 	{
 		_isFiring = false;
-		_isEnd = true;
+		isEnd = true;
 		GetComponent<Collider>()->SetSize({0 , 0});
 		GetComponent<Animator>()->PlayAnimation(L"End", false);
 		_currentType = LaserStateType::End;

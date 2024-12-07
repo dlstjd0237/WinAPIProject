@@ -7,6 +7,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "EntityManager.h"
+#include "CameraManager.h"
 
 bool Core::Init(HWND _hwnd)
 {
@@ -31,6 +32,7 @@ bool Core::Init(HWND _hwnd)
 	GET_SINGLE(ResourceManager)->Init();
 	GET_SINGLE(SceneManager)->Init();
 	GET_SINGLE(EntityManager)->Init();
+	GET_SINGLE(CameraManager)->Init();
 
 	//m_obj.SetPos(Vec2(SCREEN_WIDTH / 2
 	//				,SCREEN_HEIGHT/ 2));
@@ -68,7 +70,9 @@ void Core::MainUpdate()
 	// === Manager Update === 
 	GET_SINGLE(TimeManager)->Update();
 	GET_SINGLE(InputManager)->Update();
+	GET_SINGLE(CameraManager)->Update();
 	GET_SINGLE(SceneManager)->Update();
+
 	GET_SINGLE(CollisionManager)->Update();
 }
 
@@ -79,8 +83,8 @@ void Core::MainRender()
 	// 2. Render
 	GET_SINGLE(SceneManager)->Render(m_hBackDC);
 	// 3. display	
-	::BitBlt(m_hDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
-		m_hBackDC, 0, 0, SRCCOPY);
+	Vec2 offset = GET_SINGLE(CameraManager)->GetOffset();
+	::BitBlt(m_hDC, offset.x , offset.y, SCREEN_WIDTH, SCREEN_HEIGHT, m_hBackDC, 0, 0, SRCCOPY);
 }
 
 
