@@ -12,7 +12,7 @@ public:
 	void Update() override;
 	void LateUpdate() override;
 	void Render(HDC _hdc) override;
-	void DeadProcess() override;
+	 void DeadProcess() override;
 
 public:
 	virtual void EnterCollision(Collider* _other);
@@ -52,7 +52,7 @@ public:
 	const Vec2	GetPlayerScale() const { return m_playerScale; }
 	const bool GetWallDetected()const { return m_isLeftWallDetected == true || m_isRightWallDetected; }
 
-	void SetEnergy(float value) 
+	void SetEnergy(float value)
 	{
 		m_energy = min(value, MAXENERGY);
 		m_pEnergy->SetCurrentHealth(m_energy);

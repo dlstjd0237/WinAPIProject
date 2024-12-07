@@ -9,7 +9,7 @@ class Stage1BossScene : public Scene
 	virtual void Update() override;
 	void Release() override;
 public:
-	UI_Health* pPlayerHealth = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
-	UI_Health* pBossHealth = new UI_Health(L"Texture\\BossEmpty.bmp", L"Texture\\BossAmount.bmp");
-	UI_Health* pPlayerEnergy = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\EnergyAmount.bmp");
+	UI_Health* pPlayerHealth = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp", L"Health", L"HealthAmount", {0,0});
+	UI_Health* pBossHealth = new UI_Health(L"Texture\\BossEmpty.bmp", L"Texture\\BossAmount.bmp", L"BossHealth", L"BossAmount", { 0,0 });
+	UI_Health* pPlayerEnergy = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\EnergyAmount.bmp", L"Energy", L"EnergyAmount", { 0,0 });
 };

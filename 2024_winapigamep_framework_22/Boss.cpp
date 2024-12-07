@@ -16,7 +16,7 @@ Boss::Boss()
 	AddComponent<Animator>();
 	GET_SINGLE(EntityManager)->SetBoss(this);
 
-	UI_Health* bar = new UI_Health(L"Texture\\BossAmount.bmp", L"Texture\\BossEmpty.bmp");
+	UI_Health* bar = new UI_Health(L"Texture\\BossAmount.bmp", L"Texture\\BossEmpty.bmp", L"BossHealth", L"Boss", { 1,1 });
 	bar->SetPos({ SCREEN_WIDTH / 2 - 300, SCREEN_HEIGHT / 2 });
 	_health = new HealthSystem(30, this, bar);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);

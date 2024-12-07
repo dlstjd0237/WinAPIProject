@@ -204,7 +204,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="BossPattern.h" />
     <ClInclude Include="OneShotPattern.h" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackEffect.h" />
@@ -240,6 +240,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="HealthSystem.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Stage1BossScene.cpp" />
     <ClCompile Include="AllRangeCircleBossPattern.cpp" />
     <ClCompile Include="BottomShotPattern.cpp" />
@@ -267,7 +268,6 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="BossPattern.cpp" />
     <ClCompile Include="OneShotPattern.cpp" />
-    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttackEffect.cpp" />
     <ClCompile Include="Projectile.cpp" />
