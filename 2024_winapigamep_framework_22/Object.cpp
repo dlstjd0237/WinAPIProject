@@ -66,10 +66,8 @@ void Object::UseGravity()
     // �߷� ���ӵ� ����
     m_vGravity += m_gravity * fDT; // �߷¿� ���� ��ȭ ����
 
-    // ���ο� ��ġ ���
     Vec2 newPos = { m_vPos.x, m_vPos.y + m_vGravity };
 
-    // ��ġ ����
     SetPos(newPos);
 }
 
