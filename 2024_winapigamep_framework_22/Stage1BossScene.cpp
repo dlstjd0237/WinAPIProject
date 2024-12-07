@@ -48,8 +48,6 @@ void Stage1BossScene::Init()
 	//======================
 
 
-
-
 	//==== Background Setting ====
 
 	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",

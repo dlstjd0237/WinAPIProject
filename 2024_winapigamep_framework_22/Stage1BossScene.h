@@ -7,8 +7,8 @@ class Stage1BossScene : public Scene
 {
 	void Init() override;
 	virtual void Update() override;
-
-	Object* pPlayerHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
-	Object* pBossHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
-	Object* pPlayerEnergy = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
+public:
+	UI_Health* pPlayerHealth = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
+	UI_Health* pBossHealth = new UI_Health(L"Texture\\BossEmpty.bmp", L"Texture\\BossAmount.bmp");
+	UI_Health* pPlayerEnergy = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\EnergyAmount.bmp");
 };
