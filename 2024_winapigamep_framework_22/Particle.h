@@ -10,7 +10,7 @@ enum class ParticleType
 };
 
 
-class ParticleSystem : public Object
+class Particle : public Object
 {
 public:
 	ParticleSystem(ParticleType type, float duration, Vec2 scale, bool isLoop);

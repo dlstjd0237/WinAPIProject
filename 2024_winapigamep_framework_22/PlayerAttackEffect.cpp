@@ -5,7 +5,6 @@
 #include "EventManager.h"
 #include "CollisionManager.h"
 #include "EntityManager.h"
-#include "Boss.h"
 
 PlayerAttackEffect::PlayerAttackEffect(Object* obj, bool _flip)
 {
@@ -50,7 +49,7 @@ void PlayerAttackEffect::EnterCollision(Collider* _other)
 
 	if (pOtherObj->GetName() == L"Enemy") {
 		//이곳에서 피격처리
-		GET_SINGLE(EntityManager)->GetBoss()->OnDamaged(3);
+		//GET_SINGLE(EntityManager)->GetBoss()->
 		GET_SINGLE(EventManager)->DeleteObject(this);
 	}
 }

@@ -25,6 +25,11 @@ void Stage1BossScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
+	//AddObject(war, LAYER::DEFAULT);
+	//war->SetRotate({ -1,-1 });
+
+
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
@@ -64,23 +69,14 @@ void Stage1BossScene::Init()
 
 	//============================
 
-	/*Object* pUIHealth = new UI_Health(L"Texture\\plane.bmp", L"Texture\\planem.bmp");
-	pUIHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
-	pUIHealth->SetSize({ 620.f, 40.f });
-	AddObject(pUIHealth, LAYER::UI);
-
-	UI_Button* pUIButton = new UI_Button(L"Texture\\planem.bmp", L"MING!", { 4.5f,4.5f }, L"Button");
-	pUIButton->SetPos({ SCREEN_WIDTH / 3.f, 550.f });
-	pUIButton->SetSize({ 620.f, 40.f });
-	pUIButton->OnClick = []()
-		{
-			std::cout << "Asdfsadf" << std::endl;
-		};
-	AddObject(pUIButton, LAYER::UI);*/
+	pPlayerHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
+	pPlayerHealth->SetSize({ 620.f, 40.f });
+	AddObject(pPlayerHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
+	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 }
 

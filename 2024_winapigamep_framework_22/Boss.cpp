@@ -3,23 +3,15 @@
 #include "Stage1Boss.h"
 #include "Stage2Boss.h"
 #include "TimeManager.h"
-#include "EntityManager.h"
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
-#include "UI_Health.h"
 
-// »ó¼Ó ¹ÞÀº »ý¼ºÀÚ¿¡¼­ PatternInit, PatternIdxInit ÇØÁà¾ß ÇÔ
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ PatternInit, PatternIdxInit ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 Boss::Boss()
 {
 	AddComponent<Collider>();
 	AddComponent<Animator>();
-	GET_SINGLE(EntityManager)->SetBoss(this);
-
-	UI_Health* bar = new UI_Health(L"Texture\\BaseHaelthBar.bmp", L"Texture\\BossHealthBar.bmp");
-	bar->SetPos({ SCREEN_WIDTH / 2 - 300, SCREEN_HEIGHT / 2 });
-	_health = new HealthSystem(30, this, bar);
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 }
 
 Boss::~Boss()
@@ -61,7 +53,7 @@ void Boss::Update()
 		_patternElapseTime = 0;
 		// Debug
 		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::RandomLaser);
-		// ·£´ý ÆÐÅÏ
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
 }
@@ -111,7 +103,7 @@ void Boss::BossMovePointInit()
 	Vec2 size = GetSize();
 	float width = SCREEN_WIDTH / 4;
 
-	// ¿ÞÂÊ »ó´Ü
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	_movePointVec.push_back({ size.x, size.y });
 	for (int i = 1; i <= 3; i++)
 	{
@@ -129,25 +121,16 @@ void Boss::RandomBossMove()
 	BossMoveInit(_movePointVec[randPoint], 2.f);
 }
 
-bool Boss::AnimationEndCheck()
-{
-	if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnimType != Boss_ANIM_TYPE::MOVE)
-		if (_currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
-			return true;
-
-	return false;
-}
-
 int Boss::RandomPattenIdxGet(bool noDuplication)
 {
 	if (noDuplication == false || _addValue == _patternIdxVec.size())
 		_addValue = 0;
 
 	srand(unsigned int(time(NULL)));
-	// ¸¶Áö¸· ÀÎµ¦½º´Â Àü¿¡ ¾´ ½ºÅ³, Áßº¹ ¹æÁö°¡ ÀÖÀ» °æ¿ì ¸¶Áö¸·À» »©°í ·£´ý¿¡¼­ »ÌÀ½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å³, ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int patIdx = rand() % (_patternIdxVec.size() - _addValue);
 
-	// ¸¶Áö¸· ÀÎµ¦½º¿Í ÇöÀç ·£´ý ÀÎµ¦½º¸¦ ±³È¯
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	int temp = _patternIdxVec[patIdx];
 	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1 - _addValue];
 	_patternIdxVec[_patternIdxVec.size() - 1 - _addValue] = temp;
@@ -160,7 +143,7 @@ void Boss::PatternUpdate()
 {
 	if (_currentPattern != NULL)
 	{
-		if (AnimationEndCheck())
+		if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
 			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
 
 		_currentPattern->Update();
@@ -203,9 +186,6 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 		break;
 	case Boss_ANIM_TYPE::DAMAGED:
 		key = L"Damaged";
-		break;
-	case Boss_ANIM_TYPE::DEAD:
-		key = L"Dead";
 		break;
 	}
 

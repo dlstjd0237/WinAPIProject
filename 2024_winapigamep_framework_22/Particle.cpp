@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ParticleSystem.h"
+#include "Particle.h"
 #include "TimeManager.h"
 #include "EventManager.h"
 
@@ -16,7 +16,7 @@ ParticleSystem::ParticleSystem(ParticleType type, float duration, Vec2 scale, bo
 	GetComponent<Animator>()->PlayAnimation(L"Effect", isLoop);
 }
 
-void ParticleSystem::Update()
+void Particle::Update()
 {
 	_deltaTime += fDT;
 	if (_duration <= _deltaTime)
@@ -25,12 +25,12 @@ void ParticleSystem::Update()
 	}
 }
 
-void ParticleSystem::Render(HDC _hdc)
+void Particle::Render(HDC _hdc)
 {
 	ComponentRender(_hdc);
 }
 
-void ParticleSystem::ParticleInit(ParticleType type)
+void Particle::ParticleInit(ParticleType type)
 {
 	switch (type)
 	{
