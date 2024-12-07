@@ -2,12 +2,19 @@
 #include "UI_Health.h"
 #include "ResourceManager.h"
 
-UI_Health::UI_Health(const std::wstring& bgPath, const std::wstring& fillPath) 
-    : m_fFillAmount(1.f) // 초기 FillAmount는 1 (100%)
+UI_Health::UI_Health(wstring bgPath, wstring fillPath, wstring Bgname, wstring amountName, 
+    Vec2 Scale)
+    : m_fFillAmount(1.f), // 초기 FillAmount는 1 (100%)
+    m_bgpath(bgPath),
+    m_Amountpath(fillPath),
+    m_bgName(Bgname),
+    m_AmountName(amountName),
+    m_scale(Scale)
+
 {
     // 배경과 FillAmount 이미지를 로드
-    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarBg", bgPath.c_str());
-    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", fillPath.c_str());
+    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(m_bgName, m_bgpath);
+    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(m_AmountName, m_Amountpath);
 }
 
 UI_Health::~UI_Health()
@@ -35,58 +42,37 @@ void UI_Health::Render(HDC _hdc)
     // 배경 이미지 렌더링
     int bgWidth = m_pBgTex->GetWidth();
     int bgHeight = m_pBgTex->GetHeight();
+
+    // Scale을 적용한 배경 크기 계산
+    int bgScaledWidth = static_cast<int>(bgWidth * m_scale.x);
+    int bgScaledHeight = static_cast<int>(bgHeight * m_scale.y);
+
     ::TransparentBlt(
         _hdc,
-        (int)(vPos.x - bgWidth / 2),
-        (int)(vPos.y - bgHeight / 2),
-        bgWidth, bgHeight,
+        static_cast<int>(vPos.x - bgScaledWidth / 2),
+        static_cast<int>(vPos.y - bgScaledHeight / 2),
+        bgScaledWidth, bgScaledHeight, // 확대/축소된 크기로 렌더링
         m_pBgTex->GetTexDC(),
-        0, 0, bgWidth, bgHeight, RGB(255, 0, 255));
+        0, 0, bgWidth, bgHeight, // 원본 크기 사용
+        RGB(255, 0, 255));
 
     // FillAmount 이미지 렌더링 (비율에 따라 크기 조정)
-    int fillWidth = (int)(m_pFillTex->GetWidth() * m_fFillAmount); // FillAmount에 따라 너비 결정
+    int fillWidth = static_cast<int>(m_pFillTex->GetWidth() * m_fFillAmount);
     int fillHeight = m_pFillTex->GetHeight();
+
+    // Scale을 적용한 Fill 크기 계산
+    int fillScaledWidth = static_cast<int>(fillWidth * m_scale.x);
+    int fillScaledHeight = static_cast<int>(fillHeight * m_scale.y);
+
     ::TransparentBlt(
         _hdc,
-        (int)(vPos.x - bgWidth / 2),  // 시작 위치는 배경과 동일
-        (int)(vPos.y - bgHeight / 2),
-        fillWidth, fillHeight,       // 너비는 FillAmount로 조정
+        static_cast<int>(vPos.x - bgScaledWidth / 2), // 배경과 동일한 위치
+        static_cast<int>(vPos.y - bgScaledHeight / 2),
+        fillScaledWidth, fillScaledHeight, // 확대/축소된 크기로 렌더링
         m_pFillTex->GetTexDC(),
-        0, 0, fillWidth, fillHeight, RGB(255, 255, 255));
+        0, 0, fillWidth, fillHeight, // FillAmount에 따른 원본 크기
+        RGB(255, 0, 255));
 
     // 컴포넌트 렌더링
     ComponentRender(_hdc);
-
-#pragma region notUse
-
-    //Vec2 vPos = GetPos();
-    //Vec2 vSize = GetSize();
-
-    //// 전체 크기 Rect
-    //RECT rectFull = {
-    //    vPos.x,
-    //    vPos.y,
-    //    (vPos.x + vSize.x),
-    //    (vPos.y + vSize.y)
-    //};
-
-    //// FillAmount에 따른 부분 Rect
-    //RECT rectFill = {
-    //    vPos.x,
-    //    vPos.y,
-    //    (vPos.x + vSize.x * m_fFillAmount),
-    //    (vPos.y + vSize.y)
-    //};
-
-    //// 배경 그리기 (예: 빈 체력 바)
-    //HBRUSH hBrushBg = CreateSolidBrush(RGB(100, 100, 100)); // 회색 배경
-    //FillRect(_hdc, &rectFull, hBrushBg); //rect를 토대로 가져온 브러쉬와 dc를 이용해 그려주기
-    //DeleteObject(hBrushBg);  //브러쉬는 쓰고나서 지워줘야한다.
-
-    //// 체력 부분 그리기 (예: 초록색 채워진 부분)
-    //HBRUSH hBrushFill = CreateSolidBrush(RGB(255, 0, 0)); // 초록색
-    //FillRect(_hdc, &rectFill, hBrushFill);
-    //DeleteObject(hBrushFill);
-
-#pragma endregion
 }
