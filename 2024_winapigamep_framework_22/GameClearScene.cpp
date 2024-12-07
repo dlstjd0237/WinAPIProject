@@ -21,7 +21,8 @@ void GameClearScene::Init()
 	button->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f +100 });
 	button->SetSize({ 300.f,70.f });
 	button->OnClick = []() {
-		PostQuitMessage(0);
+		GET_SINGLE(SceneManager)->LoadScene(L"EntryScene");
+
 		};
 	AddObject(button, LAYER::UI);
 

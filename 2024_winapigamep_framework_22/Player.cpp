@@ -28,11 +28,11 @@ Player::Player()
 
 
 	//==== FillAmount Setting ====
-	UI_Health* bar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
+	UI_Health* bar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp", L"PlayerHealth", L"PlayerAmount", {1,1});
 	bar->SetPos({ SCREEN_WIDTH / 2.f + 300, SCREEN_HEIGHT / 2.f });
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 
-	UI_Health* energyBar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
+	UI_Health* energyBar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp", L"PlayerEnergy", L"PlayerEnergyAmount", { 1,1 });
 	energyBar->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(energyBar, LAYER::UI);
 

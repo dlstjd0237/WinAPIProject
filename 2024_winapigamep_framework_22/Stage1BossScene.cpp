@@ -92,8 +92,8 @@ void Stage1BossScene::Init()
 	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 
-	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Stage1.wav", true);
-	GET_SINGLE(ResourceManager)->Play(L"BGM");
+	GET_SINGLE(ResourceManager)->LoadSound(L"Stage1BGM", L"Sound\\Stage1.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"Stage1BGM");
 }
 
 void Stage1BossScene::Update()

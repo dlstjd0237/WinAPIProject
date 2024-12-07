@@ -9,6 +9,7 @@
 #include "EntryScene.h"
 #include "DeadScene.h"
 #include "GameClearScene.h"
+#include "SelectScene.h"
 
 void SceneManager::Init()
 {
@@ -22,11 +23,11 @@ void SceneManager::Init()
 	RegisterScene(L"EntryScene", std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 	RegisterScene(L"GameClearscene", std::make_shared<GameClearScene>());
+	RegisterScene(L"SelectScene", std::make_shared<SelectScene>());
 
-	//LoadScene(L"GameClearscene");
-	//LoadScene(L"EntryScene");
+	//LoadScene(L"DeadScene");
 	LoadScene(L"EntryScene");
-	//LoadScene(L"TitleScene");
+	//LoadScene(L"SelectScene");
 }
 
 void SceneManager::Update()

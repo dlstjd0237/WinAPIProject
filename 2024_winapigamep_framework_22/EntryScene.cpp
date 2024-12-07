@@ -17,8 +17,8 @@ void EntryScene::Init()
 
 	//보스안해~
 
-	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Title.wav", true);
-	GET_SINGLE(ResourceManager)->Play(L"BGM");
+	GET_SINGLE(ResourceManager)->LoadSound(L"EntryBGM", L"Sound\\Title.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"EntryBGM");
 
 	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp", pPlayer, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f), (SCREEN_HEIGHT / 2.f) });
@@ -43,7 +43,7 @@ void EntryScene::Init()
     pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
     pStartButton->OnClick = []()
     {
-            GET_SINGLE(EventManager)->SceneLoad(L"Stage1BossScene");
+            GET_SINGLE(EventManager)->SceneLoad(L"SelectScene");
     };
     AddObject(pStartButton, LAYER::UI);
 

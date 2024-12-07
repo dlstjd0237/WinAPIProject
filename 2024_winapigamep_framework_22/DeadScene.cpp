@@ -26,7 +26,7 @@ void DeadScene::Init()
 	button->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 300 });
 	button->SetSize({ 300.f,70.f });
 	button->OnClick = []() {
-		GET_SINGLE(SceneManager)->LoadScene(L"Stage1BossScene");
+		GET_SINGLE(SceneManager)->LoadScene(L"EntryScene");
 		};
 	AddObject(button, LAYER::UI);
 

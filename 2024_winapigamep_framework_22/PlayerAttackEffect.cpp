@@ -42,7 +42,6 @@ void PlayerAttackEffect::Update()
 
 void PlayerAttackEffect::Render(HDC _hdc)
 {
-	ComponentRender(_hdc);
 }
 
 void PlayerAttackEffect::EnterCollision(Collider* _other)
@@ -59,12 +58,9 @@ void PlayerAttackEffect::EnterCollision(Collider* _other)
 
 void PlayerAttackEffect::StayCollision(Collider* _other)
 {
-	cout << "�� ����";
 
 }
 
 void PlayerAttackEffect::ExitCollision(Collider* _other)
 {
-	cout << "�� ����";
-
 }

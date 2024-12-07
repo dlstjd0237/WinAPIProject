@@ -70,8 +70,8 @@ void Stage2BossScene::Init()
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::Laser);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
 	
-	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Stage2.wav", true);
-	GET_SINGLE(ResourceManager)->Play(L"BGM");
+	GET_SINGLE(ResourceManager)->LoadSound(L"Stage2BGM", L"Sound\\Stage2.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"Stage2BGM");
 }
 
 void Stage2BossScene::Update()
