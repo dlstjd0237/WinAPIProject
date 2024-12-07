@@ -60,7 +60,7 @@ void Boss::Update()
 		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
 		// Debug
-		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::RandomLaser);
+		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::ZigzagRandomLaser);
 		// ���� ����
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}

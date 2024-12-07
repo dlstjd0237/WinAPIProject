@@ -25,11 +25,31 @@ void SceneManager::Init()
 
 	//LoadScene(L"GameClearscene");
 	//LoadScene(L"EntryScene");
-	LoadScene(L"Stage1BossScene");
+	LoadScene(L"EntryScene");
+	//LoadScene(L"TitleScene");
 }
 
 void SceneManager::Update()
 {
+	//if (_loadingPanel->isComplete)
+	//{
+	//	m_pCurrentScene->Release();
+	//	m_pCurrentScene = nullptr;
+
+	//	auto iter = m_mapScenes.find(_loadSceneName);
+
+	//	if (iter != m_mapScenes.end())
+	//	{
+	//		m_pCurrentScene = iter->second;
+	//		m_pCurrentScene->AddObject(_loadingPanel, LAYER::LoadingPanel);
+	//		m_pCurrentScene->Init();
+	//		_loadingPanel->Load(false, 0.3f);
+	//	}
+	//}
+	//else
+	//{
+	//}
+
 	if (m_pCurrentScene == nullptr)
 		return;
 	m_pCurrentScene->Update();
@@ -53,6 +73,7 @@ void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scen
 
 void SceneManager::LoadScene(const wstring& _sceneName)
 {
+	_loadSceneName = _sceneName;
 	if (m_pCurrentScene != nullptr)
 	{
 		m_pCurrentScene->Release();

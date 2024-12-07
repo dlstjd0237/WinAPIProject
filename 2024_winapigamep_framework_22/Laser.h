@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "Collider.h"
 
 class Texture;
 enum class LaserStateType 
@@ -27,6 +28,7 @@ public:
 	virtual void EnterCollision(Collider* _other);
 	virtual void StayCollision(Collider* _other);
 	virtual void ExitCollision(Collider* _other);
+	const Vec2& GetColliderSize() { return _colliderScale; }
 private:
 	float _waitTime;
 	float _fireTime;
@@ -36,11 +38,13 @@ private:
 
 	Vec2 _animScale;
 	Vec2 _laserScale;
+	Vec2 _colliderScale;
 	Texture* _m_pTex;
 
 	bool _isReady = true;
 	bool _isFiring;
-	bool _isEnd;
 	LaserStateType _currentType = LaserStateType::Ready;
+public:
+	bool isEnd;
 };
 

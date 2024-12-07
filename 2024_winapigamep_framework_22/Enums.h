@@ -13,6 +13,7 @@ enum class LAYER
 	PROJECTILE,
 	Effect,
 	UI,
+	LoadingPanel,
 	END
 };
 

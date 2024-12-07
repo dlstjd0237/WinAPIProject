@@ -25,9 +25,17 @@ void Stage2BossScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
-	Laser* laser = new Laser(1.f, 3.f, { 1,1 }, 37.f);
-	laser->SetPos({ SCREEN_WIDTH / 2.f - 100, SCREEN_HEIGHT / 2.f });
-	AddObject(laser, LAYER::Laser);
+	//Laser* laser = new Laser(1.f, 3.f, { 1,1 }, 3);
+	//laser->SetPos({laser->GetColliderSize().x / 2, SCREEN_HEIGHT / 2.f});
+	//AddObject(laser, LAYER::Laser);
+
+	//Laser* laser2 = new Laser(1.f, 3.f, { 1,1 }, 3);
+	//laser2->SetPos({ laser->GetColliderSize().x / 2 + laser->GetColliderSize().x * 2, SCREEN_HEIGHT / 2.f });
+	//AddObject(laser2, LAYER::Laser);
+
+	//Laser* laser3 = new Laser(1.f, 3.f, { 1,1 }, 3);
+	//laser3->SetPos({ SCREEN_WIDTH - laser3->GetColliderSize().x / 2, SCREEN_HEIGHT / 2.f });
+	//AddObject(laser3, LAYER::Laser);
 
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });

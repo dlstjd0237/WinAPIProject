@@ -85,7 +85,7 @@ void WarningPanel::RotateBlt(HDC _hdc)
 
 	// 회전 중심 좌표
 	float centerX = vPos.x; // 왼쪽 끝의 X 좌표
-	float centerY = vPos.y;           // Y 좌표는 그대로 유지
+	float centerY = vPos.y; // Y 좌표는 그대로 유지
 
 	// 각 꼭짓점 회전 후 화면 좌표 계산
 	if (!isCenter)
@@ -112,8 +112,6 @@ void WarningPanel::RotateBlt(HDC _hdc)
 		vertices[2].y = (LONG)(centerY + (-halfWidth * sin - halfHeight * cos));
 	}
 
-	AlphaBlend(alphaDC, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y
-		, alphaDC, 0, 0, vScale.x, vScale.y, bf);
 	BitBlt(rotateDC, 0, 0, dcWidth, dcHeight, alphaDC, 0, 0, SRCCOPY);
 	PlgBlt(_hdc, vertices, rotateDC, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y, NULL, 0, 0);
 }

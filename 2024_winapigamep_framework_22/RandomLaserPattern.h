@@ -11,7 +11,6 @@ public:
 private:
 	void Shot();
 private:
-	bool _isInit;
 	bool _isShotEnd;
 
 	float _shotWaitTime = 1.f;

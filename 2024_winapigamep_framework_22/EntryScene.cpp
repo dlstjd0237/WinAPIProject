@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Background.h"
 #include "SceneManager.h"
+#include "EventManager.h"
 #include "UI_Button.h"
 #include "TitleBossBG.h"
 #include "Boss.h"
@@ -27,7 +28,10 @@ void EntryScene::Init()
 	pBackgroundObj2->SetPos({ (SCREEN_WIDTH / 2.f), (SCREEN_HEIGHT / 2.f) + 40 });
 	AddObject(pBackgroundObj2, LAYER::BACKGROUND);
 
-	// UI Element======
+    //Object* pBgBoss = new UI_Button(L"Texture\\BossBG.bmp", L"", { 3.5f, 3.5f },
+    //    L"pBgBoss", { 1.f, 1.f }, false);
+    //pBgBoss->SetPos({ SCREEN_WIDTH / 1.3f, 190.f });
+    //AddObject(pBgBoss, LAYER::UI);
 
 	Object* pTitle = new UI_Button(L"Texture\\Title.bmp", L"", { 0.9f, 0.9f },
 		L"pTitle", { 1.f, 1.f }, false);
@@ -38,9 +42,9 @@ void EntryScene::Init()
         L"pStartButton", { 1.f, 1.f }, true);
     pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
     pStartButton->OnClick = []()
-        {
-            GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
-        };
+    {
+            GET_SINGLE(EventManager)->SceneLoad(L"Stage1BossScene");
+    };
     AddObject(pStartButton, LAYER::UI);
 
     UI_Button* pExitButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nEXIT", { 0.3f, 0.3f },
