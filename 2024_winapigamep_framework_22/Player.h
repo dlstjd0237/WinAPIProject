@@ -10,6 +10,7 @@ public:
 	~Player();
 public:
 	void Update() override;
+	void LateUpdate() override;
 	void Render(HDC _hdc) override;
 	void DeadProcess() override;
 

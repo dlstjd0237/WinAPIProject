@@ -7,7 +7,7 @@
 #include "Stage1BossScene.h"
 #include "Stage2BossScene.h"
 #include "EntryScene.h"
-#include "LoadingPanel.h"
+#include "DeadScene.h"
 
 void SceneManager::Init()
 {
@@ -19,7 +19,9 @@ void SceneManager::Init()
 	RegisterScene(L"Stage2BossScene",std::make_shared<Stage2BossScene>());
 	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
+	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 
+	LoadScene(L"DeadScene");
 	//LoadScene(L"EntryScene");
 	LoadScene(L"EntryScene");
 	//LoadScene(L"TitleScene");

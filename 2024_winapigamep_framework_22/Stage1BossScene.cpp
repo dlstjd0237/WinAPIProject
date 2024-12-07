@@ -25,6 +25,11 @@ void Stage1BossScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 
+	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
+	//AddObject(war, LAYER::DEFAULT);
+	//war->SetRotate({ -1,-1 });
+
+
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
 	pObj->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
@@ -62,9 +67,17 @@ void Stage1BossScene::Init()
 
 	//============================
 
-	pPlayerHealth->SetPos({ SCREEN_WIDTH / 3.f, 600.f });
-	pPlayerHealth->SetSize({ 620.f, 40.f });
+	pPlayerHealth->SetPos({ 200.f, 665.f });
+	pPlayerHealth->SetFillAmount(0.5f);
 	AddObject(pPlayerHealth, LAYER::UI);
+
+	pPlayerEnergy->SetPos({ 1200.f, 665.f });
+	pPlayerEnergy->SetFillAmount(0.5f);
+	AddObject(pPlayerEnergy, LAYER::UI);
+
+	pBossHealth->SetPos({ SCREEN_WIDTH / 2.f, 45.f });
+	pBossHealth->SetFillAmount(0.5f);
+	AddObject(pBossHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PROJECTILE);

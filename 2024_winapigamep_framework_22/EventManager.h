@@ -18,7 +18,6 @@ public:
 	void Update();
 	void SceneLoad(wstring sceneName);
 	void DeleteObject(Object* _pObj);
-	// todo..
 private:
 	void Excute(const tEvent& _eve);
 private:

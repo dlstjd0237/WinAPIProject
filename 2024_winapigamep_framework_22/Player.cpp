@@ -81,6 +81,13 @@ Player::~Player()
 
 void Player::Update()
 {
+
+}
+
+void Player::LateUpdate()
+{
+	Object::LateUpdate();
+
 	UseGravity();
 	Vec2 vPos = GetPos();
 	bool vFlip = m_isFlip;
@@ -245,8 +252,8 @@ void Player::PerformAttack()
 {
 	SetEnergy(1);
 
-	/*GET_SINGLE(ResourceManager)->LoadSound(L"swing", L"Sound\\swing1.wav", true);
-	GET_SINGLE(ResourceManager)->Play(L"swing");*/
+	GET_SINGLE(ResourceManager)->LoadSound(L"swing", L"Sound\\swing1.wav", false);
+	GET_SINGLE(ResourceManager)->Play(L"swing");
 
 	m_isAttackTrigger = false; // Attack ���� ����
 	m_attackTimer = 0;

@@ -12,7 +12,7 @@ void EntryScene::Init()
 {
     // BG Element=========
     Object* pPlayer = new Player;
-    
+
     //보스안해~
 
     Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp", pPlayer, 0.f);
@@ -54,9 +54,9 @@ void EntryScene::Init()
         L"pExitButton", { 1.f, 1.f }, true);
     pExitButton->SetPos({ SCREEN_WIDTH / 9.f, 630.f });
     pExitButton->OnClick = []()
-    {
+        {
             PostQuitMessage(0);
-    };
+        };
     AddObject(pExitButton, LAYER::UI);
 }
 

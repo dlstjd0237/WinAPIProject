@@ -1,7 +1,5 @@
 #pragma once
 class Object;
-class Boss;
-class Player;
 class EntityManager
 {
 	DECLARE_SINGLE(EntityManager);
@@ -9,14 +7,14 @@ class EntityManager
 public:
 	void Init();
 private:
-	Player* m_pPlayer = nullptr;
-	Boss* m_pBoss = nullptr;
+	Object* m_pPlayer = nullptr;
+	Object* m_pBoss = nullptr;
 
 public:
-	Player* GetPlayer() const { return  m_pPlayer; }
-	Boss* GetBoss() const { return m_pBoss; }
+	const Object* GetPlayer() const { return  m_pPlayer; }
+	const Object* GetBoss() const { return m_pBoss; }
 
-	void SetPlayer(Player* _player) { m_pPlayer = _player; }
-	void SetBoss(Boss* _boss) { m_pBoss = _boss; }
+	void SetPlayer(Object* _player) { m_pPlayer = _player; }
+	void SetBoss(Object* _boss) { m_pPlayer = _boss; }
 
 };

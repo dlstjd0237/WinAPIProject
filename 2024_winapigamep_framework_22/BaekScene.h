@@ -4,7 +4,9 @@ class BaekScene :
 	public Scene
 {
 public:
-	virtual void Init() override;
-	virtual void Update() override;
+
+	// Scene을(를) 통해 상속됨
+	void Init() override;
+	
 };
 

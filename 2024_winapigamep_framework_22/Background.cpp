@@ -13,6 +13,7 @@ Background::Background(wstring _texturName, wstring _texturePath,
 	, m_pOnwer(_player)
 	, m_offset(_offset)
 {
+	if(m_pOnwer != nullptr)
 	m_prevOwnerPos = _player->GetPos();
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(m_texturName, m_texturPath);
 }
@@ -23,6 +24,8 @@ Background::~Background()
 
 void Background::Update()
 {
+	if (m_pOnwer == nullptr)
+		return;
 	Vec2 currPlayerPos = m_pOnwer->GetPos();
 	if (m_prevOwnerPos.x == currPlayerPos.x || m_offset == 0)
 		return;
