@@ -46,7 +46,7 @@ void EntryScene::Init()
     pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
     pStartButton->OnClick = []()
     {
-            GET_SINGLE(EventManager)->SceneLoad(L"Stage1BossScene");
+        GET_SINGLE(EventManager)->SceneLoad(L"Stage1BossScene");
     };
     AddObject(pStartButton, LAYER::UI);
 

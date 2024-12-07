@@ -8,6 +8,8 @@
 #include "Stage2BossScene.h"
 #include "EntryScene.h"
 #include "DeadScene.h"
+#include "LoadingPanel.h"
+#include "TimeManager.h"
 
 void SceneManager::Init()
 {
@@ -21,7 +23,7 @@ void SceneManager::Init()
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 
-	LoadScene(L"DeadScene");
+	//LoadScene(L"DeadScene");
 	//LoadScene(L"EntryScene");
 	LoadScene(L"EntryScene");
 	//LoadScene(L"TitleScene");
@@ -29,29 +31,35 @@ void SceneManager::Init()
 
 void SceneManager::Update()
 {
-	//if (_loadingPanel->isComplete)
-	//{
-	//	m_pCurrentScene->Release();
-	//	m_pCurrentScene = nullptr;
+	if(!_loadingPanel->GetIsDead())
+		_loadingPanel->Update();
 
-	//	auto iter = m_mapScenes.find(_loadSceneName);
+	if (_loadingPanel->isComplete && _loadingPanel->isFadeIn)
+	{
+		m_pCurrentScene->Release();
+		m_pCurrentScene = NULL;
 
-	//	if (iter != m_mapScenes.end())
-	//	{
-	//		m_pCurrentScene = iter->second;
-	//		m_pCurrentScene->AddObject(_loadingPanel, LAYER::LoadingPanel);
-	//		m_pCurrentScene->Init();
-	//		_loadingPanel->Load(false, 0.3f);
-	//	}
-	//}
-	//else
-	//{
-	//}
+		auto iter = m_mapScenes.find(_loadSceneName);
+		if (iter != m_mapScenes.end())
+		{
+			_loadingPanel = new LoadingPanel();
+			_loadingPanel->SetSize({ SCREEN_WIDTH, SCREEN_HEIGHT });
+			_loadingPanel->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 
-	if (m_pCurrentScene == nullptr)
-		return;
-	m_pCurrentScene->Update();
-	m_pCurrentScene->LateUpdate();
+			m_pCurrentScene = iter->second;
+			m_pCurrentScene->AddObject(_loadingPanel, LAYER::LoadingPanel);
+			m_pCurrentScene->Init();
+
+			_loadingPanel->Load(false, 2.f, 1.f);
+		}
+	}
+	else
+	{
+		if (m_pCurrentScene == nullptr || _loadingPanel->isFadeIn)
+			return;
+		m_pCurrentScene->Update();
+		m_pCurrentScene->LateUpdate();
+	}
 }
 
 void SceneManager::Render(HDC _hdc)
@@ -74,14 +82,20 @@ void SceneManager::LoadScene(const wstring& _sceneName)
 	_loadSceneName = _sceneName;
 	if (m_pCurrentScene != nullptr)
 	{
-		m_pCurrentScene->Release();
-		m_pCurrentScene = nullptr;
+		_loadingPanel->Load(true, 2.f);
 	}
-
-	auto iter = m_mapScenes.find(_sceneName);
-	if (iter != m_mapScenes.end())
+	else
 	{
-		m_pCurrentScene = iter->second;
-		m_pCurrentScene->Init();
+		auto iter = m_mapScenes.find(_sceneName);
+		if (iter != m_mapScenes.end())
+		{
+			_loadingPanel = new LoadingPanel();
+			_loadingPanel->SetSize({ SCREEN_WIDTH, SCREEN_HEIGHT });
+			_loadingPanel->SetPos({ (float)-SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
+
+			m_pCurrentScene = iter->second;
+			m_pCurrentScene->AddObject(_loadingPanel, LAYER::LoadingPanel);
+			m_pCurrentScene->Init();
+		}
 	}
 }

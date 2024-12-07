@@ -17,6 +17,7 @@ public:
 		return m_pCurrentScene;
 	}
 private:
+	float _dt;
 	wstring _loadSceneName;
 	LoadingPanel* _loadingPanel;
 	// 씬들을 map으로 관리

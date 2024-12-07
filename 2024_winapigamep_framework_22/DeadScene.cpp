@@ -17,7 +17,7 @@ void DeadScene::Init()
 	background->SetSize({ 1024.f,1024.f });
 	AddObject(background, LAYER::BACKGROUND);
 
-	Object* deadAnimation = new BackgroundAnimation(L"Texture\\YouDie.bmp", 10, { 1024,1024 }, 0.5f);
+	Object* deadAnimation = new BackgroundAnimation(L"Texture\\YouDie.bmp", 10, { 1024,1024 }, {0.5f, 0.5f});
 	deadAnimation->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f - 100 });
 	deadAnimation->SetSize({ 1024.f,1024.f });
 	AddObject(deadAnimation, LAYER::BACKGROUND);

@@ -62,7 +62,6 @@ void Object::UseGravity()
 		m_vGravity = 0;
 		return;
 	}
-
 	// 중력 가속도 누적
 	m_vGravity += m_gravity * fDT; // 중력에 의한 변화 누적
 
@@ -75,4 +74,5 @@ void Object::UseGravity()
 
 void Object::DeadProcess()
 {
+
 }

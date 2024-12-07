@@ -3,7 +3,7 @@
 #include "Animator.h"
 #include"ResourceManager.h"
 BackgroundAnimation::BackgroundAnimation(wstring _texturPath, int _fram ,
-	Vec2 _texturSliceSize, float _scale)
+	Vec2 _texturSliceSize, Vec2 _scale)
 {
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"BackgroundAnimation", _texturPath);
 

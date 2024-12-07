@@ -3,22 +3,30 @@
 #include "GDISelector.h"
 #include "TimeManager.h"
 
-void LoadingPanel::Load(bool isFadeIn, float time)
+void LoadingPanel::Load(bool isFadeIn, float time , float delay)
 {
+	_delayTime = delay;
 	isLoading = true;
 	isComplete = false;
-	_isFadeIn = isFadeIn;
+	this->isFadeIn = isFadeIn;
 	_fadeTime = time;
+	_delayDeltaTime = 0.f;
 }
 
 void LoadingPanel::Update()
 {
 	if (isLoading)
 	{
+		if (_delayDeltaTime <= _delayTime)
+		{
+			_delayDeltaTime += fDT;
+			return;
+		}
+
 		_deltaTime += fDT;
-		float elapseTime = _fadeTime / _deltaTime;
+		float elapseTime = _deltaTime / _fadeTime;
 		float x = 0;
-		if (_isFadeIn)
+		if (isFadeIn)
 			x = std::lerp(-SCREEN_WIDTH / 2.f, SCREEN_WIDTH / 2.f, elapseTime);
 		else
 			x = std::lerp(SCREEN_WIDTH / 2.f, -SCREEN_WIDTH / 2.f, elapseTime);
