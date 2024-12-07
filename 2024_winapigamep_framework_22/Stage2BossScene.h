@@ -4,5 +4,6 @@ class Stage2BossScene : public Scene
 {
 	void Init() override;
 	virtual void Update() override;
+	void Release() override;
 };
 

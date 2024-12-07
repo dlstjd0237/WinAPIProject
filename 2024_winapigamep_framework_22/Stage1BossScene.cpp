@@ -14,16 +14,22 @@
 
 void Stage1BossScene::Init()
 {
+	//==== Player ====
 	Object* pPlayer = new Player;
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 	pPlayer->SetName(L"Player");
+	//================
 
+
+	//==== Boss ====
 	Boss* boss = new Stage1Boss();
 	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
+	//==============
+
 
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
@@ -32,6 +38,7 @@ void Stage1BossScene::Init()
 	pObj->SetName(L"Ground");
 	AddObject(pObj, LAYER::GROUND);
 	//========================
+
 
 	//==== Wall Setting ====
 	Object* pLeftWallObj = new Ground(false, { 50.f, 900.f }, { 0, 0 });
@@ -71,9 +78,18 @@ void Stage1BossScene::Init()
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::PROJECTILE);
 	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::ATTACKEFFECT);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
+
+	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Stage1.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"BGM");
 }
 
 void Stage1BossScene::Update()
 {
 	Scene::Update();
+}
+
+void Stage1BossScene::Release()
+{
+	Scene::Release();
+	GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
 }

@@ -162,9 +162,6 @@
     </ClInclude>
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="UI_Health.h" />
-    <ClInclude Include="BossTestScene.h">
-      <Filter>Engine\00.Work\InHae</Filter>
-    </ClInclude>
     <ClInclude Include="Boss.h">
       <Filter>Engine\00.Work\InHae\Boss</Filter>
     </ClInclude>
@@ -212,8 +209,26 @@
     <ClInclude Include="BottomShotPattern.h">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Engine\00.Work\InHae</Filter>
+    <ClInclude Include="BackgroundAnimation.h" />
+    <ClInclude Include="HealthSystem.h" />
+    <ClInclude Include="DeadScene.h" />
+    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="Laser.h" />
+    <ClInclude Include="LeftFullLaserPattern.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="RandomLaserPattern.h" />
+    <ClInclude Include="GameClearScene.h" />
+    <ClInclude Include="Stage1BossScene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage2Boss.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage2BossScene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBossBG.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -307,9 +322,6 @@
     </ClCompile>
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="UI_Health.cpp" />
-    <ClCompile Include="BossTestScene.cpp">
-      <Filter>Engine\00.Work\InHae</Filter>
-    </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Engine\00.Work\InHae\Boss</Filter>
     </ClCompile>
@@ -357,8 +369,26 @@
     <ClCompile Include="BottomShotPattern.cpp">
       <Filter>Engine\00.Work\InHae\Boss\Pattern\BulletPattern</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Engine\00.Work\InHae</Filter>
+    <ClCompile Include="BackgroundAnimation.cpp" />
+    <ClCompile Include="HealthSystem.cpp" />
+    <ClCompile Include="DeadScene.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="Laser.cpp" />
+    <ClCompile Include="LeftFullLaserPattern.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="RandomLaserPattern.cpp" />
+    <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="Stage1BossScene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage2Boss.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage2BossScene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBossBG.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

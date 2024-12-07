@@ -61,9 +61,18 @@ void Stage2BossScene::Init()
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::Laser);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ATTACKEFFECT, LAYER::ENEMY);
+	
+	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Stage2.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"BGM");
 }
 
 void Stage2BossScene::Update()
 {
 	Scene::Update();
+}
+
+void Stage2BossScene::Release()
+{
+	Scene::Release();
+	GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
 }

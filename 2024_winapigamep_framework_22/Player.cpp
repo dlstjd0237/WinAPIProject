@@ -24,13 +24,22 @@ Player::Player()
 	//==== AddComponent ====
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
+	//======================
 
+
+	//==== FillAmount Setting ====
 	UI_Health* bar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
 	bar->SetPos({ SCREEN_WIDTH / 2.f + 300, SCREEN_HEIGHT / 2.f });
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 
-	health = new HealthSystem(10.f, this, bar);
-	//======================
+	UI_Health* energyBar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
+	energyBar->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(energyBar, LAYER::UI);
+
+	m_pEnergy = new HealthSystem(MAXENERGY, this, energyBar);
+	m_pHealth = new HealthSystem(10.f, this, bar);
+	//============================
+
 
 	//==== Graviy Setting ====
 	SetUseGravity(true);
@@ -71,6 +80,7 @@ Player::Player()
 	//
 	//==== Animation Setting End ====
 
+	SetEnergy(1);
 
 }
 
@@ -123,6 +133,7 @@ void Player::LateUpdate()
 
 	if (GET_KEYDOWN(KEY_TYPE::LBUTTON) && m_isAttackTrigger == false)
 	{
+		SetEnergy(1);
 		m_isAttackTrigger = true;
 	}
 
@@ -178,6 +189,7 @@ void Player::Render(HDC _hdc)
 // 죽었을 때 실행할 함수
 void Player::DeadProcess()
 {
+	GET_SINGLE(SceneManager)->LoadScene(L"DeadScene");
 }
 
 void Player::EnterCollision(Collider* _other)
@@ -245,15 +257,11 @@ void Player::Jump()
 
 void Player::OnDamaged(float damage)
 {
-	health->OnDamage(damage);
+	m_pHealth->OnDamage(damage);
 }
 
 void Player::PerformAttack()
 {
-	SetEnergy(1);
-
-	GET_SINGLE(ResourceManager)->LoadSound(L"swing", L"Sound\\swing1.wav", false);
-	GET_SINGLE(ResourceManager)->Play(L"swing");
 
 	m_isAttackTrigger = false; // Attack ���� ����
 	m_attackTimer = 0;

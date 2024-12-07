@@ -15,7 +15,7 @@ public:
 	virtual void StayCollision(Collider* _other);
 	virtual void ExitCollision(Collider* _other);
 private:
-	float m_damage = 5.0f;
+	float m_damage = 2.0f;
 	float m_attackTimer = 0.f;
 	float m_attackDelay = 0.6f;
 

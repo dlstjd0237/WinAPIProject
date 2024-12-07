@@ -173,6 +173,7 @@
     <ClInclude Include="BaekScene.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="HealthSystem.h" />
     <ClInclude Include="Stage1BossScene.h" />
     <ClInclude Include="AllRangeCircleBossPattern.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="BaekScene.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="Stage1BossScene.cpp" />
     <ClCompile Include="AllRangeCircleBossPattern.cpp" />

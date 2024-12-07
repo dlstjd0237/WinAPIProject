@@ -4,12 +4,15 @@
 void EventManager::Update()
 {
 	// 이전 프레임에서 등록해둔 
-	for (Object* obj : m_vecDead)
-	{
-		if (obj != nullptr)
-			delete obj;
+	if (m_vecDead.empty() == false) {
+		for (Object* obj : m_vecDead)
+		{
+			if (obj != nullptr)
+				delete obj;
+		}
+		m_vecDead.clear();
 	}
-	m_vecDead.clear();
+	
 
 	for (auto& eve : m_vecEvent)
 		Excute(eve);

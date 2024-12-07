@@ -22,14 +22,20 @@ void DeadScene::Init()
 	deadAnimation->SetSize({ 1024.f,1024.f });
 	AddObject(deadAnimation, LAYER::BACKGROUND);
 
-	UI_Button* button = new UI_Button(L"Texture\\Button.bmp", L"Retry", { 0.25f,0.15f }, L"RetryButton", { 1,1 }, true);
-	button->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
-	button->SetSize({ 150.f,40.f });
+	UI_Button* button = new UI_Button(L"Texture\\DeadButton.bmp", L"Title", { 0.6f,0.6f }, L"RetryButton", { 1.9f,1.9f }, true);
+	button->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 300 });
+	button->SetSize({ 300.f,70.f });
 	button->OnClick = []() {
-		GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
+		GET_SINGLE(SceneManager)->LoadScene(L"Stage1BossScene");
 		};
 	AddObject(button, LAYER::UI);
-	cout << "½ÃÀÛÇÔ";
+
+}
+
+void DeadScene::Release()
+{
+	Scene::Release();
+	GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
 
 }
 

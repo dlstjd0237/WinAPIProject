@@ -45,13 +45,18 @@ private:
 	bool m_isRightWallDetected = false;
 
 	map<PLAYER_ANIM_TYPE, bool> m_actionMap;
-	HealthSystem* health;
+	HealthSystem* m_pHealth;
+	HealthSystem* m_pEnergy;
 public:
 	const float GetEnergy() const { return m_energy; }
 	const Vec2	GetPlayerScale() const { return m_playerScale; }
 	const bool GetWallDetected()const { return m_isLeftWallDetected == true || m_isRightWallDetected; }
 
-	void SetEnergy(float value) { m_energy = min(value, MAXENERGY); }
+	void SetEnergy(float value) 
+	{
+		m_energy = min(value, MAXENERGY);
+		m_pEnergy->SetCurrentHealth(m_energy);
+	}
 	void SetPlayerScale(Vec2 _scale) { m_playerScale = _scale; }
 
 	void AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip = false);
