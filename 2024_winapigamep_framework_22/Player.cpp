@@ -37,7 +37,7 @@ Player::Player()
 	//========================
 
 	//==== Animation Setting ====
-	float scale = GetPlayerScale();
+	Vec2 scale = GetPlayerScale();
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightAttack", m_pTex, Vec2(0.f, 44.0f * 13),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftAttack", m_pTex, Vec2(0.f, 44.0f * 30),

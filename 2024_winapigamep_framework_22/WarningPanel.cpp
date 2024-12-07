@@ -36,7 +36,26 @@ void WarningPanel::Update()
 
 void WarningPanel::Render(HDC _hdc)
 {
-	RotateBlt(_hdc);
+	if(isRotate)
+		RotateBlt(_hdc);
+	else
+	{
+		Vec2 vPos = GetPos();
+		Vec2 vScale = GetSize();
+		float halfWidth = vScale.x / 2.0f;
+		float halfHeight = vScale.y / 2.0f;
+
+		DCInit(_hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
+		BitBlt(alphaDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, _hdc, 0, 0, SRCCOPY);
+
+		GDISelector brush(_hdc, BRUSH_TYPE::RED);
+		GDISelector pen(_hdc, PEN_TYPE::HOLLOW);
+		RECT_RENDER(_hdc, vPos.x, vPos.y, vScale.x, vScale.y);
+
+		bf.SourceConstantAlpha = _fadeValue;
+		AlphaBlend(_hdc, (int)(vPos.x - halfWidth), (int)(vPos.y - halfHeight), vScale.x, vScale.y
+			, alphaDC, 0, 0, vScale.x, vScale.y, bf);
+	}
 }
 
 void WarningPanel::RotateBlt(HDC _hdc)

@@ -70,6 +70,7 @@ protected:
     float _moveDeltaTime;
 
     Texture* _m_pTex;
+    Vec2 _animScale;
     Boss_ANIM_TYPE _currentAnimType = Boss_ANIM_TYPE::IDLE;
     Animation* _currentAnim;
     BossMovePoint _currentBossPoint;
@@ -77,6 +78,7 @@ protected:
     HealthSystem* _health;
 
     bool _isDeading;
+    bool _isDamaged;
 
 private:
     int _addValue = 0;

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Boss.h"
 #include "Stage1Boss.h"
+#include "Stage2Boss.h"
 #include "TimeManager.h"
 #include "EntityManager.h"
 #include "Collider.h"
@@ -31,10 +32,17 @@ void Boss::Update()
 	if (_isDeading)
 	{
 		if (AnimationEndCheck())
-		{
 			SetDead();
-		}
 		return;
+	}
+	
+	if (_isDamaged)
+	{
+		if (AnimationEndCheck())
+		{
+			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
+			_isDamaged = false;
+		}
 	}
 
 	PatternUpdate();
@@ -52,7 +60,7 @@ void Boss::Update()
 		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
 		// Debug
-		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot);
+		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::RandomLaser);
 		// ·£´ý ÆÐÅÏ
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
@@ -214,6 +222,7 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 void Boss::OnDamaged(int damage)
 {
 	AnimationChange(Boss_ANIM_TYPE::DAMAGED, isLeft);
+	_isDamaged = true;
 	_health->OnDamage(damage);
 }
 

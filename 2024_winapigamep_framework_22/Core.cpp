@@ -58,10 +58,8 @@ void Core::CleanUp()
 
 void Core::GameLoop()
 {
-
 	MainUpdate();
 	MainRender();
-
 	GET_SINGLE(EventManager)->Update();
 }
 

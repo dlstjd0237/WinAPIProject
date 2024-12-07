@@ -37,20 +37,19 @@ private:
 	FMOD::System* m_pSoundSystem; // 사운드 시스템
 	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // 오디오 채널
 public:
-	const float& GetAnimationScale(const wstring& animName) {
+	const Vec2& GetAnimationScale(const wstring& animName) {
 		if (m_animationScales.contains(animName) == true)
 			return m_animationScales[animName];
-		return 1;
+		return { 0,0 };
 	}
 
-	const void SetAnimationScale(const wstring& animName, float scale) {
+	const void SetAnimationScale(const wstring& animName, Vec2 scale) {
 		if (m_animationScales.contains(animName) == true)
 			m_animationScales[animName] = scale;
 	}
 public:
-	void AddAnimationScale(const wstring& key, float& value) { m_animationScales[key] = value; }
+	void AddAnimationScale(const wstring& key, Vec2& value) { m_animationScales[key] = value; }
 private:
-	map<wstring, float> m_animationScales;
-
+	map<wstring, Vec2> m_animationScales;
 };
 

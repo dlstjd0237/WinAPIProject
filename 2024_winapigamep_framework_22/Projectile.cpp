@@ -15,7 +15,7 @@ Projectile::Projectile(Vec2 pos)
 {
 	SetPos(pos);
 
-	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletShot, 0.075f, 1.f, false);
+	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletShot, 0.075f, {1.f,1.f}, false);
 	particle->SetPos(pos);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 
@@ -55,7 +55,7 @@ void Projectile::Render(HDC _hdc)
 
 void Projectile::DestroyAction()
 {
-	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletDestroy, 0.05f, 1.f, false);
+	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletDestroy, 0.05f, {1.f, 1.f}, false);
 	particle->SetPos(GetPos());
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 	GET_SINGLE(EventManager)->DeleteObject(this);

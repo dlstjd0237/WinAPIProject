@@ -13,7 +13,7 @@ enum class ParticleType
 class ParticleSystem : public Object
 {
 public:
-	ParticleSystem(ParticleType type, float duration, float scale, bool isLoop);
+	ParticleSystem(ParticleType type, float duration, Vec2 scale, bool isLoop);
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;

@@ -3,7 +3,7 @@
 #include "TimeManager.h"
 #include "EventManager.h"
 
-ParticleSystem::ParticleSystem(ParticleType type, float duration, float scale, bool isLoop)
+ParticleSystem::ParticleSystem(ParticleType type, float duration, Vec2 scale, bool isLoop)
 {
 	AddComponent<Animator>();
 	ParticleInit(type);
