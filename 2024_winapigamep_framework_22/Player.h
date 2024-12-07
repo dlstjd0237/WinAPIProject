@@ -9,6 +9,7 @@ public:
 	~Player();
 public:
 	void Update() override;
+	void LateUpdate() override;
 	void Render(HDC _hdc) override;
 public:
 	virtual void EnterCollision(Collider* _other);

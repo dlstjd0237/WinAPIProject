@@ -20,8 +20,6 @@ Background::Background(wstring _texturName, wstring _texturePath,
 
 Background::~Background()
 {
-	if (m_pOnwer != nullptr)
-		delete m_pOnwer;
 }
 
 void Background::Update()

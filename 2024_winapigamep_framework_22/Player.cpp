@@ -75,6 +75,13 @@ Player::~Player()
 
 void Player::Update()
 {
+
+}
+
+void Player::LateUpdate()
+{
+	Object::LateUpdate();
+
 	UseGravity();
 	Vec2 vPos = GetPos();
 	bool vFlip = m_isFlip;

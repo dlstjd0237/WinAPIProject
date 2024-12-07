@@ -5,6 +5,7 @@
 #include "Background.h"
 #include "BackgroundAnimation.h"
 #include "ResourceManager.h"
+
 void DeadScene::Init()
 {
 
@@ -21,7 +22,7 @@ void DeadScene::Init()
 	deadAnimation->SetSize({ 1024.f,1024.f });
 	AddObject(deadAnimation, LAYER::BACKGROUND);
 
-	UI_Button* button = new UI_Button(L"Texture\\Button.bmp", L"Retry", { 0.25f,0.15f }, L"RetryButton");
+	UI_Button* button = new UI_Button(L"Texture\\Button.bmp", L"Retry", { 0.25f,0.15f }, L"RetryButton", { 1,1 }, true);
 	button->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	button->SetSize({ 150.f,40.f });
 	button->OnClick = []() {

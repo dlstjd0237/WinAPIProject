@@ -21,8 +21,8 @@ void SceneManager::Init()
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
 
-	//LoadScene(L"DeadScene");
-	LoadScene(L"EntryScene");
+	LoadScene(L"DeadScene");
+	//LoadScene(L"EntryScene");
 	//LoadScene(L"BossTestScene");
 	//LoadScene(L"TitleScene");
 }

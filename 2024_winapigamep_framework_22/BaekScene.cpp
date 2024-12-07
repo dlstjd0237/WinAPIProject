@@ -24,9 +24,13 @@ void BaekScene::Init()
 	GET_SINGLE(ResourceManager)->Play(L"BGM");
 }
 
-void BaekScene::Update() {
-
-	Scene::Update();
-	if (GET_KEYDOWN(KEY_TYPE::ENTER))
-		GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
-}
+//void BaekScene::Update() {
+//
+//	Scene::Update();
+//	if (GET_KEYDOWN(KEY_TYPE::ENTER))
+//		GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
+//}
+//
+//void BaekScene::Init()
+//{
+//}

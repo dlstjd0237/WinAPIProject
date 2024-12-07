@@ -1,10 +1,9 @@
 #pragma once
 #include "Scene.h"
 class DeadScene :
-    public Scene
+	public Scene
 {
 public:
-	 void Init() override;
-	//virtual void Update() override;
+	virtual void Init() override;
 };
 
