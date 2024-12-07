@@ -26,11 +26,13 @@ void UI_Button::Update()
 {
     // 마우스 위치 가져오기
     Vec2 mousePos = GET_SINGLE(InputManager)->GetMousePos();
+    Vec2 vPos = GetPos();
 
-    Vec2 vPos = GetPos(); // 버튼 중심 위치
-    int bgWidth = m_pBgTex->GetWidth();   // 배경 이미지 너비
-    int bgHeight = m_pBgTex->GetHeight(); // 배경 이미지 높이
+    //이미지 넓이 가져오기
+    int bgWidth = m_pBgTex->GetWidth();  
+    int bgHeight = m_pBgTex->GetHeight(); 
 
+    //스케일 연산
     int bgUpscaleWidth = bgWidth * m_scale.x;
     int bgUpscaleHeight = bgHeight * m_scale.y;
 
@@ -40,6 +42,7 @@ void UI_Button::Update()
         mousePos.y >= vPos.y - bgUpscaleHeight / 2 &&
         mousePos.y <= vPos.y + bgUpscaleHeight / 2);
 
+    // 클릭처리
     if (isMouseOver && GET_SINGLE(InputManager)->GetKey(KEY_TYPE::LBUTTON) == KEY_STATE::DOWN) // 마우스 왼쪽 버튼이 눌렸는지 확인
     {
         if (OnClick)
@@ -47,6 +50,8 @@ void UI_Button::Update()
             OnClick();
         }
     }
+    
+    //아웃라인 표시설정
     else if (isMouseOver && isOutLine)
     {
         isMouseOverOutline = true;
@@ -61,16 +66,16 @@ void UI_Button::Render(HDC _hdc)
 {
     Vec2 vPos = GetPos(); // 버튼 중심 위치
 
-    int bgWidth = m_pBgTex->GetWidth();   // 배경 이미지 너비
-    int bgHeight = m_pBgTex->GetHeight(); // 배경 이미지 높이
+    int bgWidth = m_pBgTex->GetWidth();   // 배경 이미지 넓이
+    int bgHeight = m_pBgTex->GetHeight(); 
 
-    int bgUpscaleWidth = bgWidth * m_scale.x;
+    int bgUpscaleWidth = bgWidth * m_scale.x;   //스케일 계산
     int bgUpscaleHeight = bgHeight * m_scale.y;
 
-    // 커서가 버튼 위에 있을 때 아웃라인 그리기
+    // 아웃라인그리기
     if (isMouseOverOutline)
     {
-        HPEN hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255)); // 빨간색 펜 생성
+        HPEN hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
         HGDIOBJ hOldPen = SelectObject(_hdc, hPen);
         Rectangle(
             _hdc,
@@ -89,6 +94,8 @@ void UI_Button::Render(HDC _hdc)
         bgUpscaleWidth, bgUpscaleHeight,
         m_pBgTex->GetTexDC(),
         0, 0, bgWidth, bgHeight, RGB(255, 0, 255));
+
+    //텍스트 ==========================================
 
     // 텍스트 크기 적용
     HFONT hFont = CreateFont(
@@ -121,7 +128,6 @@ void UI_Button::Render(HDC _hdc)
 
     DrawText(_hdc, m_text.c_str(), -1, &rect, DT_CENTER | DT_VCENTER);
 
-    // 폰트 복원 및 삭제
     SelectObject(_hdc, hOldFont);
     DeleteObject(hFont);
 }
