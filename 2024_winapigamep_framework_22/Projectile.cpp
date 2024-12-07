@@ -4,23 +4,25 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "Collider.h"
-#include "Particle.h"
+#include "ParticleSystem.h"
 #include "EventManager.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "EntityManager.h"
+#include "Player.h"
 
 Projectile::Projectile(Vec2 pos)
 {
 	SetPos(pos);
 
-	Particle* particle = new Particle(ParticleType::BulletShot, 0.075f, 1.f, false);
+	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletShot, 0.075f, { 1.f,1.f }, false);
 	particle->SetPos(pos);
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 
 	SetName(L"Projectile");
 
 	AddComponent<Collider>();
-	GetComponent<Collider>()->SetSize({ 30.f, 30.f});
+	GetComponent<Collider>()->SetSize({ 30.f, 30.f });
 
 	_m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Bullet", L"Texture\\Projectile.bmp");
 	AddComponent<Animator>();
@@ -53,7 +55,7 @@ void Projectile::Render(HDC _hdc)
 
 void Projectile::DestroyAction()
 {
-	Particle* particle = new Particle(ParticleType::BulletDestroy, 0.05f, 1.f, false);
+	ParticleSystem* particle = new ParticleSystem(ParticleType::BulletDestroy, 0.05f, { 1.f, 1.f }, false);
 	particle->SetPos(GetPos());
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(particle, LAYER::Effect);
 	GET_SINGLE(EventManager)->DeleteObject(this);
@@ -64,6 +66,7 @@ void Projectile::EnterCollision(Collider* _other)
 	Object* pOtherObj = _other->GetOwner();
 	if (pOtherObj->GetName() == L"Player")
 	{
+		GET_SINGLE(EntityManager)->GetPlayer()->OnDamaged(1.f);
 		DestroyAction();
 	}
 	if (pOtherObj->GetName() == L"Ground")

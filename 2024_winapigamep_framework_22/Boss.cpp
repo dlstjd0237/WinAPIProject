@@ -1,16 +1,25 @@
 #include "pch.h"
 #include "Boss.h"
 #include "Stage1Boss.h"
+#include "Stage2Boss.h"
 #include "TimeManager.h"
+#include "EntityManager.h"
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "UI_Health.h"
 
 // ��� ���� �����ڿ��� PatternInit, PatternIdxInit ����� ��
 Boss::Boss()
 {
 	AddComponent<Collider>();
 	AddComponent<Animator>();
+	GET_SINGLE(EntityManager)->SetBoss(this);
+
+	UI_Health* bar = new UI_Health(L"Texture\\BossAmount.bmp", L"Texture\\BossEmpty.bmp");
+	bar->SetPos({ SCREEN_WIDTH / 2 - 300, SCREEN_HEIGHT / 2 });
+	_health = new HealthSystem(30, this, bar);
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 }
 
 Boss::~Boss()
@@ -20,6 +29,22 @@ Boss::~Boss()
 
 void Boss::Update()
 {
+	if (_isDeading)
+	{
+		if (AnimationEndCheck())
+			SetDead();
+		return;
+	}
+
+	if (_isDamaged)
+	{
+		if (AnimationEndCheck())
+		{
+			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
+			_isDamaged = false;
+		}
+	}
+
 	PatternUpdate();
 
 	if (isMoving)
@@ -35,7 +60,7 @@ void Boss::Update()
 		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
 		// Debug
-		_currentPattern = GetPattern<Stage1BossPattern>(Stage1BossPattern::CrossTargetShot);
+		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::RandomLaser);
 		// ���� ����
 		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
@@ -55,7 +80,7 @@ void Boss::FlipCheck()
 {
 	if (SCREEN_WIDTH / 2 <= GetPos().x)
 	{
-		if(!isLeft)
+		if (!isLeft)
 			AnimationChange(Boss_ANIM_TYPE::MOVE, !isLeft);
 	}
 	else
@@ -104,6 +129,15 @@ void Boss::RandomBossMove()
 	BossMoveInit(_movePointVec[randPoint], 2.f);
 }
 
+bool Boss::AnimationEndCheck()
+{
+	if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnimType != Boss_ANIM_TYPE::MOVE)
+		if (_currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
+			return true;
+
+	return false;
+}
+
 int Boss::RandomPattenIdxGet(bool noDuplication)
 {
 	if (noDuplication == false || _addValue == _patternIdxVec.size())
@@ -126,7 +160,7 @@ void Boss::PatternUpdate()
 {
 	if (_currentPattern != NULL)
 	{
-		if (_currentAnimType != Boss_ANIM_TYPE::IDLE && _currentAnim->GetCurFrame() == _currentAnim->GetMaxFrame() - 1)
+		if (AnimationEndCheck())
 			AnimationChange(Boss_ANIM_TYPE::IDLE, isLeft);
 
 		_currentPattern->Update();
@@ -144,7 +178,7 @@ void Boss::PatternIdxInit()
 	for (auto iter = _bossPattern.begin(); iter != _bossPattern.end(); iter++)
 	{
 		int i = (int)iter->first;
-	    _patternIdxVec.push_back(i);
+		_patternIdxVec.push_back(i);
 	}
 }
 
@@ -170,6 +204,9 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 	case Boss_ANIM_TYPE::DAMAGED:
 		key = L"Damaged";
 		break;
+	case Boss_ANIM_TYPE::DEAD:
+		key = L"Dead";
+		break;
 	}
 
 	if (isLeft)
@@ -180,4 +217,17 @@ void Boss::AnimationChange(Boss_ANIM_TYPE anim, bool isLeft)
 	this->isLeft = isLeft;
 	GetComponent<Animator>()->PlayAnimation(key, isLoop);
 	_currentAnim = GetComponent<Animator>()->GetCurrentAnim();
+}
+
+void Boss::OnDamaged(int damage)
+{
+	AnimationChange(Boss_ANIM_TYPE::DAMAGED, isLeft);
+	_isDamaged = true;
+	_health->OnDamage(damage);
+}
+
+void Boss::DeadProcess()
+{
+	AnimationChange(Boss_ANIM_TYPE::DEAD, isLeft);
+	_isDeading = true;
 }

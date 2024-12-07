@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "ResourceManager.h"
 #include "Animator.h"
+#include "HealthSystem.h"
 
 enum class Boss_ANIM_TYPE
 {
@@ -9,6 +10,7 @@ enum class Boss_ANIM_TYPE
     MOVE,
     ATTACK,
     DAMAGED,
+    DEAD
 };
 
 enum class BossMovePoint
@@ -33,7 +35,9 @@ public:
     virtual void Update() override;
     void BossMoveInit(Vec2 targetPos, float moveTime);
     void AnimationChange(Boss_ANIM_TYPE anim, bool isFlip);
-    void OnDamaged();
+    void OnDamaged(int damage);
+    void DeadProcess() override;
+
 protected:
     virtual void PatternInit() abstract;
     int RandomPattenIdxGet(bool noDuplication);
@@ -41,6 +45,7 @@ protected:
     void PatternIdxInit();
     void BossMovePointInit();
     void RandomBossMove();
+    bool AnimationEndCheck();
 
 private:
     void FlipCheck();
@@ -65,10 +70,15 @@ protected:
     float _moveDeltaTime;
 
     Texture* _m_pTex;
+    Vec2 _animScale;
     Boss_ANIM_TYPE _currentAnimType = Boss_ANIM_TYPE::IDLE;
     Animation* _currentAnim;
     BossMovePoint _currentBossPoint;
     vector<Vec2> _movePointVec;
+    HealthSystem* _health;
+
+    bool _isDeading;
+    bool _isDamaged;
 
 private:
     int _addValue = 0;

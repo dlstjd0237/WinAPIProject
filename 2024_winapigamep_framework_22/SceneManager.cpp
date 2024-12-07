@@ -4,7 +4,8 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "BaekScene.h"
-#include "BossTestScene.h"
+#include "Stage1BossScene.h"
+#include "Stage2BossScene.h"
 #include "EntryScene.h"
 #include "DeadScene.h"
 
@@ -16,7 +17,8 @@ void SceneManager::Init()
 	
 	RegisterScene(L"TitleScene",std::make_shared<TitleScene>());
 	RegisterScene(L"GameScene",std::make_shared<GameScene>());
-	RegisterScene(L"BossTestScene",std::make_shared<BossTestScene>());
+	RegisterScene(L"Stage1BossScene",std::make_shared<Stage1BossScene>());
+	RegisterScene(L"Stage2BossScene",std::make_shared<Stage2BossScene>());
 	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());

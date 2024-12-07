@@ -24,6 +24,12 @@ Player::Player()
 	//==== AddComponent ====
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
+
+	UI_Health* bar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
+	bar->SetPos({ SCREEN_WIDTH / 2.f + 300, SCREEN_HEIGHT / 2.f });
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
+
+	health = new HealthSystem(10.f, this, bar);
 	//======================
 
 	//==== Graviy Setting ====
@@ -31,7 +37,7 @@ Player::Player()
 	//========================
 
 	//==== Animation Setting ====
-	float scale = GetPlayerScale();
+	Vec2 scale = GetPlayerScale();
 	GetComponent<Animator>()->CreateAnimation(L"PlayerRightAttack", m_pTex, Vec2(0.f, 44.0f * 13),
 		Vec2(69.f, 44.f), Vec2(69.f, 0.f), 4, 0.1f, false, scale);
 	GetComponent<Animator>()->CreateAnimation(L"PlayerLeftAttack", m_pTex, Vec2(0.f, 44.0f * 30),
@@ -169,6 +175,11 @@ void Player::Render(HDC _hdc)
 	ComponentRender(_hdc);
 }
 
+// 죽었을 때 실행할 함수
+void Player::DeadProcess()
+{
+}
+
 void Player::EnterCollision(Collider* _other)
 {
 
@@ -219,7 +230,6 @@ void Player::CreateAttackEffect()
 
 	pEffect->SetName(L"PlayerAttackEffect");
 	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEffect, LAYER::ATTACKEFFECT);
-
 }
 
 
@@ -231,6 +241,11 @@ void Player::Jump()
 		SetUseGravity(true);
 		m_jumpVelocity = -300 * m_energy; // ���� �ö󰡴� �ʱ� �ӵ� (px/s)
 	}
+}
+
+void Player::OnDamaged(float damage)
+{
+	health->OnDamage(damage);
 }
 
 void Player::PerformAttack()
@@ -294,5 +309,3 @@ void Player::AnimationChange(PLAYER_ANIM_TYPE animType, bool Flip)
 
 
 }
-
-

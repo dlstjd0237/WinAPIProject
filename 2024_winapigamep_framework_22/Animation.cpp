@@ -16,6 +16,7 @@ Animation::Animation()
 
 Animation::~Animation()
 {
+
 }
 
 void Animation::Update()
@@ -48,9 +49,9 @@ void Animation::Render(HDC _hdc)
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 
-	float scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
-	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale);
-	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale);
+	Vec2 scale = GET_SINGLE(ResourceManager)->GetAnimationScale(m_strName);
+	int width = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x * scale.x);
+	int height = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y * scale.y);
 
 	if (!m_IsRotate)
 	{

@@ -38,6 +38,7 @@ void SniperShotPattern::Sniping()
 		_warningPanel = new WarningPanel(0.1f, pos, {SCREEN_WIDTH, 50}, false);
 		pos.x = pos.x + SCREEN_WIDTH / 2;
 		_warningPanel->SetPos(pos);
+		_warningPanel->isRotate = true;
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(_warningPanel, LAYER::WarningPanel);
 	}
 
@@ -69,7 +70,7 @@ void SniperShotPattern::Shot()
 		}
 
 		Projectile* bullet = new Projectile(_boss->GetPos());
-		bullet->SetSpeed(1000.f);
+		bullet->SetSpeed(1500.f);
 		bullet->SetDir(_dir);
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bullet, LAYER::PROJECTILE);
 

@@ -14,6 +14,7 @@ private:
 public:
 	void SetRotate(Vec2 dir) { _angle = atan2(dir.y, dir.x); }
 public:
+	bool isRotate;
 	bool isFade;
 private:
 	float _angle;

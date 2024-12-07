@@ -6,8 +6,8 @@ UI_Health::UI_Health(const std::wstring& bgPath, const std::wstring& fillPath)
     : m_fFillAmount(1.f) // 초기 FillAmount는 1 (100%)
 {
     // 배경과 FillAmount 이미지를 로드
-    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarBg", bgPath.c_str());
-    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(L"HealthBarFill", fillPath.c_str());
+    m_pBgTex = GET_SINGLE(ResourceManager)->TextureLoad(bgPath, bgPath.c_str());
+    m_pFillTex = GET_SINGLE(ResourceManager)->TextureLoad(fillPath, fillPath.c_str());
 }
 
 UI_Health::~UI_Health()
@@ -52,7 +52,7 @@ void UI_Health::Render(HDC _hdc)
         (int)(vPos.y - bgHeight / 2),
         fillWidth, fillHeight,       // 너비는 FillAmount로 조정
         m_pFillTex->GetTexDC(),
-        0, 0, fillWidth, fillHeight, RGB(255, 255, 255));
+        0, 0, fillWidth, fillHeight, RGB(255, 0, 255));
 
     // 컴포넌트 렌더링
     ComponentRender(_hdc);
