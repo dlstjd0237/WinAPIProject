@@ -5,5 +5,6 @@ class DeadScene :
 {
 public:
 	virtual void Init() override;
+	void Release() override;
 };
 

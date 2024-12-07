@@ -21,3 +21,16 @@ void HealthSystem::OnDamage(float damage)
 		_owner->DeadProcess();
 	}
 }
+
+void HealthSystem::OnRecovery()
+{
+	_currentHealth = _maxHealth;
+	_bar->SetFillAmount(_currentHealth / _maxHealth);
+}
+
+void HealthSystem::SetCurrentHealth(float _value)
+{
+	_currentHealth = _value;
+	_bar->SetFillAmount(_currentHealth / _maxHealth);
+}
+

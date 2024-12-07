@@ -4,42 +4,42 @@
 #include "InputManager.h"
 #include "Component.h"
 Object::Object()
-	: m_vPos{}
-	, m_vSize{}
-	, m_IsDie(false)
+    : m_vPos{}
+    , m_vSize{}
+    , m_IsDie(false)
 {
 }
 
 Object::~Object()
 {
-	for (Component* com : m_vecComponents)
-	{
-		if (com != nullptr)
-			delete com;
-	}
-	m_vecComponents.clear();
+    for (Component* com : m_vecComponents)
+    {
+        if (com != nullptr)
+            delete com;
+    }
+    m_vecComponents.clear();
 }
 
 void Object::LateUpdate()
 {
-	for (Component* com : m_vecComponents)
-	{
-		if (com)
-		{
-			com->LateUpdate();
-		}
-	}
+    for (Component* com : m_vecComponents)
+    {
+        if (com)
+        {
+            com->LateUpdate();
+        }
+    }
 }
 
 void Object::ComponentRender(HDC _hdc)
 {
-	for (Component* com : m_vecComponents)
-	{
-		if (com)
-		{
-			com->Render(_hdc);
-		}
-	}
+    for (Component* com : m_vecComponents)
+    {
+        if (com)
+        {
+            com->Render(_hdc);
+        }
+    }
 }
 
 void Object::EnterCollision(Collider* _other)
@@ -58,18 +58,17 @@ void Object::ExitCollision(Collider* _other)
 
 void Object::UseGravity()
 {
-	if (m_IsUseGravity == false) {
-		m_vGravity = 0;
-		return;
-	}
-	// Áß·Â °¡¼Óµµ ´©Àû
-	m_vGravity += m_gravity * fDT; // Áß·Â¿¡ ÀÇÇÑ º¯È­ ´©Àû
+    if (m_IsUseGravity == false) {
+        m_vGravity = 0;
+        return;
+    }
 
-	// »õ·Î¿î À§Ä¡ °è»ê
-	Vec2 newPos = { m_vPos.x, m_vPos.y + m_vGravity };
+    // ï¿½ß·ï¿½ ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
+    m_vGravity += m_gravity * fDT; // ï¿½ß·Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
 
-	// À§Ä¡ ¼³Á¤
-	SetPos(newPos);
+    Vec2 newPos = { m_vPos.x, m_vPos.y + m_vGravity };
+
+    SetPos(newPos);
 }
 
 void Object::DeadProcess()

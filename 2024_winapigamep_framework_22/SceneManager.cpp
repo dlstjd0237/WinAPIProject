@@ -10,23 +10,26 @@
 #include "DeadScene.h"
 #include "LoadingPanel.h"
 #include "TimeManager.h"
+#include "GameClearScene.h"
+#include "SelectScene.h"
 
 void SceneManager::Init()
 {
 	m_pCurrentScene = nullptr;
 
-	RegisterScene(L"TitleScene",std::make_shared<TitleScene>());
-	RegisterScene(L"GameScene",std::make_shared<GameScene>());
-	RegisterScene(L"Stage1BossScene",std::make_shared<Stage1BossScene>());
-	RegisterScene(L"Stage2BossScene",std::make_shared<Stage2BossScene>());
-	RegisterScene(L"BaekScene",std::make_shared<BaekScene>());
-	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
+	// �� ���
+
+	RegisterScene(L"GameScene", std::make_shared<GameScene>());
+	RegisterScene(L"Stage1BossScene", std::make_shared<Stage1BossScene>());
+	RegisterScene(L"Stage2BossScene", std::make_shared<Stage2BossScene>());
+	RegisterScene(L"EntryScene", std::make_shared<EntryScene>());
 	RegisterScene(L"DeadScene", std::make_shared<DeadScene>());
+	RegisterScene(L"GameClearscene", std::make_shared<GameClearScene>());
+	RegisterScene(L"SelectScene", std::make_shared<SelectScene>());
 
 	//LoadScene(L"DeadScene");
-	//LoadScene(L"EntryScene");
 	LoadScene(L"EntryScene");
-	//LoadScene(L"TitleScene");
+	//LoadScene(L"SelectScene");
 }
 
 void SceneManager::Update()
@@ -74,7 +77,7 @@ void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scen
 {
 	if (_sceneName.empty() || _scene == nullptr)
 		return;
-	m_mapScenes.insert(m_mapScenes.end(), {_sceneName, _scene});
+	m_mapScenes.insert(m_mapScenes.end(), { _sceneName, _scene });
 }
 
 void SceneManager::LoadScene(const wstring& _sceneName)

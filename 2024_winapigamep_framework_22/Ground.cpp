@@ -29,7 +29,6 @@ void Ground::Update()
 void Ground::Render(HDC _hdc)
 {
 	if (m_useTexur == false) {
-		ComponentRender(_hdc);
 		return;
 	}
 	Vec2 vPos = GetPos();
@@ -44,7 +43,6 @@ void Ground::Render(HDC _hdc)
 		m_pTex->GetTexDC()
 		, 0, 0, width, height,       // 원본 크기는 그대로
 		RGB(255, 0, 255));
-	ComponentRender(_hdc);
 }
 
 void Ground::EnterCollision(Collider* _other)

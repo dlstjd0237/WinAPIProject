@@ -12,7 +12,7 @@ void BaekScene::Init()
 {
 	Object* pPlayer = new Player(NULL);
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
-	pPlayer->SetSize({ 69.f*2,44.f*2 });
+	pPlayer->SetSize({ 69.f * 2,44.f * 2 });
 	pPlayer->SetName(L"Player");
 	AddObject(pPlayer, LAYER::PLAYER);
 
@@ -23,14 +23,3 @@ void BaekScene::Init()
 	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	GET_SINGLE(ResourceManager)->Play(L"BGM");
 }
-
-//void BaekScene::Update() {
-//
-//	Scene::Update();
-//	if (GET_KEYDOWN(KEY_TYPE::ENTER))
-//		GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
-//}
-//
-//void BaekScene::Init()
-//{
-//}

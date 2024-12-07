@@ -24,6 +24,7 @@ Player::Player(UI_Health* bar)
 	//==== AddComponent ====
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
+	//======================
 
 	health = new HealthSystem(10.f, this, bar);
 	//======================
@@ -67,6 +68,7 @@ Player::Player(UI_Health* bar)
 	//
 	//==== Animation Setting End ====
 
+	SetEnergy(1);
 
 }
 
@@ -119,6 +121,7 @@ void Player::LateUpdate()
 
 	if (GET_KEYDOWN(KEY_TYPE::LBUTTON) && m_isAttackTrigger == false)
 	{
+		SetEnergy(1);
 		m_isAttackTrigger = true;
 	}
 
@@ -174,6 +177,7 @@ void Player::Render(HDC _hdc)
 // 죽었을 때 실행할 함수
 void Player::DeadProcess()
 {
+	GET_SINGLE(SceneManager)->LoadScene(L"DeadScene");
 }
 
 void Player::EnterCollision(Collider* _other)
@@ -241,15 +245,11 @@ void Player::Jump()
 
 void Player::OnDamaged(float damage)
 {
-	health->OnDamage(damage);
+	m_pHealth->OnDamage(damage);
 }
 
 void Player::PerformAttack()
 {
-	SetEnergy(1);
-
-	GET_SINGLE(ResourceManager)->LoadSound(L"swing", L"Sound\\swing1.wav", false);
-	GET_SINGLE(ResourceManager)->Play(L"swing");
 
 	m_isAttackTrigger = false; // Attack ���� ����
 	m_attackTimer = 0;

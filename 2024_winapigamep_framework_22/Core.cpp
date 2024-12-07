@@ -34,6 +34,11 @@ bool Core::Init(HWND _hwnd)
 	GET_SINGLE(EntityManager)->Init();
 	GET_SINGLE(CameraManager)->Init();
 
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 0.3f);
+
+
+
+
 	//m_obj.SetPos(Vec2(SCREEN_WIDTH / 2
 	//				,SCREEN_HEIGHT/ 2));
 	//m_obj.SetSize(Vec2(100, 100));
