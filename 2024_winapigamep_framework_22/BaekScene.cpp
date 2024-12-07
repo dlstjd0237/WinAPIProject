@@ -10,7 +10,7 @@
 #include "ResourceManager.h"
 void BaekScene::Init()
 {
-	Object* pPlayer = new Player(NULL);
+	Object* pPlayer = new Player(NULL , NULL);
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
 	pPlayer->SetSize({ 69.f * 2,44.f * 2 });
 	pPlayer->SetName(L"Player");

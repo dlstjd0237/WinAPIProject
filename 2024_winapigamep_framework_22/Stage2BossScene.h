@@ -8,6 +8,7 @@ class Stage2BossScene : public Scene
 public:
 	void Init() override;
 	virtual void Update() override;
+	void Release() override;
 public:
 	UI_Health* pPlayerHealth = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp", L"PlayerBase", 
 		L"PlyerHealth",{ 1,1 });

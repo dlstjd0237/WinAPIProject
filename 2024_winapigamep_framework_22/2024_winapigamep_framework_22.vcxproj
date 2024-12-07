@@ -150,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
@@ -200,7 +200,6 @@
     <ClInclude Include="FollowBulletPattern.h" />
     <ClInclude Include="FollowBottomShotPattern.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="InputManager.h" />
@@ -229,7 +228,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleBossBG.h" />
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="UI_Health.h" />
     <ClInclude Include="Vec2.h" />
@@ -269,7 +267,6 @@
     <ClCompile Include="FallingShotPattern.cpp" />
     <ClCompile Include="FollowBulletPattern.cpp" />
     <ClCompile Include="FollowBottomShotPattern.cpp" />
-    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -296,7 +293,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleBossBG.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="UI_Health.cpp" />
     <ClCompile Include="WarningPanel.cpp" />
@@ -308,11 +304,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="2024_winapigamep_framework_22.ico" />
+    <Image Include="C:\Users\USER\Downloads\Boss1Select.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

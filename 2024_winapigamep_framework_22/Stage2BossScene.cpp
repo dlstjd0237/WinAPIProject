@@ -14,7 +14,7 @@
 
 void Stage2BossScene::Init()
 {
-	Player* pPlayer = new Player(pPlayerHealth);
+	Player* pPlayer = new Player(pPlayerHealth, pPlayerEnergy);
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 200.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
@@ -25,18 +25,6 @@ void Stage2BossScene::Init()
 	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
-
-	//Laser* laser = new Laser(1.f, 3.f, { 1,1 }, 3);
-	//laser->SetPos({laser->GetColliderSize().x / 2, SCREEN_HEIGHT / 2.f});
-	//AddObject(laser, LAYER::Laser);
-
-	//Laser* laser2 = new Laser(1.f, 3.f, { 1,1 }, 3);
-	//laser2->SetPos({ laser->GetColliderSize().x / 2 + laser->GetColliderSize().x * 2, SCREEN_HEIGHT / 2.f });
-	//AddObject(laser2, LAYER::Laser);
-
-	//Laser* laser3 = new Laser(1.f, 3.f, { 1,1 }, 3);
-	//laser3->SetPos({ SCREEN_WIDTH - laser3->GetColliderSize().x / 2, SCREEN_HEIGHT / 2.f });
-	//AddObject(laser3, LAYER::Laser);
 
 	//==== Ground Setting ====
 	Object* pObj = new Ground(true, { 1920, 50 }, { 0, 280 });
@@ -66,6 +54,18 @@ void Stage2BossScene::Init()
 		pPlayer, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) , (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
+
+	pPlayerHealth->SetPos({ 200.f, 665.f });
+	pPlayerHealth->SetFillAmount(1.f);
+	AddObject(pPlayerHealth, LAYER::UI);
+
+	pPlayerEnergy->SetPos({ 1200.f, 665.f });
+	pPlayerEnergy->SetFillAmount(0.5f);
+	AddObject(pPlayerEnergy, LAYER::UI);
+
+	pBossHealth->SetPos({ SCREEN_WIDTH / 2.f, 45.f });
+	pBossHealth->SetFillAmount(1.f);
+	AddObject(pBossHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::Laser);

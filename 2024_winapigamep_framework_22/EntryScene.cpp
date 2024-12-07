@@ -5,26 +5,21 @@
 #include "SceneManager.h"
 #include "EventManager.h"
 #include "UI_Button.h"
+#include "UI_Health.h"
 #include "TitleBossBG.h"
 #include "Boss.h"
 
 void EntryScene::Init()
 {
     // BG Element=========
-    Object* pPlayer = new Player(NULL);
-
-    //보스안해~
-
-	//보스안해~
-
 	GET_SINGLE(ResourceManager)->LoadSound(L"EntryBGM", L"Sound\\Title.wav", true);
 	GET_SINGLE(ResourceManager)->Play(L"EntryBGM");
 
-	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp", pPlayer, 0.f);
+	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\sky.bmp", NULL, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f), (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
 
-	Object* pBackgroundObj2 = new Background(L"Mountains", L"Texture\\mountains.bmp", pPlayer, 0.025f);
+	Object* pBackgroundObj2 = new Background(L"Mountains", L"Texture\\mountains.bmp", NULL, 0.025f);
 	pBackgroundObj2->SetPos({ (SCREEN_WIDTH / 2.f), (SCREEN_HEIGHT / 2.f) + 40 });
 	AddObject(pBackgroundObj2, LAYER::BACKGROUND);
 

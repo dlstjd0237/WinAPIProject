@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "SceneManager.h"
 #include "Scene.h"
-#include "TitleScene.h"
-#include "GameScene.h"
 #include "BaekScene.h"
 #include "Stage1BossScene.h"
 #include "Stage2BossScene.h"
@@ -17,9 +15,6 @@ void SceneManager::Init()
 {
 	m_pCurrentScene = nullptr;
 
-	// �� ���
-
-	RegisterScene(L"GameScene", std::make_shared<GameScene>());
 	RegisterScene(L"Stage1BossScene", std::make_shared<Stage1BossScene>());
 	RegisterScene(L"Stage2BossScene", std::make_shared<Stage2BossScene>());
 	RegisterScene(L"EntryScene", std::make_shared<EntryScene>());
@@ -27,9 +22,7 @@ void SceneManager::Init()
 	RegisterScene(L"GameClearscene", std::make_shared<GameClearScene>());
 	RegisterScene(L"SelectScene", std::make_shared<SelectScene>());
 
-	//LoadScene(L"DeadScene");
 	LoadScene(L"EntryScene");
-	//LoadScene(L"SelectScene");
 }
 
 void SceneManager::Update()

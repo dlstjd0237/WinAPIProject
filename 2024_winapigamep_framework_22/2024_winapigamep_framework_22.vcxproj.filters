@@ -106,14 +106,8 @@
     <ClInclude Include="Scene.h">
       <Filter>Engine\04. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Engine\04. Scene</Filter>
-    </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Engine\02. Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>Engine\04. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Engine\03. Object</Filter>
@@ -230,6 +224,13 @@
     <ClInclude Include="TitleBossBG.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="CameraManager.h" />
+    <ClInclude Include="CenterFullLaserPattern.h" />
+    <ClInclude Include="LoadingPanel.h" />
+    <ClInclude Include="RightFullLaserPattern.h" />
+    <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="ZigzagLaserPattern.h" />
+    <ClInclude Include="ZigzagRandomLaserPattern.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -241,6 +242,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="2024_winapigamep_framework_22.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="C:\Users\USER\Downloads\Boss1Select.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -266,14 +270,8 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Engine\04. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Engine\04. Scene</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Engine\02. Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>Engine\04. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Engine\03. Object</Filter>
@@ -390,9 +388,17 @@
     <ClCompile Include="TitleBossBG.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="CenterFullLaserPattern.cpp" />
+    <ClCompile Include="LoadingPanel.cpp" />
+    <ClCompile Include="RightFullLaserPattern.cpp" />
+    <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="ZigzagLaserPattern.cpp" />
+    <ClCompile Include="ZigzagRandomLaserPattern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

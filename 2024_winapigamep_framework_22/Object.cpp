@@ -56,8 +56,14 @@ void Object::ExitCollision(Collider* _other)
 }
 
 
+bool f = false;
+
 void Object::UseGravity()
 {
+    if (f == false) {
+        m_IsUseGravity = true;
+        f = true;
+    }
     if (m_IsUseGravity == false) {
         m_vGravity = 0;
         return;
@@ -65,8 +71,10 @@ void Object::UseGravity()
 
     // �߷� ���ӵ� ����
     m_vGravity += m_gravity * fDT; // �߷¿� ���� ��ȭ ����
+    Vec2 newPos = GetPos();
+    //Vec2 newPos = { m_vPos.x, m_vPos.y + m_vGravity };
 
-    Vec2 newPos = { m_vPos.x, m_vPos.y + m_vGravity };
+    newPos.y += m_vGravity;
 
     SetPos(newPos);
 }

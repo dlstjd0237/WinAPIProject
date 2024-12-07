@@ -1,12 +1,13 @@
 #pragma once
 #include "Object.h"
 #include "HealthSystem.h"
+#include "UI_Health.h"
 class Texture;
 
 class Player : public Object
 {
 public:
-	Player(UI_Health* bar);
+	Player(UI_Health* bar, UI_Health* energeBar);
 	~Player();
 public:
 	void Update() override;
@@ -46,7 +47,7 @@ private:
 
 	map<PLAYER_ANIM_TYPE, bool> m_actionMap;
 	HealthSystem* m_pHealth;
-	HealthSystem* m_pEnergy;
+	UI_Health* m_pEnergy;
 public:
 	const float GetEnergy() const { return m_energy; }
 	const Vec2	GetPlayerScale() const { return m_playerScale; }
@@ -55,7 +56,7 @@ public:
 	void SetEnergy(float value)
 	{
 		m_energy = min(value, MAXENERGY);
-		m_pEnergy->SetCurrentHealth(m_energy);
+		m_pEnergy->SetFillAmount(m_energy / MAXENERGY);
 	}
 	void SetPlayerScale(Vec2 _scale) { m_playerScale = _scale; }
 

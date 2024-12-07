@@ -14,8 +14,8 @@
 
 void Stage1BossScene::Init()
 {
-	Player* pPlayer = new Player(pPlayerHealth);
-	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 200.f });
+	Player* pPlayer = new Player(pPlayerHealth, pPlayerEnergy);
+	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 	pPlayer->SetName(L"Player");
@@ -70,7 +70,7 @@ void Stage1BossScene::Init()
 	//============================
 
 	pPlayerHealth->SetPos({ 200.f, 665.f });
-	pPlayerHealth->SetFillAmount(0.5f);
+	pPlayerHealth->SetFillAmount(1.f);
 	AddObject(pPlayerHealth, LAYER::UI);
 
 	pPlayerEnergy->SetPos({ 1200.f, 665.f });
@@ -78,7 +78,7 @@ void Stage1BossScene::Init()
 	AddObject(pPlayerEnergy, LAYER::UI);
 
 	pBossHealth->SetPos({ SCREEN_WIDTH / 2.f, 45.f });
-	pBossHealth->SetFillAmount(0.5f);
+	pBossHealth->SetFillAmount(1.f);
 	AddObject(pBossHealth, LAYER::UI);
 
 	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::GROUND, LAYER::PLAYER);

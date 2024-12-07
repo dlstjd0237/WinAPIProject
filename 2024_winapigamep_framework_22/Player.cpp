@@ -13,7 +13,7 @@
 #include "PlayerAttackEffect.h"
 #include "EntityManager.h"
 
-Player::Player(UI_Health* bar)
+Player::Player(UI_Health* healthbar, UI_Health* energeBar)
 	: m_pTex(nullptr),
 	m_speed(10)
 {
@@ -26,7 +26,8 @@ Player::Player(UI_Health* bar)
 	this->AddComponent<Animator>();
 	//======================
 
-	health = new HealthSystem(10.f, this, bar);
+	m_pHealth = new HealthSystem(10.f, this, healthbar);
+	m_pEnergy = energeBar;
 	//======================
 
 	//==== Graviy Setting ====

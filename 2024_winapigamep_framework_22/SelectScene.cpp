@@ -14,7 +14,7 @@ void SelectScene::Init()
 	background->SetSize({ 1024.f,1024.f });
 	AddObject(background, LAYER::BACKGROUND);
 
-	UI_Button* Boss1Button = new UI_Button(L"Texture\\Boss1Select.bmp", L"", { 1,1 }, L"Boss1", { 0,0 }, false);
+	UI_Button* Boss1Button = new UI_Button(L"Texture\\Boss1Select.bmp", L"", { 1,1 }, L"Boss1Sel", { 0,0 }, false);
 	Boss1Button->SetPos({ SCREEN_WIDTH / 2 - 300,SCREEN_HEIGHT / 2 });
 	Boss1Button->OnClick = []()
 		{
@@ -22,7 +22,7 @@ void SelectScene::Init()
 		};
 	AddObject(Boss1Button, LAYER::UI);
 
-	UI_Button* Boss2Button = new UI_Button(L"Texture\\Boss2Select.bmp", L"", { 1,1 }, L"Boss2", { 0,0 }, false);
+	UI_Button* Boss2Button = new UI_Button(L"Texture\\Boss2Select.bmp", L"", { 1,1 }, L"Boss2Sel", { 0,0 }, false);
 	Boss2Button->SetPos({ SCREEN_WIDTH / 2 + 300,SCREEN_HEIGHT / 2 });
 	Boss2Button->OnClick = []()
 		{

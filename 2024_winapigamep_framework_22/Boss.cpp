@@ -4,6 +4,7 @@
 #include "Stage2Boss.h"
 #include "TimeManager.h"
 #include "EntityManager.h"
+#include "EventManager.h"
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
@@ -33,7 +34,10 @@ void Boss::Update()
 	if (_isDeading)
 	{
 		if (AnimationEndCheck())
+		{
 			SetDead();
+			GET_SINGLE(EventManager)->SceneLoad(L"GameClearscene");
+		}
 		return;
 	}
 
