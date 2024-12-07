@@ -11,7 +11,7 @@
 void EntryScene::Init()
 {
     // BG Element=========
-    Object* pPlayer = new Player;
+    Object* pPlayer = new Player(NULL);
 
     //보스안해~
 

@@ -6,7 +6,7 @@ class Texture;
 class Player : public Object
 {
 public:
-	Player();
+	Player(UI_Health* bar);
 	~Player();
 public:
 	void Update() override;

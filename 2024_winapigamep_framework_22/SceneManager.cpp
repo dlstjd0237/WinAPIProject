@@ -50,7 +50,7 @@ void SceneManager::Update()
 			m_pCurrentScene->AddObject(_loadingPanel, LAYER::LoadingPanel);
 			m_pCurrentScene->Init();
 
-			_loadingPanel->Load(false, 2.f, 1.f);
+			_loadingPanel->Load(false, 1.f, 1.f);
 		}
 	}
 	else
@@ -82,7 +82,7 @@ void SceneManager::LoadScene(const wstring& _sceneName)
 	_loadSceneName = _sceneName;
 	if (m_pCurrentScene != nullptr)
 	{
-		_loadingPanel->Load(true, 2.f);
+		_loadingPanel->Load(true, 1.f);
 	}
 	else
 	{

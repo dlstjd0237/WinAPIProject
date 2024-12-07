@@ -14,13 +14,14 @@
 
 void Stage1BossScene::Init()
 {
-	Player* pPlayer = new Player;
+	Player* pPlayer = new Player(pPlayerHealth);
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 200.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 	pPlayer->SetName(L"Player");
 
 	Boss* boss = new Stage1Boss();
+	boss->SetHealth(pBossHealth);
 	boss->SetPos({ SCREEN_WIDTH / 2.f, 150.f });
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");

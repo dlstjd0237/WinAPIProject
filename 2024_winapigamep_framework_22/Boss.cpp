@@ -16,15 +16,16 @@ Boss::Boss()
 	AddComponent<Animator>();
 	GET_SINGLE(EntityManager)->SetBoss(this);
 
-	UI_Health* bar = new UI_Health(L"Texture\\BossEmpty.bmp", L"Texture\\BossAmount.bmp", L"BossEmpty", L"BossAmount" , {1,1});
-	bar->SetPos({ SCREEN_WIDTH / 2 - 300, SCREEN_HEIGHT / 2 });
-	_health = new HealthSystem(30, this, bar);
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 }
 
 Boss::~Boss()
 {
 
+}
+
+void Boss::SetHealth(UI_Health* bar)
+{
+	_health = new HealthSystem(30, this, bar);
 }
 
 void Boss::Update()
@@ -60,9 +61,9 @@ void Boss::Update()
 		AnimationChange(Boss_ANIM_TYPE::ATTACK, isLeft);
 		_patternElapseTime = 0;
 		// Debug
-		_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::ZigzagRandomLaser);
+		//_currentPattern = GetPattern<Stage2BossPattern>(Stage2BossPattern::ZigzagRandomLaser);
 		// ���� ����
-		//_currentPattern = GetPattern(RandomPattenIdxGet(true));
+		_currentPattern = GetPattern(RandomPattenIdxGet(true));
 	}
 }
 

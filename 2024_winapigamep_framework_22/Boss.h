@@ -30,6 +30,7 @@ class Boss : public Object
 public: 
     Boss();
     virtual ~Boss();
+    void SetHealth(UI_Health* bar);
 
 public:
     virtual void Update() override;

@@ -13,7 +13,7 @@
 #include "PlayerAttackEffect.h"
 #include "EntityManager.h"
 
-Player::Player()
+Player::Player(UI_Health* bar)
 	: m_pTex(nullptr),
 	m_speed(10)
 {
@@ -24,10 +24,6 @@ Player::Player()
 	//==== AddComponent ====
 	this->AddComponent<Collider>();
 	this->AddComponent<Animator>();
-
-	UI_Health* bar = new UI_Health(L"Texture\\PlayerEmptyAmount.bmp", L"Texture\\PlayerFullHealth.bmp");
-	bar->SetPos({ SCREEN_WIDTH / 2.f + 300, SCREEN_HEIGHT / 2.f });
-	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(bar, LAYER::UI);
 
 	health = new HealthSystem(10.f, this, bar);
 	//======================
