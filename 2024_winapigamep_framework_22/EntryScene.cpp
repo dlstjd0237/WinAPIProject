@@ -9,8 +9,10 @@
 
 void EntryScene::Init()
 {
-	// BG Element=========
-	Object* pPlayer = new Player;
+    // BG Element=========
+    Object* pPlayer = new Player;
+
+    //보스안해~
 
 	//보스안해~
 
@@ -32,34 +34,23 @@ void EntryScene::Init()
 	pTitle->SetPos({ SCREEN_WIDTH / 4.5f, 170.f });
 	AddObject(pTitle, LAYER::UI);
 
-	Object* pBgBoss = new UI_Button(L"Texture\\BossBG.bmp", L"", { 3.5f, 3.5f },
-		L"pBgBoss", { 1.f, 1.f }, false);
-	pBgBoss->SetPos({ SCREEN_WIDTH / 1.3f, 190.f });
-	AddObject(pBgBoss, LAYER::UI);
+    UI_Button* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nSTART", { 0.3f, 0.3f },
+        L"pStartButton", { 1.f, 1.f }, true);
+    pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
+    pStartButton->OnClick = []()
+        {
+            GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
+        };
+    AddObject(pStartButton, LAYER::UI);
 
-	Object* pPaper = new UI_Button(L"Texture\\Paper.bmp", L"\n\n\n MOVE : WASD\n\n JUMP : SPACE\n\n ATTACK : MOUSE LEFT\n\n\n DEVELOPERs\nI.S BEAK, I.H LEE, J.M JANG",
-		{ 0.85f, 0.85f },
-		L"pPaper", { 1.f, 1.f }, false);
-	pPaper->SetPos({ SCREEN_WIDTH / 1.15f, 560.f });
-	AddObject(pPaper, LAYER::UI);
-
-	UI_Button* pStartButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nSTART", { 0.3f, 0.3f },
-		L"pStartButton", { 1.f, 1.f }, true);
-	pStartButton->SetPos({ SCREEN_WIDTH / 9.f, 515.f });
-	pStartButton->OnClick = []()
-		{
-			GET_SINGLE(SceneManager)->LoadScene(L"BossTestScene");
-		};
-	AddObject(pStartButton, LAYER::UI);
-
-	UI_Button* pExitButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nEXIT", { 0.3f, 0.3f },
-		L"pExitButton", { 1.f, 1.f }, true);
-	pExitButton->SetPos({ SCREEN_WIDTH / 9.f, 630.f });
-	pExitButton->OnClick = []()
-		{
-			PostQuitMessage(0);
-		};
-	AddObject(pExitButton, LAYER::UI);
+    UI_Button* pExitButton = new UI_Button(L"Texture\\Button.bmp", L"\n\nEXIT", { 0.3f, 0.3f },
+        L"pExitButton", { 1.f, 1.f }, true);
+    pExitButton->SetPos({ SCREEN_WIDTH / 9.f, 630.f });
+    pExitButton->OnClick = []()
+        {
+            PostQuitMessage(0);
+        };
+    AddObject(pExitButton, LAYER::UI);
 }
 
 void EntryScene::Update()
