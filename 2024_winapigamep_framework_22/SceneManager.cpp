@@ -22,7 +22,7 @@ void SceneManager::Init()
 	RegisterScene(L"EntryScene",std::make_shared<EntryScene>());
 
 	//LoadScene(L"EntryScene");
-	LoadScene(L"Stage2BossScene");
+	LoadScene(L"Stage1BossScene");
 	//LoadScene(L"TitleScene");
 }
 
