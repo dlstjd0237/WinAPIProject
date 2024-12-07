@@ -39,6 +39,8 @@ void UI_Health::Render(HDC _hdc)
     Vec2 vPos = GetPos();
     Vec2 vSize = GetSize();
 
+    //BG배경 이미지 렌더링 ==============================================
+
     // 배경이미지를 GeWidth, Height함수를 통해 가져온다
     int bgWidth = m_pBgTex->GetWidth();
     int bgHeight = m_pBgTex->GetHeight();
@@ -47,33 +49,36 @@ void UI_Health::Render(HDC _hdc)
     int bgScaledWidth = (int)(bgWidth * m_scale.x);
     int bgScaledHeight = (int)(bgHeight * m_scale.y);
 
-    //255,0,255 RGD값을 투명하게 처리하고 
+    //255,0,255 RGD값을 투명하게 처리하고 크기를 스케일을 연산한 값에 기준하여 한다.
     ::TransparentBlt(
         _hdc,
         (int)(vPos.x - bgScaledWidth / 2),
         (int)(vPos.y - bgScaledHeight / 2),
-        bgScaledWidth, bgScaledHeight, // 확대/축소된 크기로 렌더링
+        bgScaledWidth, bgScaledHeight,
         m_pBgTex->GetTexDC(),
-        0, 0, bgWidth, bgHeight, // 원본 크기 사용
+        0, 0, bgWidth, bgHeight,
         RGB(255, 0, 255));
 
-    // FillAmount 이미지 렌더링 (비율에 따라 크기 조정)
+
+    // FillAmount 이미지 렌더링 ==============================================
+
+    //넓이에 경우, FillAmount값에 따라 달라져야하므로 m_fFillAmount변수를 곱해준다(0 ~ 1)
     int fillWidth = (int)(m_pFillTex->GetWidth() * m_fFillAmount);
     int fillHeight = m_pFillTex->GetHeight();
 
-    // Scale을 적용한 Fill 크기 계산
+    // 위와같다
     int fillScaledWidth = (int)(fillWidth * m_scale.x);
     int fillScaledHeight = (int)(fillHeight * m_scale.y);
 
     ::TransparentBlt(
         _hdc,
-        (int)(vPos.x - bgScaledWidth / 2), // 배경과 동일한 위치
+        (int)(vPos.x - bgScaledWidth / 2),
         (int)(vPos.y - bgScaledHeight / 2),
-        fillScaledWidth, fillScaledHeight, // 확대/축소된 크기로 렌더링
+        fillScaledWidth, fillScaledHeight, 
         m_pFillTex->GetTexDC(),
-        0, 0, fillWidth, fillHeight, // FillAmount에 따른 원본 크기
+        0, 0, fillWidth, fillHeight,
         RGB(255, 0, 255));
 
-    // 컴포넌트 렌더링
+    // 컴포넌트 렌더링, 필요없나???
     ComponentRender(_hdc);
 }

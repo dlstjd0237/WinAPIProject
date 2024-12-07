@@ -209,7 +209,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="BossPattern.h" />
     <ClInclude Include="OneShotPattern.h" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackEffect.h" />
@@ -279,7 +279,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="BossPattern.cpp" />
     <ClCompile Include="OneShotPattern.cpp" />
-    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttackEffect.cpp" />
     <ClCompile Include="Projectile.cpp" />

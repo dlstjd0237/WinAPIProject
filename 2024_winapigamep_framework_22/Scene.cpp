@@ -37,7 +37,6 @@ void Scene::LateUpdate()
 
 void Scene::Render(HDC _hdc)
 {
-
 	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size();)

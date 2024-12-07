@@ -14,7 +14,7 @@
 
 void Stage2BossScene::Init()
 {
-	Object* pPlayer = new Player;
+	Player* pPlayer = new Player;
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);

@@ -24,15 +24,15 @@ public:
     const float& GetAngle() const { return _angle; }
     const float& GetGravity()const { return     m_gravity; }
 public:
-    virtual void EnterCollision(Collider* _other);
-    virtual void StayCollision(Collider* _other);
-    virtual void ExitCollision(Collider* _other);
-    const bool& GetIsDead() const { return m_IsDie; }
-    void SetDead() { m_IsDie = true; }
-    void SetName(wstring _name) { m_name = _name; }
-    void UseGravity();
-    const wstring& GetName() const { return m_name; }
-    virtual void DeadProcess();
+	virtual void EnterCollision(Collider* _other);
+	virtual void StayCollision(Collider* _other);	
+	virtual void ExitCollision(Collider* _other);
+	const bool& GetIsDead() const { return m_IsDie; }
+	void SetDead() { m_IsDie = true; }
+	void SetName(wstring _name) { m_name = _name; }
+	void UseGravity();
+	const wstring& GetName() const { return m_name; }
+	virtual void DeadProcess();
 
 private:
     bool m_IsDie;

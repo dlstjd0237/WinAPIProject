@@ -14,9 +14,8 @@
 
 void Stage1BossScene::Init()
 {
-	//==== Player ====
-	Object* pPlayer = new Player;
-	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f });
+	Player* pPlayer = new Player;
+	pPlayer->SetPos({ SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f + 200.f });
 	pPlayer->SetSize({ 44.f, 69.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 	pPlayer->SetName(L"Player");
@@ -29,11 +28,6 @@ void Stage1BossScene::Init()
 	AddObject(boss, LAYER::ENEMY);
 	boss->SetName(L"Enemy");
 	//==============
-
-
-	//WarningPanel* war = new WarningPanel(0.1f, { SCREEN_WIDTH + 500.f , SCREEN_HEIGHT / 2.f }, { SCREEN_WIDTH, 50});
-	//AddObject(war, LAYER::DEFAULT);
-	//war->SetRotate({ -1,-1 });
 
 
 	//==== Ground Setting ====
