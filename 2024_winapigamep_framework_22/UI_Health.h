@@ -6,7 +6,7 @@
 class UI_Health : public Object
 {
 public:
-	UI_Health(const std::wstring& bgPath, const std::wstring& fillPath);
+	UI_Health(wstring bgPath, wstring fillPath, wstring Bgname, wstring amountName, Vec2 Scale);
 	~UI_Health();
 
 public:
@@ -19,4 +19,9 @@ private:
 	float m_fFillAmount;
 	Texture* m_pBgTex;
 	Texture* m_pFillTex;
+	wstring m_bgpath;
+	wstring m_Amountpath;
+	wstring m_bgName;
+	wstring m_AmountName;
+	Vec2 m_scale;
 };
