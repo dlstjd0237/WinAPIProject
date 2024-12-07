@@ -4,6 +4,11 @@
 enum class Stage2BossPattern
 {
 	RandomLaser,
+	LeftFullLaser,
+	RightFullLaser,
+	CenterFullLaser,
+	ZigzagLaser,
+	ZigzagRandomLaser,
 
 };
 class Stage2Boss : public Boss

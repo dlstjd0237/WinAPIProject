@@ -1,6 +1,7 @@
 #pragma once
 #include "BossPattern.h"
 #include "WarningPanel.h"
+#include "Laser.h"
 
 class LeftFullLaserPattern : public BossPattern
 {
@@ -11,16 +12,13 @@ public:
 private:
 	void Shot();
 private:
-	bool _isInit;
 	bool _isShotEnd;
 
-	float _shotWaitTime = 1.f;
-	int _shotCount = 3;
-
-	float _laserWidth = 5.f;
+	float _shotWaitTime = 1.5f;
 
 	float _elapseTime;
-	vector<Vec2> _shootPosVec;
-	WarningPanel* _warningPanelVec;
+	Vec2 _shootPos;
+	WarningPanel* _warningPanel;
+	Laser* _laser;
 };
 

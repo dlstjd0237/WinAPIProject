@@ -16,10 +16,12 @@ class EventManager
 	DECLARE_SINGLE(EventManager);
 public:
 	void Update();
+	void SceneLoad(wstring sceneName);
 	void DeleteObject(Object* _pObj);
 private:
 	void Excute(const tEvent& _eve);
 private:
+	wstring _sceneName;
 	vector<tEvent> m_vecEvent;
 	vector<Object*> m_vecDead;
 };

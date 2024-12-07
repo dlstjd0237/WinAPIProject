@@ -1,5 +1,6 @@
 #pragma once
 class Scene;
+class LoadingPanel;
 class SceneManager
 {
 	DECLARE_SINGLE(SceneManager);
@@ -16,6 +17,8 @@ public:
 		return m_pCurrentScene;
 	}
 private:
+	wstring _loadSceneName;
+	LoadingPanel* _loadingPanel;
 	// 씬들을 map으로 관리
 	map<wstring, std::shared_ptr<Scene>> m_mapScenes;
 	//Scene* m_pCurrentScene;

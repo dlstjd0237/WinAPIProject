@@ -173,7 +173,11 @@
     <ClInclude Include="BaekScene.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="CameraManager.h" />
+    <ClInclude Include="CenterFullLaserPattern.h" />
     <ClInclude Include="HealthSystem.h" />
+    <ClInclude Include="LoadingPanel.h" />
+    <ClInclude Include="RightFullLaserPattern.h" />
     <ClInclude Include="Stage1BossScene.h" />
     <ClInclude Include="AllRangeCircleBossPattern.h" />
     <ClInclude Include="BottomShotPattern.h" />
@@ -228,6 +232,8 @@
     <ClInclude Include="UI_Health.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WarningPanel.h" />
+    <ClInclude Include="ZigzagLaserPattern.h" />
+    <ClInclude Include="ZigzagRandomLaserPattern.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -237,7 +243,11 @@
     <ClCompile Include="BaekScene.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="CenterFullLaserPattern.cpp" />
     <ClCompile Include="HealthSystem.cpp" />
+    <ClCompile Include="LoadingPanel.cpp" />
+    <ClCompile Include="RightFullLaserPattern.cpp" />
     <ClCompile Include="Stage1BossScene.cpp" />
     <ClCompile Include="AllRangeCircleBossPattern.cpp" />
     <ClCompile Include="BottomShotPattern.cpp" />
@@ -286,6 +296,8 @@
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="UI_Health.cpp" />
     <ClCompile Include="WarningPanel.cpp" />
+    <ClCompile Include="ZigzagLaserPattern.cpp" />
+    <ClCompile Include="ZigzagRandomLaserPattern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc" />

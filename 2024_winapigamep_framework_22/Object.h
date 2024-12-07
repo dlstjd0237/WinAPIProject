@@ -25,7 +25,7 @@ public:
 	const float& GetGravity()const { return	 m_gravity; }
 public:
 	virtual void EnterCollision(Collider* _other);
-	virtual void StayCollision(Collider* _other);
+	virtual void StayCollision(Collider* _other);	
 	virtual void ExitCollision(Collider* _other);
 	const bool& GetIsDead() const { return m_IsDie; }
 	void SetDead() { m_IsDie = true; }
