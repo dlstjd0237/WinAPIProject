@@ -34,6 +34,7 @@ public:
 	const wstring& GetName() const { return m_name; }
 	virtual void DeadProcess();
     bool m_IsUseGravity = false;
+    bool f = false;
 private:
     bool m_IsDie;
     float m_gravity = 9.8f;

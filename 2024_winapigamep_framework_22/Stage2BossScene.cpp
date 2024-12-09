@@ -51,9 +51,15 @@ void Stage2BossScene::Init()
 	//==== Background Setting ====
 
 	Object* pBackgroundObj1 = new Background(L"Sky", L"Texture\\Sky_mountains.bmp",
-		pPlayer, 0.f);
+		NULL, 0.f);
 	pBackgroundObj1->SetPos({ (SCREEN_WIDTH / 2.f) , (SCREEN_HEIGHT / 2.f) });
 	AddObject(pBackgroundObj1, LAYER::BACKGROUND);
+
+	Object* pBackgroundObj3 = new Background(L"Tees", L"Texture\\trees.bmp",
+		NULL, 0.075f);
+	pBackgroundObj3->SetPos({ SCREEN_WIDTH / 2.f, (SCREEN_HEIGHT / 2.f) - 50 });
+	AddObject(pBackgroundObj3, LAYER::BACKGROUND);
+
 
 	pPlayerHealth->SetPos({ 200.f, 665.f });
 	pPlayerHealth->SetFillAmount(1.f);

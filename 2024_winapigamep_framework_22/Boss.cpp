@@ -149,10 +149,8 @@ int Boss::RandomPattenIdxGet(bool noDuplication)
 		_addValue = 0;
 
 	srand(unsigned int(time(NULL)));
-	// ������ �ε����� ���� �� ��ų, �ߺ� ������ ���� ��� �������� ���� �������� ����
 	int patIdx = rand() % (_patternIdxVec.size() - _addValue);
 
-	// ������ �ε����� ���� ���� �ε����� ��ȯ
 	int temp = _patternIdxVec[patIdx];
 	_patternIdxVec[patIdx] = _patternIdxVec[_patternIdxVec.size() - 1 - _addValue];
 	_patternIdxVec[_patternIdxVec.size() - 1 - _addValue] = temp;

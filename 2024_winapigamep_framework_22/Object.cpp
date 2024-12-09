@@ -56,7 +56,6 @@ void Object::ExitCollision(Collider* _other)
 }
 
 
-bool f = false;
 
 void Object::UseGravity()
 {

@@ -34,7 +34,7 @@ void RightFullLaserPattern::Shot()
 	if (_elapseTime >= _shotWaitTime)
 	{
 		_warningPanel->isFade = true;
-		_laser = new Laser(1.5f, 3.f, { 3,3 }, 37.f);
+		_laser = new Laser(1.f, 3.f, { 3,3 }, 37.f);
 		_laser->SetPos(_shootPos);
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(_laser, LAYER::Laser);
 

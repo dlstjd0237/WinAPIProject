@@ -210,7 +210,6 @@
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LeftFullLaserPattern.h" />
     <ClInclude Include="ParticleSystem.h" />
-    <ClInclude Include="RandomLaserPattern.h" />
     <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="Stage1BossScene.h">
       <Filter>Engine</Filter>
@@ -227,10 +226,11 @@
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="CenterFullLaserPattern.h" />
     <ClInclude Include="LoadingPanel.h" />
-    <ClInclude Include="RightFullLaserPattern.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="ZigzagLaserPattern.h" />
     <ClInclude Include="ZigzagRandomLaserPattern.h" />
+    <ClInclude Include="RightFullLaserPattern.h" />
+    <ClInclude Include="RandomLaserPattern.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -374,7 +374,6 @@
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LeftFullLaserPattern.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
-    <ClCompile Include="RandomLaserPattern.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="Stage1BossScene.cpp">
       <Filter>Engine</Filter>
@@ -391,10 +390,11 @@
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="CenterFullLaserPattern.cpp" />
     <ClCompile Include="LoadingPanel.cpp" />
-    <ClCompile Include="RightFullLaserPattern.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="ZigzagLaserPattern.cpp" />
     <ClCompile Include="ZigzagRandomLaserPattern.cpp" />
+    <ClCompile Include="RightFullLaserPattern.cpp" />
+    <ClCompile Include="RandomLaserPattern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
