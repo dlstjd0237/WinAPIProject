@@ -102,7 +102,7 @@ template<typename T>
 inline BossPattern* Boss::GetPattern(T patternEnum)
 {
 	int idx = static_cast<int>(patternEnum);
-	if (_bossPattern.find(idx) != _bossPattern.end())
+	if (_bossPattern.contains(idx))
 	{
 		return _bossPattern[idx];
 	}
